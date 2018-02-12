@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.SignalR.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,7 +26,17 @@ namespace BASFConnector
 
         private void btnServerStart_Click(object sender, EventArgs e)
         {
-            Process.Start("C:\\Users\\rapha\\repos\\Builds\\BASFConnectorConsole");
+            Process.Start("C:\\Users\\rapha\\repos\\Builds\\BASFConnectorConsole\\BASFConnectorConsole.exe");
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            IHubProxy _hub;
+            string url = @"http://localhost:8080/";
+            var connection = new HubConnection(url);
+            _hub = connection.CreateHubProxy("TestHub");
+            connection.Start().Wait();
+
         }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnRestart = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnConnect = new System.Windows.Forms.Button();
             this.btnServerStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,14 +52,15 @@
             this.btnRestart.UseVisualStyleBackColor = true;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             // 
-            // button2
+            // btnConnect
             // 
-            this.button2.Location = new System.Drawing.Point(198, 198);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnConnect.Location = new System.Drawing.Point(198, 198);
+            this.btnConnect.Name = "btnConnect";
+            this.btnConnect.Size = new System.Drawing.Size(75, 23);
+            this.btnConnect.TabIndex = 1;
+            this.btnConnect.Text = "Connect";
+            this.btnConnect.UseVisualStyleBackColor = true;
+            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // btnServerStart
             // 
@@ -137,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 243);
             this.Controls.Add(this.btnServerStart);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -153,7 +154,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnRestart;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Button btnServerStart;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

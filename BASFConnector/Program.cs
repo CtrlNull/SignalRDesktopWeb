@@ -20,12 +20,7 @@ namespace BASFConnector
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
-            IHubProxy _hub;
-            string url = @"http://localhost:8080/";
-            var connection = new HubConnection(url);
-            _hub = connection.CreateHubProxy("TestHub");
-            connection.Start().Wait();
-
+            
 
         }
         public class TestHub
