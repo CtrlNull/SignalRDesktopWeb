@@ -42,12 +42,10 @@
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblSelected = new System.Windows.Forms.Label();
             this.btnCheckDevice = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblDeviceName = new System.Windows.Forms.Label();
+            this.pbDevice = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.SuspendLayout();
             // 
             // cboPorts_Comm
@@ -67,7 +65,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(254, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(314, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,7 +130,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(92, 101);
+            this.label1.Location = new System.Drawing.Point(108, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 3;
@@ -142,11 +140,10 @@
             // lblDeviceStatus
             // 
             this.lblDeviceStatus.AutoSize = true;
-            this.lblDeviceStatus.Location = new System.Drawing.Point(168, 72);
+            this.lblDeviceStatus.Location = new System.Drawing.Point(115, 75);
             this.lblDeviceStatus.Name = "lblDeviceStatus";
-            this.lblDeviceStatus.Size = new System.Drawing.Size(74, 13);
+            this.lblDeviceStatus.Size = new System.Drawing.Size(0, 13);
             this.lblDeviceStatus.TabIndex = 4;
-            this.lblDeviceStatus.Text = "Device Status";
             // 
             // label2
             // 
@@ -166,24 +163,6 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "-";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(152, 72);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(10, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "-";
-            // 
-            // lblSelected
-            // 
-            this.lblSelected.AutoSize = true;
-            this.lblSelected.Location = new System.Drawing.Point(17, 72);
-            this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(46, 13);
-            this.lblSelected.TabIndex = 9;
-            this.lblSelected.Text = "COMM0";
-            // 
             // btnCheckDevice
             // 
             this.btnCheckDevice.Location = new System.Drawing.Point(166, 33);
@@ -194,34 +173,21 @@
             this.btnCheckDevice.UseVisualStyleBackColor = true;
             this.btnCheckDevice.Click += new System.EventHandler(this.btnCheckDevice_Click);
             // 
-            // label5
+            // pbDevice
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(69, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(10, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "-";
-            // 
-            // lblDeviceName
-            // 
-            this.lblDeviceName.AutoSize = true;
-            this.lblDeviceName.Location = new System.Drawing.Point(82, 72);
-            this.lblDeviceName.Name = "lblDeviceName";
-            this.lblDeviceName.Size = new System.Drawing.Size(72, 13);
-            this.lblDeviceName.TabIndex = 12;
-            this.lblDeviceName.Text = "Device Name";
+            this.pbDevice.Location = new System.Drawing.Point(99, 78);
+            this.pbDevice.Name = "pbDevice";
+            this.pbDevice.Size = new System.Drawing.Size(10, 10);
+            this.pbDevice.TabIndex = 13;
+            this.pbDevice.TabStop = false;
             // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 121);
-            this.Controls.Add(this.lblDeviceName);
-            this.Controls.Add(this.label5);
+            this.ClientSize = new System.Drawing.Size(314, 131);
+            this.Controls.Add(this.pbDevice);
             this.Controls.Add(this.btnCheckDevice);
-            this.Controls.Add(this.lblSelected);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblDeviceStatus);
@@ -233,6 +199,7 @@
             this.Text = "CommPorts";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,10 +220,7 @@
         private System.Windows.Forms.Label lblDeviceStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label lblSelected;
         private System.Windows.Forms.Button btnCheckDevice;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label lblDeviceName;
+        private System.Windows.Forms.PictureBox pbDevice;
     }
 }

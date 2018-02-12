@@ -28,3 +28,4 @@ C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csproj.
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csproj.CoreCompileInputs.cache
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.exe
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.pdb
+C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csprojResolveAssemblyReference.cache

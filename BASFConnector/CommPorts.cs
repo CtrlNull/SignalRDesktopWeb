@@ -76,7 +76,7 @@ namespace BASFConnector
         {
             // Simple add selected comboBox to Label
             string String = cboPorts_Comm.SelectedItem.ToString();
-            lblSelected.Text = String;
+            //lblSelected.Text = String;
 
             // Set Serial Port(COMM) from selected item
             SerialPort Port;
@@ -95,11 +95,15 @@ namespace BASFConnector
                 Port.NewLine = Environment.NewLine;
                 Port.ReceivedBytesThreshold = 1024;
                 Port.Open();
-                lblDeviceStatus.Text = "Online";
+                lblDeviceStatus.Text = "Online"; // Shows Online
+                                                 // Set Online image to green LED
+                pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\green.png");
             }
             catch
             {
-                lblDeviceStatus.Text = "Connection Error";
+                lblDeviceStatus.Text = "Connection Error"; // Shows Offline
+                // Set Offline image to red LED
+                pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\red.png");
                 //Port.Dispose();
             }
 
