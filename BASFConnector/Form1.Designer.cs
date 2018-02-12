@@ -39,12 +39,15 @@
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnGetSerialPorts = new System.Windows.Forms.Button();
+            this.cboPorts = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(316, 198);
+            this.btnRestart.Location = new System.Drawing.Point(24, 128);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(75, 23);
             this.btnRestart.TabIndex = 0;
@@ -54,7 +57,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(198, 198);
+            this.btnConnect.Location = new System.Drawing.Point(24, 99);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 1;
@@ -64,7 +67,7 @@
             // 
             // btnServerStart
             // 
-            this.btnServerStart.Location = new System.Drawing.Point(83, 198);
+            this.btnServerStart.Location = new System.Drawing.Point(24, 70);
             this.btnServerStart.Name = "btnServerStart";
             this.btnServerStart.Size = new System.Drawing.Size(75, 23);
             this.btnServerStart.TabIndex = 2;
@@ -80,7 +83,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(463, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(251, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -117,26 +120,56 @@
             // viewLogsToolStripMenuItem
             // 
             this.viewLogsToolStripMenuItem.Name = "viewLogsToolStripMenuItem";
-            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.viewLogsToolStripMenuItem.Text = "View Logs";
             // 
             // sendLogsToolStripMenuItem
             // 
             this.sendLogsToolStripMenuItem.Name = "sendLogsToolStripMenuItem";
-            this.sendLogsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.sendLogsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sendLogsToolStripMenuItem.Text = "Send Logs";
             // 
             // contactUsToolStripMenuItem
             // 
             this.contactUsToolStripMenuItem.Name = "contactUsToolStripMenuItem";
-            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.contactUsToolStripMenuItem.Text = "Contact Us";
+            // 
+            // btnGetSerialPorts
+            // 
+            this.btnGetSerialPorts.Location = new System.Drawing.Point(24, 39);
+            this.btnGetSerialPorts.Name = "btnGetSerialPorts";
+            this.btnGetSerialPorts.Size = new System.Drawing.Size(75, 23);
+            this.btnGetSerialPorts.TabIndex = 4;
+            this.btnGetSerialPorts.Text = "Ports";
+            this.btnGetSerialPorts.UseVisualStyleBackColor = true;
+            this.btnGetSerialPorts.Click += new System.EventHandler(this.btnGetSerialPorts_Click);
+            // 
+            // cboPorts
+            // 
+            this.cboPorts.FormattingEnabled = true;
+            this.cboPorts.Location = new System.Drawing.Point(133, 55);
+            this.cboPorts.Name = "cboPorts";
+            this.cboPorts.Size = new System.Drawing.Size(74, 21);
+            this.cboPorts.TabIndex = 7;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(130, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Avaliable Ports";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 243);
+            this.ClientSize = new System.Drawing.Size(251, 178);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboPorts);
+            this.Controls.Add(this.btnGetSerialPorts);
             this.Controls.Add(this.btnServerStart);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRestart);
@@ -164,6 +197,9 @@
         private System.Windows.Forms.ToolStripMenuItem viewLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactUsToolStripMenuItem;
+        private System.Windows.Forms.Button btnGetSerialPorts;
+        private System.Windows.Forms.ComboBox cboPorts;
+        private System.Windows.Forms.Label label2;
     }
 }
 

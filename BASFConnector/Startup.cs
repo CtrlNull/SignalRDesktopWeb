@@ -10,6 +10,7 @@ namespace BASFConnector
 {
     class Startup
     {
+        // Connects using SignalR
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
