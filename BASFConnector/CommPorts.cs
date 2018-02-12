@@ -101,7 +101,6 @@ namespace BASFConnector
             {
                 lblDeviceStatus.Text = "Connection Error";
                 //Port.Dispose();
-                Application.Exit();
             }
 
         }
