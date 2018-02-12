@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGetSerialPorts_Comm = new System.Windows.Forms.Button();
             this.cboPorts_Comm = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,26 +39,21 @@
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblDeviceStatus = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblSelected = new System.Windows.Forms.Label();
+            this.btnCheckDevice = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnGetSerialPorts_Comm
-            // 
-            this.btnGetSerialPorts_Comm.Location = new System.Drawing.Point(24, 46);
-            this.btnGetSerialPorts_Comm.Name = "btnGetSerialPorts_Comm";
-            this.btnGetSerialPorts_Comm.Size = new System.Drawing.Size(75, 23);
-            this.btnGetSerialPorts_Comm.TabIndex = 0;
-            this.btnGetSerialPorts_Comm.Text = "Search";
-            this.btnGetSerialPorts_Comm.UseVisualStyleBackColor = true;
-            this.btnGetSerialPorts_Comm.Click += new System.EventHandler(this.btnGetSerialPorts_Comm_Click);
             // 
             // cboPorts_Comm
             // 
             this.cboPorts_Comm.FormattingEnabled = true;
-            this.cboPorts_Comm.Location = new System.Drawing.Point(108, 48);
+            this.cboPorts_Comm.Location = new System.Drawing.Point(85, 36);
             this.cboPorts_Comm.Name = "cboPorts_Comm";
-            this.cboPorts_Comm.Size = new System.Drawing.Size(123, 21);
+            this.cboPorts_Comm.Size = new System.Drawing.Size(59, 21);
             this.cboPorts_Comm.TabIndex = 1;
             this.cboPorts_Comm.SelectedIndexChanged += new System.EventHandler(this.cboPorts_Comm_SelectedIndexChanged);
             // 
@@ -143,24 +137,74 @@
             this.label1.Text = "Alpha v.1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // lblDeviceStatus
+            // 
+            this.lblDeviceStatus.AutoSize = true;
+            this.lblDeviceStatus.Location = new System.Drawing.Point(148, 72);
+            this.lblDeviceStatus.Name = "lblDeviceStatus";
+            this.lblDeviceStatus.Size = new System.Drawing.Size(74, 13);
+            this.lblDeviceStatus.TabIndex = 4;
+            this.lblDeviceStatus.Text = "Device Status";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Select a port";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(153, 39);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(10, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "-";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(134, 72);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(10, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "-";
+            // 
             // lblSelected
             // 
             this.lblSelected.AutoSize = true;
-            this.lblSelected.Location = new System.Drawing.Point(24, 76);
+            this.lblSelected.Location = new System.Drawing.Point(72, 72);
             this.lblSelected.Name = "lblSelected";
-            this.lblSelected.Size = new System.Drawing.Size(69, 13);
-            this.lblSelected.TabIndex = 4;
-            this.lblSelected.Text = "SelectedItem";
+            this.lblSelected.Size = new System.Drawing.Size(59, 13);
+            this.lblSelected.TabIndex = 9;
+            this.lblSelected.Text = "lblSelected";
+            // 
+            // btnCheckDevice
+            // 
+            this.btnCheckDevice.Location = new System.Drawing.Point(169, 36);
+            this.btnCheckDevice.Name = "btnCheckDevice";
+            this.btnCheckDevice.Size = new System.Drawing.Size(53, 24);
+            this.btnCheckDevice.TabIndex = 10;
+            this.btnCheckDevice.Text = "Check";
+            this.btnCheckDevice.UseVisualStyleBackColor = true;
+            this.btnCheckDevice.Click += new System.EventHandler(this.btnCheckDevice_Click);
             // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(254, 121);
+            this.Controls.Add(this.btnCheckDevice);
             this.Controls.Add(this.lblSelected);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblDeviceStatus);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboPorts_Comm);
-            this.Controls.Add(this.btnGetSerialPorts_Comm);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CommPorts";
@@ -173,8 +217,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnGetSerialPorts_Comm;
         private System.Windows.Forms.ComboBox cboPorts_Comm;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -186,6 +228,11 @@
         private System.Windows.Forms.ToolStripMenuItem contactUsToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
+        private System.Windows.Forms.Label lblDeviceStatus;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblSelected;
+        private System.Windows.Forms.Button btnCheckDevice;
     }
 }
