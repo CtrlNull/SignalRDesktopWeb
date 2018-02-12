@@ -1,6 +1,7 @@
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\BASFConnector.exe.config
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\BASFConnector.exe
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\BASFConnector.pdb
+C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Core.dll
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Cors.dll
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Diagnostics.dll
@@ -11,6 +12,7 @@ C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Securi
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Newtonsoft.Json.dll
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Owin.dll
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\System.Web.Cors.dll
+C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Core.xml
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.xml
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Cors.xml
@@ -19,12 +21,10 @@ C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Host.H
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Hosting.xml
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.Owin.Security.xml
 C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Newtonsoft.Json.xml
-C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csprojResolveAssemblyReference.cache
+C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.CommPorts.resources
+C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.Main.resources
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.Properties.Resources.resources
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csproj.GenerateResource.Cache
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.csproj.CoreCompileInputs.cache
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.exe
 C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.pdb
-C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
-C:\Users\rapha\repos\BASFConnector\BASFConnector\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
-C:\Users\rapha\repos\BASFConnector\BASFConnector\obj\Debug\BASFConnector.Form1.resources

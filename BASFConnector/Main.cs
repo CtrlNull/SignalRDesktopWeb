@@ -14,13 +14,13 @@ using System.IO.Ports;
 
 namespace BASFConnector
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+        public Main()
         {
             InitializeComponent();
         }
-
+        /// --- Btn's --- //
         // Restart Btn //
         private void btnRestart_Click(object sender, EventArgs e)
         {
@@ -45,31 +45,34 @@ namespace BASFConnector
             connection.Start().Wait();
 
         }
-        // Serial <Port> Btn//
-        // This will initialize the check for serial ports
-        private void btnGetSerialPorts_Click(object sender, EventArgs e)
+
+        /////// { Menu List below Items } ///////
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string[] ArrayComPortsNames = null;
-            int index = -1;
-            string ComPortName = null;
-
-            ArrayComPortsNames = SerialPort.GetPortNames();
-            do
-            {
-                index += 1;
-                cboPorts.Items.Add(ArrayComPortsNames[index]);
-            }
-
-            while (!((ArrayComPortsNames[index] == ComPortName)
-                          || (index == ArrayComPortsNames.GetUpperBound(0))));
-            Array.Sort(ArrayComPortsNames);
-
-            
-            if (index == ArrayComPortsNames.GetUpperBound(0))
-            {
-                ComPortName = ArrayComPortsNames[0];
-            }
-            cboPorts.Text = ArrayComPortsNames[0]; // Outputs Port names on Combo list
+            mainToolStripMenuItem.Enabled = false;
+        }
+        
+        // Serial Port Menu item
+        private void smsSerialPort_Click(object sender, EventArgs e)
+        {
+            CommPorts obj = new CommPorts();
+            obj.Show();
+            this.Hide();
+        }
+        // View Logs
+        private void viewLogsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewLogsToolStripMenuItem.Enabled = false;
+        }
+        // Send Logs
+        private void sendLogsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sendLogsToolStripMenuItem.Enabled = false;
+        }
+        // Contact us
+        private void contactUsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contactUsToolStripMenuItem.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
