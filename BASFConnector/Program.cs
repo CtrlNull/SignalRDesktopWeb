@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin.Hosting;
+﻿using Microsoft.AspNet.SignalR.Client;
+using Microsoft.Owin.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,12 +20,11 @@ namespace BASFConnector
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
 
+            IHubProxy _hub;
             string url = @"http://localhost:8080/";
-            using (WebApp.Start<Startup>(url))
-            {
-                Console.WriteLine(string.Format("Server running at {0}", url));
-                Console.ReadLine();
-            }
+            var connection = new HubConnection(url);
+            _hub = connection.CreateHubProxy("TestHub");
+            connection.Start().Wait();
 
 
         }
