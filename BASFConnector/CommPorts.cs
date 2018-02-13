@@ -22,7 +22,7 @@ namespace BASFConnector
             btnSend.Enabled = false;
             btnRecieve.Enabled = false;
             btnClosePort.Enabled = false;
-
+            statusBar.Value = 0;
         }
         // === {{ Processes }} === //
         void getAvaliablePorts()
@@ -30,7 +30,14 @@ namespace BASFConnector
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-      
+
+        void openPort()
+        {
+            serialPort1.PortName = cboPorts_Comm.Text; // Grabs drop down port and sets it
+            serialPort1.BaudRate = Convert.ToInt32(115200); // Sets Baud Rate
+            serialPort1.Open(); // Opened
+        }
+
         // === {{Btn Handlers } === //
 
         //////// {  Menu Items } ////////
@@ -58,6 +65,7 @@ namespace BASFConnector
             {
                 // Simple add selected comboBox to Label
                 string String = cboPorts_Comm.SelectedItem.ToString();
+
                 // Set Serial Port(COMM) from selected item
                 SerialPort Port;
                 string Port_Number = String;
@@ -66,6 +74,7 @@ namespace BASFConnector
                 // Open Serial Port and check for errors
                 try
                 {
+                    // Settings for serialport
                     Port = new SerialPort(Port_Number);
                     Port.BaudRate = 115200;
                     Port.DataBits = 8;
@@ -75,11 +84,11 @@ namespace BASFConnector
                     Port.DtrEnable = true;
                     Port.NewLine = Environment.NewLine;
                     Port.ReceivedBytesThreshold = 1024;
-                    Port.Open();
+                    Port.Open(); // Opened*
                     lblDeviceStatus.Text = "Online"; // Shows Online
                                                      // Set Online image to green LED
                     pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\green.png");
-                    Port.Close();
+                    Port.Close(); // Closed**
                 }
                 catch
                 {
@@ -106,6 +115,8 @@ namespace BASFConnector
         // Open
         private void btnOpenPort_Click(object sender, EventArgs e)
         {
+            txtOutput.Text = "";
+            statusBar.Value = 10;
             try
             {
                 if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " " )
@@ -117,9 +128,11 @@ namespace BASFConnector
                 }
                 else
                 {
+                    statusBar.Value = 25;
                     try
                     {
-                        serialPort1.PortName = cboPorts_Comm.Text;
+                        openPort(); // Opens port
+                        statusBar.Value = 100; // status bar
 
                         // Enables input/output boxes
                         txtInput.Enabled = true;
@@ -127,37 +140,40 @@ namespace BASFConnector
                         btnSend.Enabled = true;
                         btnRecieve.Enabled = true;
                         btnClosePort.Enabled = true;
-
-
+                        txtOutput.Text = cboPorts_Comm.Text + " " + "Following...";
                     }
                     catch
                     {
                         // Throw Error
                         txtOutput.Enabled = true;
-                        txtOutput.Text = "ERROR Port did not open";
+                        statusBar.BackColor = Color.Red;
+                        statusBar.Value = 10;
+                        txtOutput.Text = "ERROR... Port did not open";
                     }
-
                 }
             }
             catch
             {
+                txtOutput.Text = "Unauthorized Access";
                 // finish this
             }
         }
         // Close
         private void btnClosePort_Click(object sender, EventArgs e)
         {
+            // Grey out options
             txtInput.Enabled = false;
             txtOutput.Enabled = false;
             btnClosePort.Enabled = false;
             btnSend.Enabled = false;
             btnRecieve.Enabled = false;
-            // Finish this
+            // Set Status bar
+            statusBar.Value = 0;
+            // Close any open ports
+            serialPort1.Close();
         }
 
         ///===============================///
-
-
 
         //////////////////// Unused Buttons //////////////////////
         private void cboPorts_Comm_SelectedIndexChanged(object sender, EventArgs e)

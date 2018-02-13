@@ -60,6 +60,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.statusBar = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -86,7 +87,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(497, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(527, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -253,6 +254,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.statusBar);
             this.groupBox3.Controls.Add(this.btnClosePort);
             this.groupBox3.Controls.Add(this.btnOpenPort);
             this.groupBox3.Controls.Add(this.btnRecieve);
@@ -261,7 +263,7 @@
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(14, 167);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(462, 284);
+            this.groupBox3.Size = new System.Drawing.Size(478, 329);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Testing";
@@ -288,7 +290,7 @@
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(304, 245);
+            this.btnRecieve.Location = new System.Drawing.Point(316, 290);
             this.btnRecieve.Name = "btnRecieve";
             this.btnRecieve.Size = new System.Drawing.Size(75, 23);
             this.btnRecieve.TabIndex = 3;
@@ -297,7 +299,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(82, 246);
+            this.btnSend.Location = new System.Drawing.Point(104, 290);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 2;
@@ -309,17 +311,17 @@
             this.groupBox5.Controls.Add(this.txtOutput);
             this.groupBox5.Location = new System.Drawing.Point(242, 20);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(199, 219);
+            this.groupBox5.Size = new System.Drawing.Size(230, 264);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(6, 19);
+            this.txtOutput.Location = new System.Drawing.Point(6, 29);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(187, 194);
+            this.txtOutput.Size = new System.Drawing.Size(218, 229);
             this.txtOutput.TabIndex = 1;
             // 
             // groupBox4
@@ -327,24 +329,31 @@
             this.groupBox4.Controls.Add(this.txtInput);
             this.groupBox4.Location = new System.Drawing.Point(10, 49);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(219, 191);
+            this.groupBox4.Size = new System.Drawing.Size(226, 235);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Input";
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(10, 19);
+            this.txtInput.Location = new System.Drawing.Point(10, 30);
             this.txtInput.Multiline = true;
             this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(203, 166);
+            this.txtInput.Size = new System.Drawing.Size(210, 199);
             this.txtInput.TabIndex = 0;
+            // 
+            // statusBar
+            // 
+            this.statusBar.Location = new System.Drawing.Point(89, 49);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(59, 13);
+            this.statusBar.TabIndex = 18;
             // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 474);
+            this.ClientSize = new System.Drawing.Size(527, 508);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -400,5 +409,6 @@
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.ToolStripMenuItem selectPortToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.ProgressBar statusBar;
     }
 }
