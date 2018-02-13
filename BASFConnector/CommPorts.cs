@@ -17,6 +17,8 @@ namespace BASFConnector
         {
             InitializeComponent();
             getAvaliablePorts();
+            txtInput.Enabled = false;
+            txtOutput.Enabled = false;
         }
         // === {{ Processes }} === //
         void getAvaliablePorts()
@@ -24,9 +26,8 @@ namespace BASFConnector
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-
-
-        // ------ Btn Handlers ------ //
+      
+        // === {{Btn Handlers } === //
 
         //////// {  Menu Items } ////////
         // Main
@@ -95,23 +96,27 @@ namespace BASFConnector
             getAvaliablePorts(); // checks for open ports and sends to combobox
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
+        // ==== Open / Close Ports ==== //
 
-        }
-
-        // Button to open the port
+        // Open
         private void btnOpenPort_Click(object sender, EventArgs e)
         {
             try
             {
                 if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " " )
                 {
-                    txtOutput.Text = "Please select port settings!";
+                    // Grey's out input/output boxes
+                    txtInput.Enabled = false;
+                    txtOutput.Enabled = false;
+                    txtOutput.Text = "Please select port settings!"; // Message
                 }
                 else
                 {
-                    //txtOutput.PortName = cboPorts_Comm.Text;
+                    // Enables input/output boxes
+                    txtInput.Enabled = true;
+                    txtOutput.Enabled = true;
+
+                    serialPort1.PortName = cboPorts_Comm.Text;
                 }
             }
             catch
@@ -119,6 +124,16 @@ namespace BASFConnector
                 // finish this
             }
         }
+        // Close
+        private void btnClosePort_Click(object sender, EventArgs e)
+        {
+            // Finish this
+        }
+
+        ///===============================///
+
+
+
         //////////////////// Unused Buttons //////////////////////
         private void cboPorts_Comm_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -126,6 +141,11 @@ namespace BASFConnector
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

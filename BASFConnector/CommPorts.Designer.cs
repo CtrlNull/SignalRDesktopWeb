@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.cboPorts_Comm = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@
             this.txtInput = new System.Windows.Forms.TextBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.selectPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -314,6 +316,7 @@
             this.btnClosePort.TabIndex = 5;
             this.btnClosePort.Text = "Close Port";
             this.btnClosePort.UseVisualStyleBackColor = true;
+            this.btnClosePort.Click += new System.EventHandler(this.btnClosePort_Click);
             // 
             // txtInput
             // 
@@ -396,5 +399,6 @@
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.ToolStripMenuItem selectPortToolStripMenuItem;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
