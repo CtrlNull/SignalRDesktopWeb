@@ -33,8 +33,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,27 +48,25 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblCOMM = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.testScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblCOMM = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnOpenPort = new System.Windows.Forms.Button();
             this.btnClosePort = new System.Windows.Forms.Button();
-            this.txtInput = new System.Windows.Forms.TextBox();
+            this.btnOpenPort = new System.Windows.Forms.Button();
+            this.btnRecieve = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
-            this.selectPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboPorts_Comm
@@ -102,9 +102,15 @@
             // mainToolStripMenuItem
             // 
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.mainToolStripMenuItem.Text = "Main";
             this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
+            // 
+            // testScaleToolStripMenuItem
+            // 
+            this.testScaleToolStripMenuItem.Name = "testScaleToolStripMenuItem";
+            this.testScaleToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.testScaleToolStripMenuItem.Text = "Test Scale";
             // 
             // settingsToolStripMenuItem
             // 
@@ -118,9 +124,15 @@
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
             this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.serialPortToolStripMenuItem_Click);
+            // 
+            // selectPortToolStripMenuItem
+            // 
+            this.selectPortToolStripMenuItem.Name = "selectPortToolStripMenuItem";
+            this.selectPortToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.selectPortToolStripMenuItem.Text = "Select Port";
             // 
             // helpToolStripMenuItem
             // 
@@ -222,14 +234,6 @@
             this.groupBox2.Text = "Status";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // lblCOMM
-            // 
-            this.lblCOMM.AutoSize = true;
-            this.lblCOMM.Location = new System.Drawing.Point(90, 57);
-            this.lblCOMM.Name = "lblCOMM";
-            this.lblCOMM.Size = new System.Drawing.Size(0, 13);
-            this.lblCOMM.TabIndex = 16;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -239,18 +243,20 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Port: ";
             // 
-            // testScaleToolStripMenuItem
+            // lblCOMM
             // 
-            this.testScaleToolStripMenuItem.Name = "testScaleToolStripMenuItem";
-            this.testScaleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.testScaleToolStripMenuItem.Text = "Test Scale";
+            this.lblCOMM.AutoSize = true;
+            this.lblCOMM.Location = new System.Drawing.Point(90, 57);
+            this.lblCOMM.Name = "lblCOMM";
+            this.lblCOMM.Size = new System.Drawing.Size(0, 13);
+            this.lblCOMM.TabIndex = 16;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnClosePort);
             this.groupBox3.Controls.Add(this.btnOpenPort);
-            this.groupBox3.Controls.Add(this.button2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.btnRecieve);
+            this.groupBox3.Controls.Add(this.btnSend);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(14, 167);
@@ -259,54 +265,6 @@
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Testing";
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtInput);
-            this.groupBox4.Location = new System.Drawing.Point(10, 49);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(219, 191);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Input";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.txtOutput);
-            this.groupBox5.Location = new System.Drawing.Point(242, 20);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(199, 219);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Output";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(82, 246);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(304, 245);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Recieve";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenPort
-            // 
-            this.btnOpenPort.Location = new System.Drawing.Point(34, 20);
-            this.btnOpenPort.Name = "btnOpenPort";
-            this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenPort.TabIndex = 4;
-            this.btnOpenPort.Text = "Open Port";
-            this.btnOpenPort.UseVisualStyleBackColor = true;
-            this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
             // 
             // btnClosePort
             // 
@@ -318,13 +276,43 @@
             this.btnClosePort.UseVisualStyleBackColor = true;
             this.btnClosePort.Click += new System.EventHandler(this.btnClosePort_Click);
             // 
-            // txtInput
+            // btnOpenPort
             // 
-            this.txtInput.Location = new System.Drawing.Point(10, 19);
-            this.txtInput.Multiline = true;
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(203, 166);
-            this.txtInput.TabIndex = 0;
+            this.btnOpenPort.Location = new System.Drawing.Point(34, 20);
+            this.btnOpenPort.Name = "btnOpenPort";
+            this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenPort.TabIndex = 4;
+            this.btnOpenPort.Text = "Open Port";
+            this.btnOpenPort.UseVisualStyleBackColor = true;
+            this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
+            // 
+            // btnRecieve
+            // 
+            this.btnRecieve.Location = new System.Drawing.Point(304, 245);
+            this.btnRecieve.Name = "btnRecieve";
+            this.btnRecieve.Size = new System.Drawing.Size(75, 23);
+            this.btnRecieve.TabIndex = 3;
+            this.btnRecieve.Text = "Recieve";
+            this.btnRecieve.UseVisualStyleBackColor = true;
+            // 
+            // btnSend
+            // 
+            this.btnSend.Location = new System.Drawing.Point(82, 246);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(75, 23);
+            this.btnSend.TabIndex = 2;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.txtOutput);
+            this.groupBox5.Location = new System.Drawing.Point(242, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(199, 219);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Output";
             // 
             // txtOutput
             // 
@@ -334,11 +322,23 @@
             this.txtOutput.Size = new System.Drawing.Size(187, 194);
             this.txtOutput.TabIndex = 1;
             // 
-            // selectPortToolStripMenuItem
+            // groupBox4
             // 
-            this.selectPortToolStripMenuItem.Name = "selectPortToolStripMenuItem";
-            this.selectPortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.selectPortToolStripMenuItem.Text = "Select Port";
+            this.groupBox4.Controls.Add(this.txtInput);
+            this.groupBox4.Location = new System.Drawing.Point(10, 49);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(219, 191);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Input";
+            // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(10, 19);
+            this.txtInput.Multiline = true;
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(203, 166);
+            this.txtInput.TabIndex = 0;
             // 
             // CommPorts
             // 
@@ -359,10 +359,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -392,8 +392,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnClosePort;
         private System.Windows.Forms.Button btnOpenPort;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRecieve;
+        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtOutput;

@@ -19,6 +19,10 @@ namespace BASFConnector
             getAvaliablePorts();
             txtInput.Enabled = false;
             txtOutput.Enabled = false;
+            btnSend.Enabled = false;
+            btnRecieve.Enabled = false;
+            btnClosePort.Enabled = false;
+
         }
         // === {{ Processes }} === //
         void getAvaliablePorts()
@@ -75,6 +79,7 @@ namespace BASFConnector
                     lblDeviceStatus.Text = "Online"; // Shows Online
                                                      // Set Online image to green LED
                     pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\green.png");
+                    Port.Close();
                 }
                 catch
                 {
@@ -112,11 +117,26 @@ namespace BASFConnector
                 }
                 else
                 {
-                    // Enables input/output boxes
-                    txtInput.Enabled = true;
-                    txtOutput.Enabled = true;
+                    try
+                    {
+                        serialPort1.PortName = cboPorts_Comm.Text;
 
-                    serialPort1.PortName = cboPorts_Comm.Text;
+                        // Enables input/output boxes
+                        txtInput.Enabled = true;
+                        txtOutput.Enabled = true;
+                        btnSend.Enabled = true;
+                        btnRecieve.Enabled = true;
+                        btnClosePort.Enabled = true;
+
+
+                    }
+                    catch
+                    {
+                        // Throw Error
+                        txtOutput.Enabled = true;
+                        txtOutput.Text = "ERROR Port did not open";
+                    }
+
                 }
             }
             catch
@@ -127,6 +147,11 @@ namespace BASFConnector
         // Close
         private void btnClosePort_Click(object sender, EventArgs e)
         {
+            txtInput.Enabled = false;
+            txtOutput.Enabled = false;
+            btnClosePort.Enabled = false;
+            btnSend.Enabled = false;
+            btnRecieve.Enabled = false;
             // Finish this
         }
 
