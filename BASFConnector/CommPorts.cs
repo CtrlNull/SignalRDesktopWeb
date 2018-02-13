@@ -19,9 +19,6 @@ namespace BASFConnector
             getAvaliablePorts();
             txtInput.Enabled = false;
             txtOutput.Enabled = false;
-            btnRecieve.Enabled = false;
-            btnSend.Enabled = false;
-            btnClosePort.Enabled = false;
         }
         // === {{ Processes }} === //
         void getAvaliablePorts()
@@ -78,7 +75,6 @@ namespace BASFConnector
                     lblDeviceStatus.Text = "Online"; // Shows Online
                                                      // Set Online image to green LED
                     pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\green.png");
-                    Port.Close();
                 }
                 catch
                 {
@@ -112,37 +108,26 @@ namespace BASFConnector
                     // Grey's out input/output boxes
                     txtInput.Enabled = false;
                     txtOutput.Enabled = false;
-                    //btnClosePort.Enabled = false;
                     txtOutput.Text = "Please select port settings!"; // Message
-                    btnClosePort.Enabled = true;
                 }
                 else
                 {
-                    // Sets Port && Opens
-                    serialPort1.PortName = cboPorts_Comm.Text;
-                    serialPort1.BaudRate = Convert.ToInt32(cboPorts_Comm.Text);
-                    serialPort1.Open();
-
                     // Enables input/output boxes
                     txtInput.Enabled = true;
                     txtOutput.Enabled = true;
-                    btnClosePort.Enabled = true;
 
+                    serialPort1.PortName = cboPorts_Comm.Text;
                 }
             }
             catch
             {
-                
                 // finish this
             }
         }
         // Close
         private void btnClosePort_Click(object sender, EventArgs e)
         {
-            // Grey out input/output boxes
-            txtInput.Enabled = false;
-            txtOutput.Enabled = false;
-            btnClosePort.Enabled = false;
+            // Finish this
         }
 
         ///===============================///
@@ -165,9 +150,5 @@ namespace BASFConnector
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

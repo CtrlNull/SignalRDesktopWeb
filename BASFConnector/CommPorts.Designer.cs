@@ -52,8 +52,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.btnRecieve = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnOpenPort = new System.Windows.Forms.Button();
             this.btnClosePort = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
@@ -135,19 +135,19 @@
             // viewLogsToolStripMenuItem
             // 
             this.viewLogsToolStripMenuItem.Name = "viewLogsToolStripMenuItem";
-            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.viewLogsToolStripMenuItem.Text = "View Logs";
             // 
             // sendLogsToolStripMenuItem
             // 
             this.sendLogsToolStripMenuItem.Name = "sendLogsToolStripMenuItem";
-            this.sendLogsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sendLogsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.sendLogsToolStripMenuItem.Text = "Send Logs";
             // 
             // contactUsToolStripMenuItem
             // 
             this.contactUsToolStripMenuItem.Name = "contactUsToolStripMenuItem";
-            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.contactUsToolStripMenuItem.Text = "Contact us";
             // 
             // btnCheckDevice
@@ -249,8 +249,8 @@
             // 
             this.groupBox3.Controls.Add(this.btnClosePort);
             this.groupBox3.Controls.Add(this.btnOpenPort);
-            this.groupBox3.Controls.Add(this.btnRecieve);
-            this.groupBox3.Controls.Add(this.btnSend);
+            this.groupBox3.Controls.Add(this.button2);
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(14, 167);
@@ -280,24 +280,23 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
             // 
-            // btnSend
+            // button1
             // 
-            this.btnSend.Location = new System.Drawing.Point(82, 246);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(75, 23);
-            this.btnSend.TabIndex = 2;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(82, 246);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Send";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnRecieve
+            // button2
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(304, 245);
-            this.btnRecieve.Name = "btnRecieve";
-            this.btnRecieve.Size = new System.Drawing.Size(75, 23);
-            this.btnRecieve.TabIndex = 3;
-            this.btnRecieve.Text = "Recieve";
-            this.btnRecieve.UseVisualStyleBackColor = true;
-            this.btnRecieve.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Location = new System.Drawing.Point(304, 245);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Recieve";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnOpenPort
             // 
@@ -393,8 +392,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnClosePort;
         private System.Windows.Forms.Button btnOpenPort;
-        private System.Windows.Forms.Button btnRecieve;
-        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtOutput;
