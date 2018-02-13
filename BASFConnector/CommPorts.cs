@@ -46,6 +46,13 @@ namespace BASFConnector
 
 
         }
+        // === {{ Processes }} === //
+        void getAvaliablePorts()
+        {
+            //String[] ports = 
+        }
+
+
         // ------ Btn Handlers ------ //
 
         //////// {  Menu Items } ////////
@@ -72,6 +79,7 @@ namespace BASFConnector
 
         }
 
+        // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
         {
             // Simple add selected comboBox to Label
@@ -145,6 +153,27 @@ namespace BASFConnector
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        // Button to open the port
+        private void btnOpenPort_Click(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == "" )
+                {
+                    txtOutput.Text = "Please select port settings!";
+                }
+                else
+                {
+                    serialPort1.PortName = cboPorts_Comm.Text;
+                }
+            }
+            catch
+            {
+                // finish this
+            }
         }
     }
 }
