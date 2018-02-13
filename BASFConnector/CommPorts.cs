@@ -81,6 +81,7 @@ namespace BASFConnector
             // Set Serial Port(COMM) from selected item
             SerialPort Port;
             string Port_Number = String;
+            lblCOMM.Text = Port_Number;
 
             // Open Serial Port and check for errors
             try
@@ -106,6 +107,43 @@ namespace BASFConnector
                 pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\red.png");
                 //Port.Dispose();
             }
+
+        }
+
+        // Refresh Button //
+        // This will run the same task as when window opens
+        // In case user does not have device connected when app starts
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            cboPorts_Comm.Items.Clear(); // Clears Ports Drop down
+
+            // Search for ports and display on ComboBox
+            string[] ArrayComPortsNames = null;
+            int index = -1;
+            string ComPortName = null;
+
+            ArrayComPortsNames = SerialPort.GetPortNames();
+            do
+            {
+                index += 1;
+                cboPorts_Comm.Items.Add(ArrayComPortsNames[index]);
+            }
+
+            while (!((ArrayComPortsNames[index] == ComPortName)
+                          || (index == ArrayComPortsNames.GetUpperBound(0))));
+            Array.Sort(ArrayComPortsNames);
+
+
+            if (index == ArrayComPortsNames.GetUpperBound(0))
+            {
+                ComPortName = ArrayComPortsNames[0];
+            }
+            cboPorts_Comm.Text = ArrayComPortsNames[0]; // Outputs Port names on Combo list
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
 
         }
     }
