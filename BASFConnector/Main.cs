@@ -43,12 +43,16 @@ namespace BASFConnector
                 IHubProxy _hub;
                 string url = @"http://localhost:8080/";
                 var connection = new HubConnection(url);
-                _hub = connection.CreateHubProxy("TestHub");
-                //connection.Start().Wait();
+                _hub = connection.CreateHubProxy("ConnectorHub");
+                connection.Start().Wait();
+                lblError2.Text = null;
+                lblError.Text = "SignalR Server Connected";
             }
             catch
             {
-                Console.WriteLine("Error");
+                lblError.Text = null;
+                lblError2.ForeColor = Color.Red;
+                lblError2.Text = "Connection Error";
             }
 
         }
@@ -80,11 +84,6 @@ namespace BASFConnector
         private void contactUsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             contactUsToolStripMenuItem.Enabled = false;
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

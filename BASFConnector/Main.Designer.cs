@@ -40,6 +40,8 @@
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblError = new System.Windows.Forms.Label();
+            this.lblError2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -82,7 +84,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(264, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(259, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -147,22 +149,40 @@
             this.contactUsToolStripMenuItem.Text = "Contact us";
             this.contactUsToolStripMenuItem.Click += new System.EventHandler(this.contactUsToolStripMenuItem_Click);
             // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Location = new System.Drawing.Point(71, 35);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(0, 13);
+            this.lblError.TabIndex = 10;
+            this.lblError.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblError2
+            // 
+            this.lblError2.AutoSize = true;
+            this.lblError2.Location = new System.Drawing.Point(99, 35);
+            this.lblError2.Name = "lblError2";
+            this.lblError2.Size = new System.Drawing.Size(0, 13);
+            this.lblError2.TabIndex = 11;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 105);
+            this.label1.Location = new System.Drawing.Point(110, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 10;
+            this.label1.TabIndex = 12;
             this.label1.Text = "Alpha v.1";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(264, 118);
+            this.ClientSize = new System.Drawing.Size(259, 125);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblError2);
+            this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnServerStart);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRestart);
@@ -190,8 +210,10 @@
         private System.Windows.Forms.ToolStripMenuItem viewLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactUsToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
+        private System.Windows.Forms.Label lblError;
+        private System.Windows.Forms.Label lblError2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
