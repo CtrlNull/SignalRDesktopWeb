@@ -208,5 +208,36 @@ namespace BASFConnector
                 txtOutput.Text = "TimeOutException";
             }
         }
+
+
+        // =============== TESTING =================== //
+        private void btnSendTemp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                serialPort1.PortName = "COM5";
+                serialPort1.BaudRate = 9600;
+                serialPort1.Parity = Parity.None;
+                serialPort1.Open();
+                if(serialPort1.IsOpen)
+                {
+                    txtOutput.Text = "Open";
+                }
+                else
+                {
+                    txtOutput.Text = "closed";
+                }
+
+                //txtOutput.Text = serialPort1.ReadTo("\n");
+
+                serialPort1.Close();
+                serialPort1.Dispose();
+            }
+            catch (TimeoutException)
+            {
+                txtOutput.Text = "TimeOutException";
+            }
+
+        }
     }
 }

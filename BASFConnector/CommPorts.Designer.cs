@@ -51,6 +51,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCOMM = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.statusBar = new System.Windows.Forms.ProgressBar();
             this.btnClosePort = new System.Windows.Forms.Button();
             this.btnOpenPort = new System.Windows.Forms.Button();
             this.btnRecieve = new System.Windows.Forms.Button();
@@ -60,7 +61,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.statusBar = new System.Windows.Forms.ProgressBar();
+            this.btnSendTemp = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -266,6 +267,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Testing";
             // 
+            // statusBar
+            // 
+            this.statusBar.Location = new System.Drawing.Point(89, 49);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(59, 13);
+            this.statusBar.TabIndex = 18;
+            // 
             // btnClosePort
             // 
             this.btnClosePort.Location = new System.Drawing.Point(131, 20);
@@ -342,18 +350,22 @@
             this.txtInput.Size = new System.Drawing.Size(210, 199);
             this.txtInput.TabIndex = 0;
             // 
-            // statusBar
+            // btnSendTemp
             // 
-            this.statusBar.Location = new System.Drawing.Point(89, 49);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(59, 13);
-            this.statusBar.TabIndex = 18;
+            this.btnSendTemp.Location = new System.Drawing.Point(401, 58);
+            this.btnSendTemp.Name = "btnSendTemp";
+            this.btnSendTemp.Size = new System.Drawing.Size(75, 23);
+            this.btnSendTemp.TabIndex = 18;
+            this.btnSendTemp.Text = "SendTemp";
+            this.btnSendTemp.UseVisualStyleBackColor = true;
+            this.btnSendTemp.Click += new System.EventHandler(this.btnSendTemp_Click);
             // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 508);
+            this.Controls.Add(this.btnSendTemp);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -410,5 +422,6 @@
         private System.Windows.Forms.ToolStripMenuItem selectPortToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ProgressBar statusBar;
+        private System.Windows.Forms.Button btnSendTemp;
     }
 }
