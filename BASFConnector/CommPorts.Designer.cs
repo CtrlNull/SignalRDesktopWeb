@@ -77,7 +77,6 @@
             this.cboPorts_Comm.Name = "cboPorts_Comm";
             this.cboPorts_Comm.Size = new System.Drawing.Size(59, 21);
             this.cboPorts_Comm.TabIndex = 1;
-            this.cboPorts_Comm.SelectedIndexChanged += new System.EventHandler(this.cboPorts_Comm_SelectedIndexChanged);
             // 
             // menuStrip1
             // 
@@ -233,7 +232,6 @@
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Status";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label1
             // 

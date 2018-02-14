@@ -38,11 +38,18 @@ namespace BASFConnector
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            IHubProxy _hub;
-            string url = @"http://localhost:8080/";
-            var connection = new HubConnection(url);
-            _hub = connection.CreateHubProxy("TestHub");
-            connection.Start().Wait();
+            try
+            {
+                IHubProxy _hub;
+                string url = @"http://localhost:8080/";
+                var connection = new HubConnection(url);
+                _hub = connection.CreateHubProxy("TestHub");
+                //connection.Start().Wait();
+            }
+            catch
+            {
+                Console.WriteLine("Error");
+            }
 
         }
 

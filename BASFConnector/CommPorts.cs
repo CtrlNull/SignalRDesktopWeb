@@ -30,20 +30,48 @@ namespace BASFConnector
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-
+        // Run Open Port
         void openPort()
         {
-            serialPort1.PortName = cboPorts_Comm.Text; // Grabs drop down port and sets it
-            // Serial Port settings
-            serialPort1.BaudRate = 6;
-            serialPort1.DataBits = 1;
-            serialPort1.Parity = 0;
-            serialPort1.StopBits = 1;
-            //serialPort1.DataFlow = 
+            // Simple add selected comboBox to Label
+            string String = cboPorts_Comm.SelectedItem.ToString();
 
+            // Set Serial Port(COMM) from selected item
+            SerialPort Port;
+            string Port_Number = String;
+            lblCOMM.Text = Port_Number;
 
-            // Open the Port!!!
-            serialPort1.Open();
+            // Open Serial Port and check for errors
+            // Settings for serialport
+            Port = new SerialPort(Port_Number);
+            Port.BaudRate = 9600;
+            Port.Parity = Parity.None;
+            Port.Open(); // Opened*
+        }
+        // Run Close Port
+        void closePort()
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            // Simple add selected comboBox to Label
+            string String = cboPorts_Comm.SelectedItem.ToString();
+
+            // Set Serial Port(COMM) from selected item
+            SerialPort Port;
+            string Port_Number = String;
+            lblCOMM.Text = Port_Number;
+
+            // Open Serial Port and check for errors
+            Port = new SerialPort(Port_Number);
+            Port.Close(); // Close Port
+            Port.Dispose(); // Removes Port
+
         }
 
         // === {{Btn Handlers } === //
@@ -71,40 +99,20 @@ namespace BASFConnector
             }
             else
             {
-                // Simple add selected comboBox to Label
-                string String = cboPorts_Comm.SelectedItem.ToString();
-
-                // Set Serial Port(COMM) from selected item
-                SerialPort Port;
-                string Port_Number = String;
-                lblCOMM.Text = Port_Number;
-
                 // Open Serial Port and check for errors
                 try
                 {
-                    // Settings for serialport
-                    Port = new SerialPort(Port_Number);
-                    Port.BaudRate = 9600;
-                    Port.DataBits = 1;
-                    Port.Parity = Parity.None;
-                    Port.StopBits = StopBits.One;
-                    Port.Handshake = Handshake.None;
-                    Port.DtrEnable = true;
-                    Port.NewLine = Environment.NewLine;
-                    Port.ReceivedBytesThreshold = 1024;
-                    Port.Open(); // Opened*
+                    openPort();
                     lblDeviceStatus.Text = "Online"; // Shows Online
                                                      // Set Online image to green LED
                     pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\green.png");
-                    Port.Close(); // Closed**
-                    Port.Dispose();
+                    closePort();
+                    //serialPort1.Dispose();
                 }
                 catch
                 {
                     lblDeviceStatus.Text = "Connection Error"; // Shows Offline
-                                                               // Set Offline image to red LED
-                    pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\red.png");
-                    //Port.Dispose();
+                    pbDevice.Image = Image.FromFile("C:\\Users\\rapha\\repos\\LEDS\\red.png"); // Set Offline image to red LED
                 }
             }
         }
@@ -128,7 +136,7 @@ namespace BASFConnector
             statusBar.Value = 10;
             try
             {
-                if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " " )
+                if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " ")
                 {
                     // Grey's out input/output boxes
                     txtInput.Enabled = false;
@@ -176,7 +184,7 @@ namespace BASFConnector
             btnSend.Enabled = false;
             btnRecieve.Enabled = false;
             statusBar.Value = 0; // Sets Status Bar
-            serialPort1.Close(); // Closes any ports
+            closePort();
         }
 
         ///===============================///
@@ -193,28 +201,12 @@ namespace BASFConnector
         {
             try
             {
-                txtOutput.Text = serialPort1.ReadLine();
+                txtOutput.Text = serialPort1.ReadTo("\n");
             }
-            catch(TimeoutException)
+            catch (TimeoutException)
             {
                 txtOutput.Text = "TimeOutException";
             }
-        }
-
-        //////////////////// Unused Buttons //////////////////////
-        private void cboPorts_Comm_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
