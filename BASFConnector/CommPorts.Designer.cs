@@ -62,6 +62,7 @@
             this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.btnSendTemp = new System.Windows.Forms.Button();
+            this.cboRecieve = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -316,20 +317,21 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.cboRecieve);
             this.groupBox5.Controls.Add(this.txtOutput);
             this.groupBox5.Location = new System.Drawing.Point(242, 20);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(230, 264);
+            this.groupBox5.Size = new System.Drawing.Size(220, 264);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(6, 29);
+            this.txtOutput.Location = new System.Drawing.Point(25, 69);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(218, 229);
+            this.txtOutput.Size = new System.Drawing.Size(171, 189);
             this.txtOutput.TabIndex = 1;
             // 
             // groupBox4
@@ -359,6 +361,16 @@
             this.btnSendTemp.Text = "SendTemp";
             this.btnSendTemp.UseVisualStyleBackColor = true;
             this.btnSendTemp.Click += new System.EventHandler(this.btnSendTemp_Click);
+            // 
+            // cboRecieve
+            // 
+            this.cboRecieve.FormattingEnabled = true;
+            this.cboRecieve.Items.AddRange(new object[] {
+            "Show Weight"});
+            this.cboRecieve.Location = new System.Drawing.Point(25, 29);
+            this.cboRecieve.Name = "cboRecieve";
+            this.cboRecieve.Size = new System.Drawing.Size(171, 21);
+            this.cboRecieve.TabIndex = 2;
             // 
             // CommPorts
             // 
@@ -423,5 +435,6 @@
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.Button btnSendTemp;
+        private System.Windows.Forms.ComboBox cboRecieve;
     }
 }

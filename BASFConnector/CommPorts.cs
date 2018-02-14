@@ -34,49 +34,18 @@ namespace BASFConnector
         // Open
         void openPort()
         {
-            // Simple add selected comboBox to Label
-            string String = cboPorts_Comm.SelectedItem.ToString();
-
-            // Set Serial Port(COMM) from selected item
-            SerialPort Port;
-            string Port_Number = String;
-            lblCOMM.Text = Port_Number;
-
-            // Open Serial Port and check for errors
-            // Settings for serialport
-            Port = new SerialPort(Port_Number);
-            Port.BaudRate = 9600;
-            Port.Parity = Parity.None;
-            Port.Open(); // Opened*
+                serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
+                serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
+                serialPort1.Parity = Parity.None; // Important* set Parity from scale
+                serialPort1.Open();
         }
         // close
         void closePort()
         {
-            try
-            {
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            // Simple add selected comboBox to Label
-            string String = cboPorts_Comm.SelectedItem.ToString();
-
-            // Set Serial Port(COMM) from selected item
-            SerialPort Port;
-            string Port_Number = String;
-            lblCOMM.Text = Port_Number;
-
-            // Open Serial Port and check for errors
-            Port = new SerialPort(Port_Number);
-            Port.Close(); // Close Port
-            Port.Dispose(); // Removes Port
-
+            serialPort1.Close();
+            serialPort1.Dispose(); // clears
         }
         // =========================================== //
-
-        // === {{Btn Handlers } === //
 
         //////// {  Menu Items } ////////
         // Main
@@ -91,6 +60,9 @@ namespace BASFConnector
         {
             serialPortToolStripMenuItem.Enabled = false;
         }
+        //////////////////////////////////
+
+        // ===== ~~~ [[ Select Port Box ]] ~~~ ===== //
 
         // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
@@ -124,12 +96,14 @@ namespace BASFConnector
         // In case user does not have device connected when app starts
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            cboPorts_Comm.SelectedIndex = -1;
+            closePort();
+            cboPorts_Comm.SelectedIndex = -1; // Clears selected item
             cboPorts_Comm.Items.Clear(); // Clears Ports Drop down
             getAvaliablePorts(); // checks for open ports and sends to combobox
         }
 
-        // ==== Open / Close Ports ==== //
+        // ===== ~~ [[ Testing Box ]] ~~ ===== //
+        // == Open / Close Ports == //
 
         // Open
         private void btnOpenPort_Click(object sender, EventArgs e)
@@ -173,24 +147,31 @@ namespace BASFConnector
             catch
             {
                 txtOutput.Text = "Unauthorized Access";
-                // finish this
             }
         }
         // Close
         private void btnClosePort_Click(object sender, EventArgs e)
         {
-            // Grey out options
-            txtInput.Enabled = false;
-            txtOutput.Enabled = false;
-            btnClosePort.Enabled = false;
-            btnSend.Enabled = false;
-            btnRecieve.Enabled = false;
-            statusBar.Value = 0; // Sets Status Bar
             closePort();
+            
+            if (serialPort1.IsOpen)
+            {
+                txtOutput.Text = "Port is still open";
+            }
+            else
+            {
+                // Grey out options
+                txtInput.Enabled = false;
+                txtOutput.Enabled = false;
+                btnClosePort.Enabled = false;
+                btnSend.Enabled = false;
+                btnRecieve.Enabled = false;
+                statusBar.Value = 0; // Sets Status Bar
+            }
         }
 
-        ///===============================///
-        // ===== [[ Text boxes ]] ===== //
+        ///========= ^ Open/Close Buttons ^ ===========///
+
         // Input
         private void btnSend_Click(object sender, EventArgs e)
         {
@@ -201,50 +182,20 @@ namespace BASFConnector
         // Output
         private void btnRecieve_Click(object sender, EventArgs e)
         {
-            try
+            if(cboRecieve.Text == "Show Weight")
             {
+                txtOutput.Text = "Show Weight";
                 txtOutput.Text = serialPort1.ReadTo("\n");
             }
-            catch (TimeoutException)
+            else
             {
-                txtOutput.Text = "TimeOutException";
+                txtOutput.Text = "null";
             }
         }
 
-
-        // =============== TESTING =================== //
+        // --- Not in use
         private void btnSendTemp_Click(object sender, EventArgs e)
         {
-            try
-            {
-                serialPort1.PortName = "COM5";
-                serialPort1.BaudRate = 9600;
-                serialPort1.Parity = Parity.None;
-                serialPort1.Open();
-                if(serialPort1.IsOpen)
-                {
-                    txtOutput.Text = "Open";
-                }
-                else
-                {
-                    txtOutput.Text = "closed";
-                }
-                try
-                {
-                    txtOutput.Text = serialPort1.ReadTo("\n");
-                }
-                catch
-                {
-                    txtOutput.Text = "Failed";
-                }
-
-                serialPort1.Close();
-                serialPort1.Dispose();
-            }
-            catch (TimeoutException)
-            {
-                txtOutput.Text = "TimeOutException";
-            }
 
         }
     }
