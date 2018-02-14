@@ -24,13 +24,14 @@ namespace BASFConnector
             btnClosePort.Enabled = false;
             statusBar.Value = 0;
         }
-        // === {{ Processes }} === //
+        // ============== {{ Processes }} ================= //
         void getAvaliablePorts()
         {
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-        // Run Open Port
+        // ((((( Open / Close Port ))))) //
+        // Open
         void openPort()
         {
             // Simple add selected comboBox to Label
@@ -48,7 +49,7 @@ namespace BASFConnector
             Port.Parity = Parity.None;
             Port.Open(); // Opened*
         }
-        // Run Close Port
+        // close
         void closePort()
         {
             try
@@ -73,6 +74,7 @@ namespace BASFConnector
             Port.Dispose(); // Removes Port
 
         }
+        // =========================================== //
 
         // === {{Btn Handlers } === //
 
@@ -227,8 +229,14 @@ namespace BASFConnector
                 {
                     txtOutput.Text = "closed";
                 }
-
-                //txtOutput.Text = serialPort1.ReadTo("\n");
+                try
+                {
+                    txtOutput.Text = serialPort1.ReadTo("\n");
+                }
+                catch
+                {
+                    txtOutput.Text = "Failed";
+                }
 
                 serialPort1.Close();
                 serialPort1.Dispose();
