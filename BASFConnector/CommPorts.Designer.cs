@@ -296,6 +296,7 @@
             this.btnRecieve.TabIndex = 3;
             this.btnRecieve.Text = "Recieve";
             this.btnRecieve.UseVisualStyleBackColor = true;
+            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click);
             // 
             // btnSend
             // 
@@ -305,6 +306,7 @@
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // groupBox5
             // 
