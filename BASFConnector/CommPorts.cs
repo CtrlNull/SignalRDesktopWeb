@@ -14,6 +14,7 @@ namespace BASFConnector
 {
     public partial class CommPorts : Form
     {
+        ///~~~ Main ~~~///
         public CommPorts()
         {
             InitializeComponent();
@@ -25,13 +26,13 @@ namespace BASFConnector
             btnClosePort.Enabled = false;
             statusBar.Value = 0;
         }
-        // ============== {{ Processes }} ================= //
+        ///============== V Processes V ==============//
         void getAvaliablePorts()
         {
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-        // ((((( Open / Close Port ))))) //
+        ///====== V Open/Close PORTS V ======//
         // Open
         void openPort()
         {
@@ -46,9 +47,8 @@ namespace BASFConnector
             serialPort1.Close();
             serialPort1.Dispose(); // clears
         }
-        // =========================================== //
 
-        //////// {  Menu Items } ////////
+        ///============== V Menu Items V ==============//
         // Main
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -61,10 +61,8 @@ namespace BASFConnector
         {
             serialPortToolStripMenuItem.Enabled = false;
         }
-        //////////////////////////////////
 
-        // ===== ~~~ [[ Select Port Box ]] ~~~ ===== //
-
+        ///============== V Select Port Box V ==============//
         // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
         {
@@ -92,7 +90,7 @@ namespace BASFConnector
             }
         }
 
-        // [[ Refresh Button ]] //
+        ///====== V Referesh Button V ======//
         // This will run the same task as when window opens
         // In case user does not have device connected when app starts
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -102,9 +100,9 @@ namespace BASFConnector
             cboPorts_Comm.Items.Clear(); // Clears Ports Drop down
             getAvaliablePorts(); // checks for open ports and sends to combobox
         }
-
-        // ===== ~~ [[ Testing Box ]] ~~ ===== //
-        // == Open / Close Ports == //
+        ///========= ^ Select Port Box ^ ===========///
+        
+        ///============== V Open/Close Ports V ==============//
 
         // Open
         private void btnOpenPort_Click(object sender, EventArgs e)
@@ -171,8 +169,9 @@ namespace BASFConnector
             }
         }
 
-        ///========= ^ Open/Close Buttons ^ ===========///
-
+        ///========= ^ Open/Close Ports Buttons ^ ===========///
+        
+        ///============== V Text boxes V ==============//
         // Input
         private void btnSend_Click(object sender, EventArgs e)
         {
@@ -183,27 +182,22 @@ namespace BASFConnector
         // Output
         private void btnRecieve_Click_1(object sender, EventArgs e)
         {
-            try
+            // Following will take the scale's string then convert using REGEX to a readable string
+            string scaleOutput = serialPort1.ReadExisting();
+            string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
+            
+            // Loop until the scale reads the desired ammount
+            string desiredAmount = "16.9";
+            do
             {
-                string scaleOutput = serialPort1.ReadExisting();
-                string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
                 txtOutput.AppendText(screenOutput);
 
             }
-            catch (InvalidOperationException)
-            {
-                txtOutput.Text = "Port is not open";
-            }
+            while (screenOutput == desiredAmount);
         }
 
-        // --- Not in use
-        private void btnSendTemp_Click(object sender, EventArgs e)
-        {
-        }
-
-
-
-        //// Dump Code, but usefull
+        ///============== V Dump Code V ==============//
+        
         //if (cboRecieve.Text == "Show Weight")
         //{
         //    txtOutput.Text = "Show Weight";
@@ -229,5 +223,19 @@ namespace BASFConnector
         //{
         //    txtOutput.Text = "null";
         //}
+        //            try
+        //    {
+        //        string scaleOutput = serialPort1.ReadExisting();
+        //string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
+        //txtOutput.AppendText(screenOutput);
+
+        //    }
+        //    catch (InvalidOperationException)
+        //    {
+        //        txtOutput.Text = "Port is not open";
+        //    }
+
+
+
     }
 }
