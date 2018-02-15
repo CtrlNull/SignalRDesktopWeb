@@ -47,6 +47,7 @@ namespace BASFConnector
                     _hub.Invoke("DetermineLength", line).Wait();
                     _hub.Invoke("ConnectionHub", "test");
 
+                    _hub.On("ReceiveLength", x => Console.WriteLine(x));
                 }
             }
             catch // Spits Error symbols on the form
@@ -56,6 +57,12 @@ namespace BASFConnector
                 lblError2.Text = "Connection Error";
             }
         }
+        /////// V { Processes } V ///////
+        public void DetermindLength(string message)
+        {
+            Console.WriteLine(message);
+        }
+
 
         /////// { Menu List below Items } ///////
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
