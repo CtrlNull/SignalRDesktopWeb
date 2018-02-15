@@ -62,7 +62,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.btnSendTemp = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -257,7 +256,6 @@
             this.groupBox3.Controls.Add(this.statusBar);
             this.groupBox3.Controls.Add(this.btnClosePort);
             this.groupBox3.Controls.Add(this.btnOpenPort);
-            this.groupBox3.Controls.Add(this.btnRecieve);
             this.groupBox3.Controls.Add(this.btnSend);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
@@ -297,9 +295,9 @@
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(316, 290);
+            this.btnRecieve.Location = new System.Drawing.Point(143, 0);
             this.btnRecieve.Name = "btnRecieve";
-            this.btnRecieve.Size = new System.Drawing.Size(75, 23);
+            this.btnRecieve.Size = new System.Drawing.Size(62, 23);
             this.btnRecieve.TabIndex = 3;
             this.btnRecieve.Text = "Recieve";
             this.btnRecieve.UseVisualStyleBackColor = true;
@@ -307,7 +305,7 @@
             // 
             // btnSend
             // 
-            this.btnSend.Location = new System.Drawing.Point(104, 290);
+            this.btnSend.Location = new System.Drawing.Point(82, 290);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(75, 23);
             this.btnSend.TabIndex = 2;
@@ -319,9 +317,10 @@
             // 
             this.groupBox5.Controls.Add(this.cboRecieve);
             this.groupBox5.Controls.Add(this.txtOutput);
+            this.groupBox5.Controls.Add(this.btnRecieve);
             this.groupBox5.Location = new System.Drawing.Point(242, 20);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(220, 264);
+            this.groupBox5.Size = new System.Drawing.Size(211, 258);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Output";
@@ -333,16 +332,17 @@
             "Show Weight"});
             this.cboRecieve.Location = new System.Drawing.Point(25, 29);
             this.cboRecieve.Name = "cboRecieve";
-            this.cboRecieve.Size = new System.Drawing.Size(171, 21);
+            this.cboRecieve.Size = new System.Drawing.Size(100, 21);
             this.cboRecieve.TabIndex = 2;
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(25, 69);
+            this.txtOutput.Location = new System.Drawing.Point(16, 59);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(171, 189);
+            this.txtOutput.Size = new System.Drawing.Size(118, 193);
             this.txtOutput.TabIndex = 1;
+            this.txtOutput.WordWrap = false;
             // 
             // groupBox4
             // 
@@ -362,22 +362,11 @@
             this.txtInput.Size = new System.Drawing.Size(210, 199);
             this.txtInput.TabIndex = 0;
             // 
-            // btnSendTemp
-            // 
-            this.btnSendTemp.Location = new System.Drawing.Point(401, 58);
-            this.btnSendTemp.Name = "btnSendTemp";
-            this.btnSendTemp.Size = new System.Drawing.Size(75, 23);
-            this.btnSendTemp.TabIndex = 18;
-            this.btnSendTemp.Text = "SendTemp";
-            this.btnSendTemp.UseVisualStyleBackColor = true;
-            this.btnSendTemp.Click += new System.EventHandler(this.btnSendTemp_Click);
-            // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(527, 508);
-            this.Controls.Add(this.btnSendTemp);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -434,7 +423,6 @@
         private System.Windows.Forms.ToolStripMenuItem selectPortToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ProgressBar statusBar;
-        private System.Windows.Forms.Button btnSendTemp;
         private System.Windows.Forms.ComboBox cboRecieve;
     }
 }

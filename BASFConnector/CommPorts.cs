@@ -101,7 +101,7 @@ namespace BASFConnector
             getAvaliablePorts(); // checks for open ports and sends to combobox
         }
         ///========= ^ Select Port Box ^ ===========///
-        
+
         ///============== V Open/Close Ports V ==============//
 
         // Open
@@ -170,7 +170,7 @@ namespace BASFConnector
         }
 
         ///========= ^ Open/Close Ports Buttons ^ ===========///
-        
+
         ///============== V Text boxes V ==============//
         // Input
         private void btnSend_Click(object sender, EventArgs e)
@@ -182,60 +182,20 @@ namespace BASFConnector
         // Output
         private void btnRecieve_Click_1(object sender, EventArgs e)
         {
-            // Following will take the scale's string then convert using REGEX to a readable string
-            string scaleOutput = serialPort1.ReadExisting();
-            string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
-            
-            // Loop until the scale reads the desired ammount
-            string desiredAmount = "16.9";
-            do
+            // Local var's to compare ammounts
+            string desiredAmount = "19.7";
+            string screenOutput = "";
+
+            //Loop until the scale reads the desired ammount
+            while (screenOutput != desiredAmount)
             {
-                txtOutput.AppendText(screenOutput);
-
+                // Following will take the scale's string then convert using REGEX to a readable string
+                string scaleOutput = serialPort1.ReadLine();
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
+                txtOutput.Text = screenOutput;
             }
-            while (screenOutput == desiredAmount);
         }
-
-        ///============== V Dump Code V ==============//
-        
-        //if (cboRecieve.Text == "Show Weight")
-        //{
-        //    txtOutput.Text = "Show Weight";
-        //    //txtOutput.Text = serialPort1.ReadTo("\n");
-        //    //var data = serialPort1.ReadTo("\n");
-
-        //    //for (int i = 0; i < 10; i++)
-        //    //{
-        //    //    txtOutput.AppendText(serialPort1.ReadExisting());
-        //    //}
-        //    string data = serialPort1.ReadExisting();
-
-        //    //do
-        //    //{
-        //    //    txtOutput.Text = data;
-
-        //    //}
-        //    //while (data == " ");
-
-
-        //}
-        //else
-        //{
-        //    txtOutput.Text = "null";
-        //}
-        //            try
-        //    {
-        //        string scaleOutput = serialPort1.ReadExisting();
-        //string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
-        //txtOutput.AppendText(screenOutput);
-
-        //    }
-        //    catch (InvalidOperationException)
-        //    {
-        //        txtOutput.Text = "Port is not open";
-        //    }
-
-
-
     }
+    ///============== V Dump Code V ==============//
 }
+
