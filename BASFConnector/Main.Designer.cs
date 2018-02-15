@@ -47,7 +47,7 @@
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(140, 51);
+            this.btnRestart.Location = new System.Drawing.Point(198, 61);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(75, 23);
             this.btnRestart.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(48, 51);
+            this.btnConnect.Location = new System.Drawing.Point(100, 61);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 1;
@@ -73,7 +73,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(259, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(381, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -141,7 +141,7 @@
             // lblError
             // 
             this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(71, 35);
+            this.lblError.Location = new System.Drawing.Point(136, 36);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 13);
             this.lblError.TabIndex = 10;
@@ -150,7 +150,7 @@
             // lblError2
             // 
             this.lblError2.AutoSize = true;
-            this.lblError2.Location = new System.Drawing.Point(99, 35);
+            this.lblError2.Location = new System.Drawing.Point(175, 36);
             this.lblError2.Name = "lblError2";
             this.lblError2.Size = new System.Drawing.Size(0, 13);
             this.lblError2.TabIndex = 11;
@@ -158,7 +158,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(108, 103);
+            this.label1.Location = new System.Drawing.Point(162, 210);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 12;
@@ -168,7 +168,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(259, 125);
+            this.ClientSize = new System.Drawing.Size(381, 232);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError2);
             this.Controls.Add(this.lblError);
