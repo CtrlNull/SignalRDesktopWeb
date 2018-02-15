@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO.Ports;
+using Microsoft.AspNet.SignalR;
 
 namespace BASFConnector
 {
@@ -30,9 +31,9 @@ namespace BASFConnector
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            IHubProxy _hub;
             try
             {
-                IHubProxy _hub;
                 string url = @"http://localhost:8080/";
                 var connection = new HubConnection(url);
                 _hub = connection.CreateHubProxy("ConnectorHub");
@@ -44,16 +45,16 @@ namespace BASFConnector
                 while ((line = System.Console.ReadLine()) != null)
                 {
                     _hub.Invoke("DetermineLength", line).Wait();
-                }
+                    _hub.Invoke("ConnectionHub", "test");
 
+                }
             }
-            catch
+            catch // Spits Error symbols on the form
             {
                 lblError.Text = null;
                 lblError2.ForeColor = Color.Red;
                 lblError2.Text = "Connection Error";
             }
-
         }
 
         /////// { Menu List below Items } ///////

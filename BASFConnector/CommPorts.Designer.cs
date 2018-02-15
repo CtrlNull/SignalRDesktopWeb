@@ -54,11 +54,11 @@
             this.statusBar = new System.Windows.Forms.ProgressBar();
             this.btnClosePort = new System.Windows.Forms.Button();
             this.btnOpenPort = new System.Windows.Forms.Button();
-            this.btnRecieve = new System.Windows.Forms.Button();
             this.btnSend = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cboRecieve = new System.Windows.Forms.ComboBox();
             this.txtOutput = new System.Windows.Forms.TextBox();
+            this.btnRecieve = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
@@ -293,16 +293,6 @@
             this.btnOpenPort.UseVisualStyleBackColor = true;
             this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
             // 
-            // btnRecieve
-            // 
-            this.btnRecieve.Location = new System.Drawing.Point(143, 0);
-            this.btnRecieve.Name = "btnRecieve";
-            this.btnRecieve.Size = new System.Drawing.Size(62, 23);
-            this.btnRecieve.TabIndex = 3;
-            this.btnRecieve.Text = "Recieve";
-            this.btnRecieve.UseVisualStyleBackColor = true;
-            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click_1);
-            // 
             // btnSend
             // 
             this.btnSend.Location = new System.Drawing.Point(82, 290);
@@ -343,6 +333,16 @@
             this.txtOutput.Size = new System.Drawing.Size(118, 193);
             this.txtOutput.TabIndex = 1;
             this.txtOutput.WordWrap = false;
+            // 
+            // btnRecieve
+            // 
+            this.btnRecieve.Location = new System.Drawing.Point(143, 0);
+            this.btnRecieve.Name = "btnRecieve";
+            this.btnRecieve.Size = new System.Drawing.Size(62, 23);
+            this.btnRecieve.TabIndex = 3;
+            this.btnRecieve.Text = "Recieve";
+            this.btnRecieve.UseVisualStyleBackColor = true;
+            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click_1);
             // 
             // groupBox4
             // 

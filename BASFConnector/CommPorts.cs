@@ -175,8 +175,8 @@ namespace BASFConnector
         // Input
         private void btnSend_Click(object sender, EventArgs e)
         {
-            serialPort1.WriteLine(txtInput.Text);
-            txtInput.Text = "";
+            serialPort1.WriteLine(txtInput.Text); // 
+            txtInput.Text = ""; // Resets Text
 
         }
         // Output
