@@ -30,7 +30,6 @@
         {
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.btnServerStart = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +47,7 @@
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(174, 51);
+            this.btnRestart.Location = new System.Drawing.Point(140, 51);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(75, 23);
             this.btnRestart.TabIndex = 0;
@@ -58,23 +57,13 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(93, 51);
+            this.btnConnect.Location = new System.Drawing.Point(48, 51);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 1;
             this.btnConnect.Text = "Connect";
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
-            // 
-            // btnServerStart
-            // 
-            this.btnServerStart.Location = new System.Drawing.Point(12, 51);
-            this.btnServerStart.Name = "btnServerStart";
-            this.btnServerStart.Size = new System.Drawing.Size(75, 23);
-            this.btnServerStart.TabIndex = 2;
-            this.btnServerStart.Text = "Start Server";
-            this.btnServerStart.UseVisualStyleBackColor = true;
-            this.btnServerStart.Click += new System.EventHandler(this.btnServerStart_Click);
             // 
             // menuStrip1
             // 
@@ -169,7 +158,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(110, 102);
+            this.label1.Location = new System.Drawing.Point(108, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 12;
@@ -183,7 +172,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError2);
             this.Controls.Add(this.lblError);
-            this.Controls.Add(this.btnServerStart);
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.menuStrip1);
@@ -201,7 +189,6 @@
 
         private System.Windows.Forms.Button btnRestart;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Button btnServerStart;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;

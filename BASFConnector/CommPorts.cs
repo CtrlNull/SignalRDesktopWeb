@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace BASFConnector
 {
@@ -34,10 +35,10 @@ namespace BASFConnector
         // Open
         void openPort()
         {
-                serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
-                serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
-                serialPort1.Parity = Parity.None; // Important* set Parity from scale
-                serialPort1.Open();
+            serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
+            serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
+            serialPort1.Parity = Parity.None; // Important* set Parity from scale
+            serialPort1.Open();
         }
         // close
         void closePort()
@@ -153,7 +154,7 @@ namespace BASFConnector
         private void btnClosePort_Click(object sender, EventArgs e)
         {
             closePort();
-            
+
             if (serialPort1.IsOpen)
             {
                 txtOutput.Text = "Port is still open";
@@ -180,23 +181,53 @@ namespace BASFConnector
 
         }
         // Output
-        private void btnRecieve_Click(object sender, EventArgs e)
+        private void btnRecieve_Click_1(object sender, EventArgs e)
         {
-            if(cboRecieve.Text == "Show Weight")
+            try
             {
-                txtOutput.Text = "Show Weight";
-                txtOutput.Text = serialPort1.ReadTo("\n");
+                string scaleOutput = serialPort1.ReadExisting();
+                string screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
+                txtOutput.AppendText(screenOutput);
+
             }
-            else
+            catch (InvalidOperationException)
             {
-                txtOutput.Text = "null";
+                txtOutput.Text = "Port is not open";
             }
         }
 
         // --- Not in use
         private void btnSendTemp_Click(object sender, EventArgs e)
         {
-
         }
+
+
+
+        //// Dump Code, but usefull
+        //if (cboRecieve.Text == "Show Weight")
+        //{
+        //    txtOutput.Text = "Show Weight";
+        //    //txtOutput.Text = serialPort1.ReadTo("\n");
+        //    //var data = serialPort1.ReadTo("\n");
+
+        //    //for (int i = 0; i < 10; i++)
+        //    //{
+        //    //    txtOutput.AppendText(serialPort1.ReadExisting());
+        //    //}
+        //    string data = serialPort1.ReadExisting();
+
+        //    //do
+        //    //{
+        //    //    txtOutput.Text = data;
+
+        //    //}
+        //    //while (data == " ");
+
+
+        //}
+        //else
+        //{
+        //    txtOutput.Text = "null";
+        //}
     }
 }

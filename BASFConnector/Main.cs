@@ -26,14 +26,6 @@ namespace BASFConnector
         {
             Application.Restart();
         }
-
-        // Server Start Btn //
-        // Starts Console application for SignalR Server ***Change for production***
-        private void btnServerStart_Click(object sender, EventArgs e)
-        {
-            Process.Start("C:\\Users\\rapha\\repos\\Builds\\BASFConnectorConsole\\BASFConnectorConsole.exe");
-        }
-        
         // Connect to Server Btn //
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
@@ -47,6 +39,13 @@ namespace BASFConnector
                 connection.Start().Wait();
                 lblError2.Text = null;
                 lblError.Text = "SignalR Server Connected";
+                // ??? -- research and add a comment
+                string line = null;
+                while ((line = System.Console.ReadLine()) != null)
+                {
+                    _hub.Invoke("DetermineLength", line).Wait();
+                }
+
             }
             catch
             {
@@ -62,7 +61,7 @@ namespace BASFConnector
         {
             mainToolStripMenuItem.Enabled = false;
         }
-        
+
         // Serial Port Menu item
         private void smsSerialPort_Click(object sender, EventArgs e)
         {
