@@ -62,20 +62,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtWeightLimit = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnTesting = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboPorts_Comm
             // 
             this.cboPorts_Comm.FormattingEnabled = true;
-            this.cboPorts_Comm.Location = new System.Drawing.Point(22, 22);
+            this.cboPorts_Comm.Location = new System.Drawing.Point(6, 22);
             this.cboPorts_Comm.Name = "cboPorts_Comm";
-            this.cboPorts_Comm.Size = new System.Drawing.Size(59, 21);
+            this.cboPorts_Comm.Size = new System.Drawing.Size(75, 21);
             this.cboPorts_Comm.TabIndex = 1;
             // 
             // menuStrip1
@@ -86,7 +92,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(534, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(519, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -192,8 +198,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnClosePort);
             this.groupBox1.Controls.Add(this.btnRefresh);
+            this.groupBox1.Controls.Add(this.statusBar);
             this.groupBox1.Controls.Add(this.btnCheckDevice);
+            this.groupBox1.Controls.Add(this.btnOpenPort);
             this.groupBox1.Controls.Add(this.cboPorts_Comm);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
@@ -252,28 +261,24 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.txtWeightLimit);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.groupBox5);
-            this.groupBox3.Controls.Add(this.cboRecieve);
             this.groupBox3.Location = new System.Drawing.Point(14, 167);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(508, 306);
+            this.groupBox3.Size = new System.Drawing.Size(491, 174);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Testing";
             // 
             // statusBar
             // 
-            this.statusBar.Location = new System.Drawing.Point(146, 0);
+            this.statusBar.Location = new System.Drawing.Point(6, 78);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(70, 13);
+            this.statusBar.Size = new System.Drawing.Size(75, 10);
             this.statusBar.TabIndex = 18;
             // 
             // btnClosePort
             // 
-            this.btnClosePort.Location = new System.Drawing.Point(253, 48);
+            this.btnClosePort.Location = new System.Drawing.Point(6, 94);
             this.btnClosePort.Name = "btnClosePort";
             this.btnClosePort.Size = new System.Drawing.Size(75, 23);
             this.btnClosePort.TabIndex = 5;
@@ -283,7 +288,7 @@
             // 
             // btnOpenPort
             // 
-            this.btnOpenPort.Location = new System.Drawing.Point(250, 19);
+            this.btnOpenPort.Location = new System.Drawing.Point(6, 49);
             this.btnOpenPort.Name = "btnOpenPort";
             this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
             this.btnOpenPort.TabIndex = 4;
@@ -293,40 +298,43 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btnClosePort);
-            this.groupBox5.Controls.Add(this.statusBar);
-            this.groupBox5.Controls.Add(this.btnOpenPort);
+            this.groupBox5.Controls.Add(this.groupBox4);
+            this.groupBox5.Controls.Add(this.label5);
             this.groupBox5.Controls.Add(this.txtOutput);
+            this.groupBox5.Controls.Add(this.txtWeightLimit);
             this.groupBox5.Controls.Add(this.btnRecieve);
-            this.groupBox5.Location = new System.Drawing.Point(20, 84);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.cboRecieve);
+            this.groupBox5.Location = new System.Drawing.Point(6, 19);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(431, 174);
+            this.groupBox5.Size = new System.Drawing.Size(478, 148);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Output";
+            this.groupBox5.Text = "Scale Data";
             // 
             // cboRecieve
             // 
             this.cboRecieve.FormattingEnabled = true;
             this.cboRecieve.Items.AddRange(new object[] {
             "Show Weight"});
-            this.cboRecieve.Location = new System.Drawing.Point(64, 36);
+            this.cboRecieve.Location = new System.Drawing.Point(18, 32);
             this.cboRecieve.Name = "cboRecieve";
-            this.cboRecieve.Size = new System.Drawing.Size(73, 21);
+            this.cboRecieve.Size = new System.Drawing.Size(85, 21);
             this.cboRecieve.TabIndex = 2;
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(22, 29);
+            this.txtOutput.Location = new System.Drawing.Point(26, 111);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(222, 121);
+            this.txtOutput.Size = new System.Drawing.Size(77, 25);
             this.txtOutput.TabIndex = 1;
             this.txtOutput.WordWrap = false;
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(334, 19);
+            this.btnRecieve.Location = new System.Drawing.Point(139, 29);
             this.btnRecieve.Name = "btnRecieve";
             this.btnRecieve.Size = new System.Drawing.Size(75, 25);
             this.btnRecieve.TabIndex = 3;
@@ -337,7 +345,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(61, 20);
+            this.label3.Location = new System.Drawing.Point(15, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 5;
@@ -346,7 +354,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(171, 20);
+            this.label4.Location = new System.Drawing.Point(26, 56);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 6;
@@ -354,16 +362,61 @@
             // 
             // txtWeightLimit
             // 
-            this.txtWeightLimit.Location = new System.Drawing.Point(171, 41);
+            this.txtWeightLimit.Location = new System.Drawing.Point(29, 72);
             this.txtWeightLimit.Name = "txtWeightLimit";
             this.txtWeightLimit.Size = new System.Drawing.Size(65, 20);
             this.txtWeightLimit.TabIndex = 8;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.progressBar1);
+            this.groupBox4.Controls.Add(this.btnTesting);
+            this.groupBox4.Location = new System.Drawing.Point(243, 19);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(225, 117);
+            this.groupBox4.TabIndex = 9;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Testing Area";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(42, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Output";
+            // 
+            // btnTesting
+            // 
+            this.btnTesting.Location = new System.Drawing.Point(30, 88);
+            this.btnTesting.Name = "btnTesting";
+            this.btnTesting.Size = new System.Drawing.Size(75, 23);
+            this.btnTesting.TabIndex = 10;
+            this.btnTesting.Text = "btnTesting";
+            this.btnTesting.UseVisualStyleBackColor = true;
+            this.btnTesting.Click += new System.EventHandler(this.btnTesting_Click);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(30, 53);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 20);
+            this.progressBar1.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(136, 53);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(39, 20);
+            this.textBox1.TabIndex = 12;
             // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 485);
+            this.ClientSize = new System.Drawing.Size(519, 356);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -378,9 +431,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -420,5 +474,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWeightLimit;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnTesting;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

@@ -22,6 +22,7 @@ namespace BASFConnector
             txtOutput.Enabled = false;
             btnRecieve.Enabled = false;
             btnClosePort.Enabled = false;
+            btnTesting.Enabled = false;
             statusBar.Value = 0;
         }
         ///============== V Processes V ==============//
@@ -127,6 +128,7 @@ namespace BASFConnector
                         txtOutput.Enabled = true;
                         btnRecieve.Enabled = true;
                         btnClosePort.Enabled = true;
+                        btnTesting.Enabled = false;
                         txtOutput.Text = cboPorts_Comm.Text + " " + "Following...";
                     }
                     catch
@@ -165,8 +167,9 @@ namespace BASFConnector
         ///========= ^ Open/Close Ports Buttons ^ ===========///
 
         ///============== V Scale Response Button V ==============//
-        // Output
-        // Currently the btn Recieve does the proccessing for the scale output data
+        
+        // btn Recieve
+        // Does the proccessing for the scale output data
         private void btnRecieve_Click_1(object sender, EventArgs e)
         {
             // Local Var's
@@ -208,6 +211,48 @@ namespace BASFConnector
             }
         }
         ///============== V Testing V ==============//
+        private void btnTesting_Click(object sender, EventArgs e)
+        {
+            // Local Var's
+            string screenOutput = ""; // Init scale output
+            double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
+
+            if (txtWeightLimit.Text != "")
+            {
+                // Local Var's
+                bool portOpen = true;
+                double desiredAmount = Convert.ToDouble(txtWeightLimit.Text); // Sets user input to a double
+
+                // Checks if port is open
+                if (serialPort1.IsOpen)
+                {
+                    portOpen = true;
+                }
+
+                // Loops until the scale reaches user's desired amount
+                while (portOpen == true)
+                {
+                    string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                    screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+                    txtOutput.Text = screenOutput;
+                    scaleIntConverted = Convert.ToDouble(screenOutput);
+
+                    // This will check if the user's ammout is reached and logs it to the screen
+                    if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
+                    {
+                        serialPort1.Close(); // Closes connection to Scale
+                        portOpen = false; // Set to stop loop
+                        txtOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
+                    }
+                }
+            }
+            else
+            {
+                txtOutput.Text = "Please Input a weight limit";
+            }
+
+        }
+
 
     }
     ///============== V Dump Code V ==============//
