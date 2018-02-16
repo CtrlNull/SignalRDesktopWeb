@@ -180,6 +180,7 @@ namespace BASFConnector
 
         }
         // Output
+        // Currently the btn Recieve does the proccessing for the scale output data
         private void btnRecieve_Click_1(object sender, EventArgs e)
         {
             // Local var's to compare ammounts
@@ -187,13 +188,30 @@ namespace BASFConnector
             string screenOutput = "";
 
             //Loop until the scale reads the desired ammount
-            while (screenOutput != desiredAmount)
+            while (screenOutput != "50.0")
             {
                 // Following will take the scale's string then convert using REGEX to a readable string
                 string scaleOutput = serialPort1.ReadLine();
-                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", " ");
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", "");
                 txtOutput.Text = screenOutput;
+                // Stop the Scale when amount reaches user's desired ammount
             }
+        }
+
+        // Button 1 is for testing purposes(not to lose data)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double desiredAmount = 20.0;
+            string screenOutput = "";
+            double scaleIntConverted = 1;
+            do
+            {
+                string scaleOutput = serialPort1.ReadLine();
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", "");
+                txtOutput.Text = screenOutput;
+                scaleIntConverted = Convert.ToDouble(screenOutput);
+            }
+            while (desiredAmount > scaleIntConverted);
         }
     }
     ///============== V Dump Code V ==============//
