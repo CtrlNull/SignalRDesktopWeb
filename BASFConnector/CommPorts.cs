@@ -19,11 +19,10 @@ namespace BASFConnector
         {
             InitializeComponent();
             getAvaliablePorts();
-            txtInput.Enabled = false;
             txtOutput.Enabled = false;
-            btnSend.Enabled = false;
             btnRecieve.Enabled = false;
             btnClosePort.Enabled = false;
+            button1.Enabled = false;
             statusBar.Value = 0;
         }
         ///============== V Processes V ==============//
@@ -114,7 +113,6 @@ namespace BASFConnector
                 if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " ")
                 {
                     // Grey's out input/output boxes
-                    txtInput.Enabled = false;
                     txtOutput.Enabled = false;
                     txtOutput.Text = "Please select port settings!"; // Message
                 }
@@ -127,11 +125,10 @@ namespace BASFConnector
                         statusBar.Value = 100; // status bar
 
                         // Enables input/output boxes
-                        txtInput.Enabled = true;
                         txtOutput.Enabled = true;
-                        btnSend.Enabled = true;
                         btnRecieve.Enabled = true;
                         btnClosePort.Enabled = true;
+                        button1.Enabled = true;
                         txtOutput.Text = cboPorts_Comm.Text + " " + "Following...";
                     }
                     catch
@@ -160,10 +157,8 @@ namespace BASFConnector
             else
             {
                 // Grey out options
-                txtInput.Enabled = false;
                 txtOutput.Enabled = false;
                 btnClosePort.Enabled = false;
-                btnSend.Enabled = false;
                 btnRecieve.Enabled = false;
                 statusBar.Value = 0; // Sets Status Bar
             }
@@ -173,18 +168,12 @@ namespace BASFConnector
 
         ///============== V Text boxes V ==============//
         // Input
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            serialPort1.WriteLine(txtInput.Text); // 
-            txtInput.Text = ""; // Resets Text
-
-        }
         // Output
         // Currently the btn Recieve does the proccessing for the scale output data
         private void btnRecieve_Click_1(object sender, EventArgs e)
         {
             // Local var's to compare ammounts
-            string desiredAmount = "19.7";
+            //string desiredAmount = "19.7";
             string screenOutput = "";
 
             //Loop until the scale reads the desired ammount
@@ -197,21 +186,38 @@ namespace BASFConnector
                 // Stop the Scale when amount reaches user's desired ammount
             }
         }
+        ///============== V Testing V ==============//
 
         // Button 1 is for testing purposes(not to lose data)
         private void button1_Click(object sender, EventArgs e)
         {
-            double desiredAmount = 20.0;
-            string screenOutput = "";
-            double scaleIntConverted = 1;
-            do
+            string screenOutput = ""; // Init scale output
+            double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
+
+            if (txtWeightLimit.Text != "")
             {
-                string scaleOutput = serialPort1.ReadLine();
-                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", "");
-                txtOutput.Text = screenOutput;
-                scaleIntConverted = Convert.ToDouble(screenOutput);
+                double desiredAmount = Convert.ToDouble(txtWeightLimit.Text); // Sets user input to a double
+
+                // Loops until the scale reaches user's desired amount
+                while (desiredAmount != scaleIntConverted)
+                {
+                    string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                    screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+                    txtOutput.Text = screenOutput;
+                    scaleIntConverted = Convert.ToDouble(screenOutput);
+
+                    // THis will check if the user's ammout is reached and logs it to the screen
+                    if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
+                    {
+                        //serialPort1.Close();
+                        txtOutput.Text = Convert.ToString(scaleIntConverted);
+                    }
+                }
             }
-            while (desiredAmount > scaleIntConverted);
+            else
+            {
+                txtOutput.Text = "Please Input a weight limit";
+            }
         }
     }
     ///============== V Dump Code V ==============//
