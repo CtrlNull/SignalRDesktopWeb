@@ -35,16 +35,23 @@ namespace BASFConnector
         // Open
         void openPort()
         {
-            serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
-            serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
-            serialPort1.Parity = Parity.None; // Important* set Parity from scale
-            serialPort1.Open();
+            if(!serialPort1.IsOpen)
+            {
+                serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
+                serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
+                serialPort1.Parity = Parity.None; // Important* set Parity from scale
+                serialPort1.Open();
+            }
+
         }
         // close
         void closePort()
         {
-            serialPort1.Close();
-            serialPort1.Dispose(); // clears
+            if(serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                serialPort1.Dispose(); // clears
+            }
         }
 
         ///============== V Menu Items V ==============//
@@ -199,7 +206,7 @@ namespace BASFConnector
                     // This will check if the user's ammout is reached and logs it to the screen
                     if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
                     {
-                        serialPort1.Close(); // Closes connection to Scale
+                        closePort(); // Closes connection to Scale
                         portOpen = false; // Set to stop loop
                         txtOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
                     }
@@ -209,7 +216,7 @@ namespace BASFConnector
             {
                 txtOutput.Text = "Please Input a weight limit";
             }
-            serialPort1.Open();
+            openPort();
         }
         ///============== V Testing V ==============//
         private void btnTesting_Click(object sender, EventArgs e)
@@ -258,8 +265,6 @@ namespace BASFConnector
             }
 
         }
-
-
     }
     ///============== V Important Scale Info V =============//
     //serialPort1.WriteLine("T\r\n"); // sets amount to zero
