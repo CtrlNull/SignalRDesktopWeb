@@ -59,7 +59,6 @@
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.btnRecieve = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtWeightLimit = new System.Windows.Forms.TextBox();
@@ -255,7 +254,6 @@
             // 
             this.groupBox3.Controls.Add(this.txtWeightLimit);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.cboRecieve);
@@ -268,14 +266,14 @@
             // 
             // statusBar
             // 
-            this.statusBar.Location = new System.Drawing.Point(285, 112);
+            this.statusBar.Location = new System.Drawing.Point(146, 0);
             this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(107, 13);
+            this.statusBar.Size = new System.Drawing.Size(70, 13);
             this.statusBar.TabIndex = 18;
             // 
             // btnClosePort
             // 
-            this.btnClosePort.Location = new System.Drawing.Point(334, 27);
+            this.btnClosePort.Location = new System.Drawing.Point(253, 48);
             this.btnClosePort.Name = "btnClosePort";
             this.btnClosePort.Size = new System.Drawing.Size(75, 23);
             this.btnClosePort.TabIndex = 5;
@@ -285,7 +283,7 @@
             // 
             // btnOpenPort
             // 
-            this.btnOpenPort.Location = new System.Drawing.Point(253, 27);
+            this.btnOpenPort.Location = new System.Drawing.Point(250, 19);
             this.btnOpenPort.Name = "btnOpenPort";
             this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
             this.btnOpenPort.TabIndex = 4;
@@ -328,23 +326,13 @@
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(334, 59);
+            this.btnRecieve.Location = new System.Drawing.Point(334, 19);
             this.btnRecieve.Name = "btnRecieve";
             this.btnRecieve.Size = new System.Drawing.Size(75, 25);
             this.btnRecieve.TabIndex = 3;
             this.btnRecieve.Text = "Recieve";
             this.btnRecieve.UseVisualStyleBackColor = true;
             this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click_1);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(354, 36);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -429,7 +417,6 @@
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.ComboBox cboRecieve;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtWeightLimit;
