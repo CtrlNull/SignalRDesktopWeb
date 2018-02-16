@@ -42,7 +42,12 @@
             this.lblError = new System.Windows.Forms.Label();
             this.lblError2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnServerTesting = new System.Windows.Forms.Button();
+            this.txtLive = new System.Windows.Forms.TextBox();
+            this.txtInputLive = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRestart
@@ -73,7 +78,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(381, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(427, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -158,17 +163,54 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(162, 210);
+            this.label1.Location = new System.Drawing.Point(12, 329);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Alpha v.1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtInputLive);
+            this.groupBox1.Controls.Add(this.txtLive);
+            this.groupBox1.Controls.Add(this.btnServerTesting);
+            this.groupBox1.Location = new System.Drawing.Point(37, 105);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(315, 192);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Testing";
+            // 
+            // btnServerTesting
+            // 
+            this.btnServerTesting.Location = new System.Drawing.Point(63, 30);
+            this.btnServerTesting.Name = "btnServerTesting";
+            this.btnServerTesting.Size = new System.Drawing.Size(75, 23);
+            this.btnServerTesting.TabIndex = 0;
+            this.btnServerTesting.Text = "ConnectLive";
+            this.btnServerTesting.UseVisualStyleBackColor = true;
+            // 
+            // txtLive
+            // 
+            this.txtLive.Location = new System.Drawing.Point(29, 75);
+            this.txtLive.Multiline = true;
+            this.txtLive.Name = "txtLive";
+            this.txtLive.Size = new System.Drawing.Size(260, 111);
+            this.txtLive.TabIndex = 1;
+            // 
+            // txtInputLive
+            // 
+            this.txtInputLive.Location = new System.Drawing.Point(161, 32);
+            this.txtInputLive.Name = "txtInputLive";
+            this.txtInputLive.Size = new System.Drawing.Size(100, 20);
+            this.txtInputLive.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 232);
+            this.ClientSize = new System.Drawing.Size(427, 351);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError2);
             this.Controls.Add(this.lblError);
@@ -180,6 +222,8 @@
             this.Text = "BASF-Connector";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +245,10 @@
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Label lblError2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtInputLive;
+        private System.Windows.Forms.TextBox txtLive;
+        private System.Windows.Forms.Button btnServerTesting;
     }
 }
 
