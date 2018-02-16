@@ -209,6 +209,7 @@ namespace BASFConnector
             {
                 txtOutput.Text = "Please Input a weight limit";
             }
+            serialPort1.Open();
         }
         ///============== V Testing V ==============//
         private void btnTesting_Click(object sender, EventArgs e)
@@ -241,7 +242,7 @@ namespace BASFConnector
                     if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
                     {
                         txtTestingOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
-                        serialPort1.WriteLine("T\r\n");
+
 
                         // Close Port, set var to exit loop & turn button off
                         serialPort1.Close();
@@ -260,6 +261,10 @@ namespace BASFConnector
 
 
     }
+    ///============== V Important Scale Info V =============//
+    //serialPort1.WriteLine("T\r\n"); // sets amount to zero
+
+
     ///============== V Dump Code V ==============//
 }
 
