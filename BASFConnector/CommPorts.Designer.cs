@@ -66,7 +66,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnTesting = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTestingOutput = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -369,7 +369,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.txtTestingOutput);
             this.groupBox4.Controls.Add(this.progressBar1);
             this.groupBox4.Controls.Add(this.btnTesting);
             this.groupBox4.Location = new System.Drawing.Point(243, 19);
@@ -390,7 +390,7 @@
             // 
             // btnTesting
             // 
-            this.btnTesting.Location = new System.Drawing.Point(30, 88);
+            this.btnTesting.Location = new System.Drawing.Point(144, 10);
             this.btnTesting.Name = "btnTesting";
             this.btnTesting.Size = new System.Drawing.Size(75, 23);
             this.btnTesting.TabIndex = 10;
@@ -405,12 +405,13 @@
             this.progressBar1.Size = new System.Drawing.Size(100, 20);
             this.progressBar1.TabIndex = 11;
             // 
-            // textBox1
+            // txtTestingOutput
             // 
-            this.textBox1.Location = new System.Drawing.Point(136, 53);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(39, 20);
-            this.textBox1.TabIndex = 12;
+            this.txtTestingOutput.Location = new System.Drawing.Point(136, 53);
+            this.txtTestingOutput.Multiline = true;
+            this.txtTestingOutput.Name = "txtTestingOutput";
+            this.txtTestingOutput.Size = new System.Drawing.Size(39, 20);
+            this.txtTestingOutput.TabIndex = 12;
             // 
             // CommPorts
             // 
@@ -477,7 +478,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnTesting;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTestingOutput;
         private System.Windows.Forms.ProgressBar progressBar1;
     }
 }

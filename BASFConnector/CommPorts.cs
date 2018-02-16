@@ -128,7 +128,7 @@ namespace BASFConnector
                         txtOutput.Enabled = true;
                         btnRecieve.Enabled = true;
                         btnClosePort.Enabled = true;
-                        btnTesting.Enabled = false;
+                        btnTesting.Enabled = true;
                         txtOutput.Text = cboPorts_Comm.Text + " " + "Following...";
                     }
                     catch
@@ -234,15 +234,20 @@ namespace BASFConnector
                 {
                     string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
                     screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
-                    txtOutput.Text = screenOutput;
+                    txtTestingOutput.Text = screenOutput;
                     scaleIntConverted = Convert.ToDouble(screenOutput);
 
                     // This will check if the user's ammout is reached and logs it to the screen
                     if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
                     {
-                        serialPort1.Close(); // Closes connection to Scale
-                        portOpen = false; // Set to stop loop
-                        txtOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
+                        txtTestingOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
+                        serialPort1.WriteLine("T\r\n");
+
+                        // Close Port, set var to exit loop & turn button off
+                        serialPort1.Close();
+                        portOpen = false;
+                        btnTesting.Enabled = false;
+
                     }
                 }
             }
