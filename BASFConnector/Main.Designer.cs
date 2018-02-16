@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnRestart = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -43,9 +44,10 @@
             this.lblError2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLiveCOM = new System.Windows.Forms.TextBox();
+            this.txtLiveScale = new System.Windows.Forms.TextBox();
             this.btnServerTesting = new System.Windows.Forms.Button();
-            this.txtLive = new System.Windows.Forms.TextBox();
-            this.txtInputLive = new System.Windows.Forms.TextBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -78,7 +80,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(427, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(409, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -95,7 +97,6 @@
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.mainToolStripMenuItem.Text = "Main";
-            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -127,21 +128,18 @@
             this.viewLogsToolStripMenuItem.Name = "viewLogsToolStripMenuItem";
             this.viewLogsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.viewLogsToolStripMenuItem.Text = "View Logs";
-            this.viewLogsToolStripMenuItem.Click += new System.EventHandler(this.viewLogsToolStripMenuItem_Click);
             // 
             // sendLogsToolStripMenuItem
             // 
             this.sendLogsToolStripMenuItem.Name = "sendLogsToolStripMenuItem";
             this.sendLogsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.sendLogsToolStripMenuItem.Text = "Send Logs";
-            this.sendLogsToolStripMenuItem.Click += new System.EventHandler(this.sendLogsToolStripMenuItem_Click);
             // 
             // contactUsToolStripMenuItem
             // 
             this.contactUsToolStripMenuItem.Name = "contactUsToolStripMenuItem";
             this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.contactUsToolStripMenuItem.Text = "Contact us";
-            this.contactUsToolStripMenuItem.Click += new System.EventHandler(this.contactUsToolStripMenuItem_Click);
             // 
             // lblError
             // 
@@ -163,7 +161,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 329);
+            this.label1.Location = new System.Drawing.Point(12, 246);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 12;
@@ -171,45 +169,46 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txtInputLive);
-            this.groupBox1.Controls.Add(this.txtLive);
+            this.groupBox1.Controls.Add(this.txtLiveCOM);
+            this.groupBox1.Controls.Add(this.txtLiveScale);
             this.groupBox1.Controls.Add(this.btnServerTesting);
             this.groupBox1.Location = new System.Drawing.Point(37, 105);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 192);
+            this.groupBox1.Size = new System.Drawing.Size(313, 113);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Testing";
             // 
+            // txtLiveCOM
+            // 
+            this.txtLiveCOM.Location = new System.Drawing.Point(93, 19);
+            this.txtLiveCOM.Name = "txtLiveCOM";
+            this.txtLiveCOM.Size = new System.Drawing.Size(112, 20);
+            this.txtLiveCOM.TabIndex = 2;
+            // 
+            // txtLiveScale
+            // 
+            this.txtLiveScale.Location = new System.Drawing.Point(150, 58);
+            this.txtLiveScale.Multiline = true;
+            this.txtLiveScale.Name = "txtLiveScale";
+            this.txtLiveScale.Size = new System.Drawing.Size(109, 20);
+            this.txtLiveScale.TabIndex = 1;
+            // 
             // btnServerTesting
             // 
-            this.btnServerTesting.Location = new System.Drawing.Point(63, 30);
+            this.btnServerTesting.Location = new System.Drawing.Point(61, 56);
             this.btnServerTesting.Name = "btnServerTesting";
-            this.btnServerTesting.Size = new System.Drawing.Size(75, 23);
+            this.btnServerTesting.Size = new System.Drawing.Size(83, 23);
             this.btnServerTesting.TabIndex = 0;
-            this.btnServerTesting.Text = "ConnectLive";
+            this.btnServerTesting.Text = "Scale Output";
             this.btnServerTesting.UseVisualStyleBackColor = true;
-            // 
-            // txtLive
-            // 
-            this.txtLive.Location = new System.Drawing.Point(29, 75);
-            this.txtLive.Multiline = true;
-            this.txtLive.Name = "txtLive";
-            this.txtLive.Size = new System.Drawing.Size(260, 111);
-            this.txtLive.TabIndex = 1;
-            // 
-            // txtInputLive
-            // 
-            this.txtInputLive.Location = new System.Drawing.Point(161, 32);
-            this.txtInputLive.Name = "txtInputLive";
-            this.txtInputLive.Size = new System.Drawing.Size(100, 20);
-            this.txtInputLive.TabIndex = 2;
+            this.btnServerTesting.Click += new System.EventHandler(this.btnServerTesting_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(427, 351);
+            this.ClientSize = new System.Drawing.Size(409, 275);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError2);
@@ -246,9 +245,10 @@
         private System.Windows.Forms.Label lblError2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtInputLive;
-        private System.Windows.Forms.TextBox txtLive;
+        private System.Windows.Forms.TextBox txtLiveCOM;
+        private System.Windows.Forms.TextBox txtLiveScale;
         private System.Windows.Forms.Button btnServerTesting;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

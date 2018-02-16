@@ -45,28 +45,28 @@
             this.pbDevice = new System.Windows.Forms.PictureBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClosePort = new System.Windows.Forms.Button();
+            this.statusBar = new System.Windows.Forms.ProgressBar();
+            this.btnOpenPort = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDeviceStatus = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCOMM = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.statusBar = new System.Windows.Forms.ProgressBar();
-            this.btnClosePort = new System.Windows.Forms.Button();
-            this.btnOpenPort = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cboRecieve = new System.Windows.Forms.ComboBox();
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnRecieve = new System.Windows.Forms.Button();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtWeightLimit = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btnTesting = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.txtTestingOutput = new System.Windows.Forms.TextBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnTesting = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.txtWeightLimit = new System.Windows.Forms.TextBox();
+            this.btnRecieve = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboRecieve = new System.Windows.Forms.ComboBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -211,6 +211,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Port";
             // 
+            // btnClosePort
+            // 
+            this.btnClosePort.Location = new System.Drawing.Point(6, 94);
+            this.btnClosePort.Name = "btnClosePort";
+            this.btnClosePort.Size = new System.Drawing.Size(75, 23);
+            this.btnClosePort.TabIndex = 5;
+            this.btnClosePort.Text = "Close Port";
+            this.btnClosePort.UseVisualStyleBackColor = true;
+            this.btnClosePort.Click += new System.EventHandler(this.btnClosePort_Click);
+            // 
+            // statusBar
+            // 
+            this.statusBar.Location = new System.Drawing.Point(6, 78);
+            this.statusBar.Name = "statusBar";
+            this.statusBar.Size = new System.Drawing.Size(75, 10);
+            this.statusBar.TabIndex = 18;
+            // 
+            // btnOpenPort
+            // 
+            this.btnOpenPort.Location = new System.Drawing.Point(6, 49);
+            this.btnOpenPort.Name = "btnOpenPort";
+            this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
+            this.btnOpenPort.TabIndex = 4;
+            this.btnOpenPort.Text = "Open Port";
+            this.btnOpenPort.UseVisualStyleBackColor = true;
+            this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -269,33 +296,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Testing";
             // 
-            // statusBar
-            // 
-            this.statusBar.Location = new System.Drawing.Point(6, 78);
-            this.statusBar.Name = "statusBar";
-            this.statusBar.Size = new System.Drawing.Size(75, 10);
-            this.statusBar.TabIndex = 18;
-            // 
-            // btnClosePort
-            // 
-            this.btnClosePort.Location = new System.Drawing.Point(6, 94);
-            this.btnClosePort.Name = "btnClosePort";
-            this.btnClosePort.Size = new System.Drawing.Size(75, 23);
-            this.btnClosePort.TabIndex = 5;
-            this.btnClosePort.Text = "Close Port";
-            this.btnClosePort.UseVisualStyleBackColor = true;
-            this.btnClosePort.Click += new System.EventHandler(this.btnClosePort_Click);
-            // 
-            // btnOpenPort
-            // 
-            this.btnOpenPort.Location = new System.Drawing.Point(6, 49);
-            this.btnOpenPort.Name = "btnOpenPort";
-            this.btnOpenPort.Size = new System.Drawing.Size(75, 23);
-            this.btnOpenPort.TabIndex = 4;
-            this.btnOpenPort.Text = "Open Port";
-            this.btnOpenPort.UseVisualStyleBackColor = true;
-            this.btnOpenPort.Click += new System.EventHandler(this.btnOpenPort_Click);
-            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.groupBox4);
@@ -313,60 +313,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Scale Data";
             // 
-            // cboRecieve
-            // 
-            this.cboRecieve.FormattingEnabled = true;
-            this.cboRecieve.Items.AddRange(new object[] {
-            "Show Weight"});
-            this.cboRecieve.Location = new System.Drawing.Point(18, 32);
-            this.cboRecieve.Name = "cboRecieve";
-            this.cboRecieve.Size = new System.Drawing.Size(85, 21);
-            this.cboRecieve.TabIndex = 2;
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(26, 111);
-            this.txtOutput.Multiline = true;
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(77, 25);
-            this.txtOutput.TabIndex = 1;
-            this.txtOutput.WordWrap = false;
-            // 
-            // btnRecieve
-            // 
-            this.btnRecieve.Location = new System.Drawing.Point(139, 29);
-            this.btnRecieve.Name = "btnRecieve";
-            this.btnRecieve.Size = new System.Drawing.Size(75, 25);
-            this.btnRecieve.TabIndex = 3;
-            this.btnRecieve.Text = "Recieve";
-            this.btnRecieve.UseVisualStyleBackColor = true;
-            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click_1);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Select Response";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Weight Limit";
-            // 
-            // txtWeightLimit
-            // 
-            this.txtWeightLimit.Location = new System.Drawing.Point(29, 72);
-            this.txtWeightLimit.Name = "txtWeightLimit";
-            this.txtWeightLimit.Size = new System.Drawing.Size(65, 20);
-            this.txtWeightLimit.TabIndex = 8;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.txtTestingOutput);
@@ -379,14 +325,20 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Testing Area";
             // 
-            // label5
+            // txtTestingOutput
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(42, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Output";
+            this.txtTestingOutput.Location = new System.Drawing.Point(136, 53);
+            this.txtTestingOutput.Multiline = true;
+            this.txtTestingOutput.Name = "txtTestingOutput";
+            this.txtTestingOutput.Size = new System.Drawing.Size(39, 20);
+            this.txtTestingOutput.TabIndex = 12;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(30, 53);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(100, 20);
+            this.progressBar1.TabIndex = 11;
             // 
             // btnTesting
             // 
@@ -398,20 +350,68 @@
             this.btnTesting.UseVisualStyleBackColor = true;
             this.btnTesting.Click += new System.EventHandler(this.btnTesting_Click);
             // 
-            // progressBar1
+            // label5
             // 
-            this.progressBar1.Location = new System.Drawing.Point(30, 53);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(100, 20);
-            this.progressBar1.TabIndex = 11;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(42, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(39, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Output";
             // 
-            // txtTestingOutput
+            // txtOutput
             // 
-            this.txtTestingOutput.Location = new System.Drawing.Point(136, 53);
-            this.txtTestingOutput.Multiline = true;
-            this.txtTestingOutput.Name = "txtTestingOutput";
-            this.txtTestingOutput.Size = new System.Drawing.Size(39, 20);
-            this.txtTestingOutput.TabIndex = 12;
+            this.txtOutput.Location = new System.Drawing.Point(26, 111);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(77, 25);
+            this.txtOutput.TabIndex = 1;
+            this.txtOutput.WordWrap = false;
+            // 
+            // txtWeightLimit
+            // 
+            this.txtWeightLimit.Location = new System.Drawing.Point(29, 72);
+            this.txtWeightLimit.Name = "txtWeightLimit";
+            this.txtWeightLimit.Size = new System.Drawing.Size(65, 20);
+            this.txtWeightLimit.TabIndex = 8;
+            // 
+            // btnRecieve
+            // 
+            this.btnRecieve.Location = new System.Drawing.Point(139, 29);
+            this.btnRecieve.Name = "btnRecieve";
+            this.btnRecieve.Size = new System.Drawing.Size(75, 25);
+            this.btnRecieve.TabIndex = 3;
+            this.btnRecieve.Text = "Recieve";
+            this.btnRecieve.UseVisualStyleBackColor = true;
+            this.btnRecieve.Click += new System.EventHandler(this.btnRecieve_Click_1);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(26, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Weight Limit";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Select Response";
+            // 
+            // cboRecieve
+            // 
+            this.cboRecieve.FormattingEnabled = true;
+            this.cboRecieve.Items.AddRange(new object[] {
+            "Show Weight"});
+            this.cboRecieve.Location = new System.Drawing.Point(18, 32);
+            this.cboRecieve.Name = "cboRecieve";
+            this.cboRecieve.Size = new System.Drawing.Size(85, 21);
+            this.cboRecieve.TabIndex = 2;
             // 
             // CommPorts
             // 
@@ -425,6 +425,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CommPorts";
             this.Text = "CommPorts - Alpha v.1";
+            this.Load += new System.EventHandler(this.CommPorts_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();

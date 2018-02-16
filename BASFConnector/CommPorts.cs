@@ -21,7 +21,7 @@ namespace BASFConnector
             getAvaliablePorts();
             txtOutput.Enabled = false;
             btnRecieve.Enabled = false;
-            btnClosePort.Enabled = false;
+            btnClosePort.Enabled = true;
             btnTesting.Enabled = false;
             statusBar.Value = 0;
         }
@@ -263,6 +263,11 @@ namespace BASFConnector
             {
                 txtOutput.Text = "Please Input a weight limit";
             }
+
+        }
+
+        private void CommPorts_Load(object sender, EventArgs e)
+        {
 
         }
     }

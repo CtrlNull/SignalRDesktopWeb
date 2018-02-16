@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO.Ports;
 using Microsoft.AspNet.SignalR;
+using System.Text.RegularExpressions;
 
 namespace BASFConnector
 {
@@ -20,14 +21,107 @@ namespace BASFConnector
         public Main()
         {
             InitializeComponent();
+
+            // Disabled Menu Items
+            viewLogsToolStripMenuItem.Enabled = false;
+            sendLogsToolStripMenuItem.Enabled = false;
+            contactUsToolStripMenuItem.Enabled = false;
+            mainToolStripMenuItem.Enabled = false;
+
+            openPort(); // Open Port and check on run
         }
-        /// --- Btn's --- //
+        ///============== V Processes V ==============//
+        public void DetermindLength(string message)
+        {
+            Console.WriteLine(message);
+        }
+        // Checks and opens port
+        void openPort()
+        {
+            if (!serialPort1.IsOpen)
+            {
+                serialPort1.PortName = "COM5"; // Fixed COM port *
+                serialPort1.BaudRate = 9600; // Important to set
+                serialPort1.Parity = Parity.None; // Important to set
+                serialPort1.Open();
+                txtLiveCOM.Text = "COM5 is Connected";
+            }
+            else
+            {
+                closePort();
+                openPort();
+                Console.WriteLine("Serial Port is already open");
+            }
+        }
+        // Checks port and closes
+        void closePort()
+        {
+            if (serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                serialPort1.Dispose();
+            }
+        }
+        // Run Scale data
+        void scaleData()
+        {
+            bool portOpen = true;
+            double scaleDataConverted;
+            string hubDesiredAmount = "20.0";
+            double desiredAmount = 100.00;
+
+
+            if (hubDesiredAmount != "")
+            {
+                if (serialPort1.IsOpen)
+                {
+                    portOpen = true;
+                }
+                // Loop until the scale reaches user's desired amount
+                while (portOpen == true)
+                {
+                    string scaleOutput = serialPort1.ReadLine(); // needed to read port info
+                    scaleOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's SS
+                    txtLiveScale.Text = scaleOutput;
+                    scaleDataConverted = Convert.ToDouble(scaleOutput);
+
+                    // This will check if the user's amount is reached and logs it to the screen
+                    if (scaleDataConverted == desiredAmount || scaleDataConverted >= desiredAmount)
+                    {
+                        // Close port, set var to exit loop
+                        closePort();
+                        portOpen = false; // Set the loop to stop
+                        txtLiveScale.Text = Convert.ToString(scaleDataConverted); // Output amount used
+                    }
+                }
+            }
+            else
+            {
+                txtLiveCOM.Text = "There is no incoming weight";
+            }
+        }
+        ///===================== V Buttons V =======================//
         // Restart Btn //
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
-        // Connect to Server Btn //
+
+        // Serial Port Menu item
+        private void smsSerialPort_Click(object sender, EventArgs e)
+        {
+            CommPorts obj = new CommPorts();
+            obj.Show();
+            this.Hide();
+        }
+        // Scale Output
+        private void btnServerTesting_Click(object sender, EventArgs e)
+        {
+            scaleData(); // Connects to scale
+        }
+
+        ///================== V Server Connection V ===============//
+
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
         {
@@ -57,42 +151,6 @@ namespace BASFConnector
                 lblError2.Text = "Connection Error";
             }
         }
-        /////// V { Processes } V ///////
-        public void DetermindLength(string message)
-        {
-            Console.WriteLine(message);
-        }
-
-
-        /////// { Menu List below Items } ///////
-        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            mainToolStripMenuItem.Enabled = false;
-        }
-
-        // Serial Port Menu item
-        private void smsSerialPort_Click(object sender, EventArgs e)
-        {
-            CommPorts obj = new CommPorts();
-            obj.Show();
-            this.Hide();
-        }
-        // View Logs
-        private void viewLogsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            viewLogsToolStripMenuItem.Enabled = false;
-        }
-        // Send Logs
-        private void sendLogsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            sendLogsToolStripMenuItem.Enabled = false;
-        }
-        // Contact us
-        private void contactUsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            contactUsToolStripMenuItem.Enabled = false;
-        }
-
 
     }
 }
