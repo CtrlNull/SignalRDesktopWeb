@@ -79,6 +79,7 @@ namespace BASFConnector
                     // This will check if the user's amount is reached and logs it to the screen
                     if (scaleDataConverted == desiredAmount || scaleDataConverted >= desiredAmount)
                     {
+                        // Txt to tell user ammount is reached. *Change from static*
                         lblMaxAmount.Text = "Required Ammount Reached. Click Restart...";
                         txtLiveCOM.Text = "COM5 is disconnected";
                         // Close port, set var to exit loop
@@ -140,7 +141,6 @@ namespace BASFConnector
                 {
                     _hub.Invoke("DetermineLength", line).Wait();
                     _hub.Invoke("ConnectionHub", "test");
-
                     _hub.On("ReceiveLength", x => Console.WriteLine(x));
                 }
             }
