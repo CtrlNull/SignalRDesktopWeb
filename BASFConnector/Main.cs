@@ -117,6 +117,13 @@ namespace BASFConnector
         // Scale Output
         private void btnServerTesting_Click(object sender, EventArgs e)
         {
+
+            if (serialPort1.ReadLine() == "")
+            {
+                closePort();
+                openPort();
+            }
+
             scaleData(); // Connects to scale
         }
 
