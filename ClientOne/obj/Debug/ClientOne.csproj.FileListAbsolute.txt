@@ -1,0 +1,17 @@
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\ClientOne.dll.config
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\ClientOne.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\ClientOne.pdb
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Newtonsoft.Json.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Net.Http.Formatting.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Web.Http.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Web.Http.WebHost.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Newtonsoft.Json.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Net.Http.Formatting.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Web.Http.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\System.Web.Http.WebHost.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.csprojResolveAssemblyReference.cache
+C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.csproj.CoreCompileInputs.cache
+C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.pdb
