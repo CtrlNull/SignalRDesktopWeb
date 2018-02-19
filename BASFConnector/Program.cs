@@ -23,5 +23,9 @@ namespace BASFConnector
         {
             
         }
+        //public void BroadcastData(int a, string b, double c)
+        //{
+        //    // Do something with Clients or whatever here
+        //}
     }
 }
