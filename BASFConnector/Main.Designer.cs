@@ -48,6 +48,7 @@
             this.txtLiveScale = new System.Windows.Forms.TextBox();
             this.btnServerTesting = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.lblMaxAmount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -169,6 +170,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblMaxAmount);
             this.groupBox1.Controls.Add(this.txtLiveCOM);
             this.groupBox1.Controls.Add(this.txtLiveScale);
             this.groupBox1.Controls.Add(this.btnServerTesting);
@@ -183,7 +185,7 @@
             // 
             this.txtLiveCOM.Location = new System.Drawing.Point(93, 19);
             this.txtLiveCOM.Name = "txtLiveCOM";
-            this.txtLiveCOM.Size = new System.Drawing.Size(112, 20);
+            this.txtLiveCOM.Size = new System.Drawing.Size(132, 20);
             this.txtLiveCOM.TabIndex = 2;
             // 
             // txtLiveScale
@@ -203,6 +205,15 @@
             this.btnServerTesting.Text = "Scale Output";
             this.btnServerTesting.UseVisualStyleBackColor = true;
             this.btnServerTesting.Click += new System.EventHandler(this.btnServerTesting_Click);
+            // 
+            // lblMaxAmount
+            // 
+            this.lblMaxAmount.AutoSize = true;
+            this.lblMaxAmount.ForeColor = System.Drawing.Color.Red;
+            this.lblMaxAmount.Location = new System.Drawing.Point(60, 82);
+            this.lblMaxAmount.Name = "lblMaxAmount";
+            this.lblMaxAmount.Size = new System.Drawing.Size(0, 13);
+            this.lblMaxAmount.TabIndex = 3;
             // 
             // Main
             // 
@@ -249,6 +260,7 @@
         private System.Windows.Forms.TextBox txtLiveScale;
         private System.Windows.Forms.Button btnServerTesting;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.Label lblMaxAmount;
     }
 }
 

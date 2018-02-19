@@ -1,19 +1,10 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.IO.Ports;
-using Microsoft.AspNet.SignalR;
 using System.Text.RegularExpressions;
-
+using Microsoft.AspNet.SignalR;
 namespace BASFConnector
 {
     public partial class Main : Form
@@ -88,6 +79,8 @@ namespace BASFConnector
                     // This will check if the user's amount is reached and logs it to the screen
                     if (scaleDataConverted == desiredAmount || scaleDataConverted >= desiredAmount)
                     {
+                        lblMaxAmount.Text = "Required Ammount Reached. Click Restart...";
+                        txtLiveCOM.Text = "COM5 is disconnected";
                         // Close port, set var to exit loop
                         closePort();
                         portOpen = false; // Set the loop to stop
