@@ -117,7 +117,7 @@ namespace BASFConnector
         // Scale Output
         private void btnServerTesting_Click(object sender, EventArgs e)
         {
-
+            // This is for original bug which would throw an error for scale input = ""
             if (serialPort1.ReadLine() == "")
             {
                 closePort();
