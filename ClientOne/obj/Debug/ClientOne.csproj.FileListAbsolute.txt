@@ -15,3 +15,15 @@ C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.csprojResolveAs
 C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.csproj.CoreCompileInputs.cache
 C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.dll
 C:\Users\rapha\repos\BASFConnector\ClientOne\obj\Debug\ClientOne.pdb
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.Security.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Owin.dll
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Owin.Security.xml
+C:\Users\rapha\repos\BASFConnector\ClientOne\bin\Microsoft.Web.Infrastructure.dll

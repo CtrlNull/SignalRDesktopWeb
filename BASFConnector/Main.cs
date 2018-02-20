@@ -139,27 +139,32 @@ namespace BASFConnector
             IHubProxy _hub;
             try
             {
-                string url = @"http://localhost:8080/";
+                string url = @"http://localhost:50781/";
                 var connection = new HubConnection(url);
                 _hub = connection.CreateHubProxy("ConnectorHub");
                 connection.Start().Wait();
-                lblError2.Text = null;
-                lblError.Text = "SignalR Server Connected";
-                // ??? -- research and add a comment
+                txtSignalRError.Text = null;
+                txtSignalRError.Text = "SignalR Server Connected";
+                // ??? --research and add a comment
                 string line = null;
                 while ((line = System.Console.ReadLine()) != null)
                 {
                     _hub.Invoke("DetermineLength", line).Wait();
                     _hub.Invoke("ConnectionHub", "test");
-                    _hub.On("ReceiveLength", x => Console.WriteLine(x));
+                    _hub.On("ReceiveLength", x => txtSignalR.Text = x);
                 }
             }
             catch // Spits Error symbols on the form
             {
-                lblError.Text = null;
-                lblError2.ForeColor = Color.Red;
-                lblError2.Text = "Connection Error";
+                txtSignalRError.Text = null;
+                txtSignalRError.ForeColor = Color.Red;
+                txtSignalRError.Text = "Connection Error";
             }
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

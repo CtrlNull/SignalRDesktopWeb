@@ -49,13 +49,17 @@
             this.txtLiveScale = new System.Windows.Forms.TextBox();
             this.btnServerTesting = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSignalR = new System.Windows.Forms.TextBox();
+            this.txtSignalRError = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnRestart
             // 
-            this.btnRestart.Location = new System.Drawing.Point(198, 61);
+            this.btnRestart.Location = new System.Drawing.Point(253, 340);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(75, 23);
             this.btnRestart.TabIndex = 0;
@@ -65,7 +69,7 @@
             // 
             // btnConnect
             // 
-            this.btnConnect.Location = new System.Drawing.Point(100, 61);
+            this.btnConnect.Location = new System.Drawing.Point(39, 16);
             this.btnConnect.Name = "btnConnect";
             this.btnConnect.Size = new System.Drawing.Size(75, 23);
             this.btnConnect.TabIndex = 1;
@@ -81,7 +85,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(409, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(357, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -162,7 +166,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 246);
+            this.label1.Location = new System.Drawing.Point(12, 368);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 12;
@@ -174,7 +178,7 @@
             this.groupBox1.Controls.Add(this.txtLiveCOM);
             this.groupBox1.Controls.Add(this.txtLiveScale);
             this.groupBox1.Controls.Add(this.btnServerTesting);
-            this.groupBox1.Location = new System.Drawing.Point(37, 105);
+            this.groupBox1.Location = new System.Drawing.Point(15, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(313, 113);
             this.groupBox1.TabIndex = 13;
@@ -215,25 +219,56 @@
             this.btnServerTesting.UseVisualStyleBackColor = true;
             this.btnServerTesting.Click += new System.EventHandler(this.btnServerTesting_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtSignalRError);
+            this.groupBox2.Controls.Add(this.txtSignalR);
+            this.groupBox2.Controls.Add(this.btnConnect);
+            this.groupBox2.Location = new System.Drawing.Point(15, 168);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(313, 153);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "SignalR";
+            // 
+            // txtSignalR
+            // 
+            this.txtSignalR.Location = new System.Drawing.Point(39, 50);
+            this.txtSignalR.Multiline = true;
+            this.txtSignalR.Name = "txtSignalR";
+            this.txtSignalR.Size = new System.Drawing.Size(258, 87);
+            this.txtSignalR.TabIndex = 0;
+            // 
+            // txtSignalRError
+            // 
+            this.txtSignalRError.Location = new System.Drawing.Point(125, 16);
+            this.txtSignalRError.Multiline = true;
+            this.txtSignalRError.Name = "txtSignalRError";
+            this.txtSignalRError.Size = new System.Drawing.Size(172, 23);
+            this.txtSignalRError.TabIndex = 2;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 275);
+            this.ClientSize = new System.Drawing.Size(357, 386);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblError2);
             this.Controls.Add(this.lblError);
-            this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "BASF-Connector";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,6 +296,9 @@
         private System.Windows.Forms.Button btnServerTesting;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.Label lblMaxAmount;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtSignalR;
+        private System.Windows.Forms.TextBox txtSignalRError;
     }
 }
 
