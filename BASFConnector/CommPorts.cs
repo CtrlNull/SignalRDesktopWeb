@@ -183,6 +183,15 @@ namespace BASFConnector
             string screenOutput = ""; // Init scale output
             double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
 
+            // Process that will grab scale data and convert it
+            void grabScaleData()
+            {
+                string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+                txtOutput.Text = screenOutput;
+                scaleIntConverted = Convert.ToDouble(screenOutput);
+            }
+
             if (txtWeightLimit.Text != "")
             {
                 // Local Var's
@@ -194,14 +203,19 @@ namespace BASFConnector
                 {
                     portOpen = true;
                 }
-
                 // Loops until the scale reaches user's desired amount
                 while (portOpen == true)
                 {
-                    string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
-                    screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
-                    txtOutput.Text = screenOutput;
-                    scaleIntConverted = Convert.ToDouble(screenOutput);
+                    try
+                    {
+                        grabScaleData();
+                    }
+                    catch
+                    {
+                        closePort();
+                        openPort();
+                        grabScaleData();
+                    }
 
                     // This will check if the user's ammout is reached and logs it to the screen
                     if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
@@ -218,63 +232,10 @@ namespace BASFConnector
             }
             openPort();
         }
-        ///============== V Testing V ==============//
-        private void btnTesting_Click(object sender, EventArgs e)
-        {
-            // Local Var's
-            string screenOutput = ""; // Init scale output
-            double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
-
-            if (txtWeightLimit.Text != "")
-            {
-                // Local Var's
-                bool portOpen = true;
-                double desiredAmount = Convert.ToDouble(txtWeightLimit.Text); // Sets user input to a double
-
-                // Checks if port is open
-                if (serialPort1.IsOpen)
-                {
-                    portOpen = true;
-                }
-
-                // Loops until the scale reaches user's desired amount
-                while (portOpen == true)
-                {
-                    string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
-                    screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
-                    txtTestingOutput.Text = screenOutput;
-                    scaleIntConverted = Convert.ToDouble(screenOutput);
-
-                    // This will check if the user's ammout is reached and logs it to the screen
-                    if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
-                    {
-                        txtTestingOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
-
-
-                        // Close Port, set var to exit loop & turn button off
-                        serialPort1.Close();
-                        portOpen = false;
-                        btnTesting.Enabled = false;
-
-                    }
-                }
-            }
-            else
-            {
-                txtOutput.Text = "Please Input a weight limit";
-            }
-
-        }
-
-        private void CommPorts_Load(object sender, EventArgs e)
-        {
-
-        }
     }
     ///============== V Important Scale Info V =============//
     //serialPort1.WriteLine("T\r\n"); // sets amount to zero
-
-
+    ///============== V Testing V ==============//
     ///============== V Dump Code V ==============//
 }
 

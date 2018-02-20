@@ -30,6 +30,7 @@ namespace BASFConnector
             }
         }
         ///============== V Processes V ==============//
+        
         public void DetermindLength(string message)
         {
             Console.WriteLine(message);
@@ -102,20 +103,13 @@ namespace BASFConnector
             }
         }
         ///===================== V Buttons V =======================//
+        
         // Restart Btn //
         private void btnRestart_Click(object sender, EventArgs e)
         {
             Application.Restart();
         }
-
-        // Serial Port Menu item
-        private void smsSerialPort_Click(object sender, EventArgs e)
-        {
-            CommPorts obj = new CommPorts();
-            obj.Show();
-            this.Hide();
-        }
-        // Scale Output
+        // Scale Output //
         private void btnServerTesting_Click(object sender, EventArgs e)
         {
             // This is for original bug which would throw an error for scale input = ""
@@ -127,7 +121,16 @@ namespace BASFConnector
 
             scaleData(); // Connects to scale
         }
-
+        ///===================== V Menu Items V ====================//
+        
+        // Serial Port //
+        private void smsSerialPort_Click(object sender, EventArgs e)
+        {
+            closePort();
+            CommPorts obj = new CommPorts();
+            obj.Show();
+            this.Hide();
+        }
         ///================== V Server Connection V ===============//
 
         // Connects the SignalR Server(console app) to the WinForm App(this app) 

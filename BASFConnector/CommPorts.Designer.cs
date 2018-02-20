@@ -348,7 +348,6 @@
             this.btnTesting.TabIndex = 10;
             this.btnTesting.Text = "btnTesting";
             this.btnTesting.UseVisualStyleBackColor = true;
-            this.btnTesting.Click += new System.EventHandler(this.btnTesting_Click);
             // 
             // label5
             // 
@@ -425,7 +424,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CommPorts";
             this.Text = "CommPorts - Alpha v.1";
-            this.Load += new System.EventHandler(this.CommPorts_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();
