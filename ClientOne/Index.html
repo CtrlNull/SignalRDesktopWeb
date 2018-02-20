@@ -86,15 +86,17 @@
     <script src="main.js"></script>
 
     <script>
-        var ConnectorHubProxy = $.connection.hello
+        var proxy = $.connection.ConnectorHub
 
-        ConnectorHubProxy.client.helloClient = function (str) {
+        $.connection.hub.start().done(function () {
+            proxy.server.helloSignalR();
+        });
+
+
+        proxy.client.helloClient = function (str) {
             alert(str);
         }
 
-        $.connection.hub.start().done(function () {
-            ConnectorHubProxy.server.helloSignalR();
-        });
     </script>
 </body>
 
