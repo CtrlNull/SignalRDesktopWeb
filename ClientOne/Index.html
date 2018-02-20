@@ -75,7 +75,6 @@
             </div>
         </div>
     </div>
-
     <!-- CDN's -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -83,9 +82,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/signalr.js/2.2.2/jquery.signalR.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-signalr-hub/1.6.3/signalr-hub.min.js"></script>
-
     <!--- -->
     <script src="main.js"></script>
+
+    <script>
+        var ConnectorHubProxy = $.connection.hello
+
+        ConnectorHubProxy.client.helloClient = function (str) {
+            alert(str);
+        }
+
+        $.connection.hub.start().done(function () {
+            ConnectorHubProxy.server.helloSignalR();
+        });
+    </script>
 </body>
 
 </html>
