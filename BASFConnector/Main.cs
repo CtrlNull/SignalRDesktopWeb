@@ -19,7 +19,16 @@ namespace BASFConnector
             contactUsToolStripMenuItem.Enabled = false;
             mainToolStripMenuItem.Enabled = false;
 
-            openPort(); // Open Port and check on run
+            // Try/Catch to check if the device is connected
+            try
+            {
+                openPort();
+            }
+            catch
+            {
+                txtLiveCOM.Text = "COM5 isnt Connected, Restart";
+            }
+
         }
         ///============== V Processes V ==============//
         public void DetermindLength(string message)
@@ -152,5 +161,9 @@ namespace BASFConnector
             }
         }
 
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

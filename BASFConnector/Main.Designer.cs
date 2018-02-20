@@ -44,11 +44,11 @@
             this.lblError2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblMaxAmount = new System.Windows.Forms.Label();
             this.txtLiveCOM = new System.Windows.Forms.TextBox();
             this.txtLiveScale = new System.Windows.Forms.TextBox();
             this.btnServerTesting = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.lblMaxAmount = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +181,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Testing";
             // 
+            // lblMaxAmount
+            // 
+            this.lblMaxAmount.AutoSize = true;
+            this.lblMaxAmount.ForeColor = System.Drawing.Color.Red;
+            this.lblMaxAmount.Location = new System.Drawing.Point(60, 82);
+            this.lblMaxAmount.Name = "lblMaxAmount";
+            this.lblMaxAmount.Size = new System.Drawing.Size(0, 13);
+            this.lblMaxAmount.TabIndex = 3;
+            // 
             // txtLiveCOM
             // 
             this.txtLiveCOM.Location = new System.Drawing.Point(93, 19);
@@ -206,15 +215,6 @@
             this.btnServerTesting.UseVisualStyleBackColor = true;
             this.btnServerTesting.Click += new System.EventHandler(this.btnServerTesting_Click);
             // 
-            // lblMaxAmount
-            // 
-            this.lblMaxAmount.AutoSize = true;
-            this.lblMaxAmount.ForeColor = System.Drawing.Color.Red;
-            this.lblMaxAmount.Location = new System.Drawing.Point(60, 82);
-            this.lblMaxAmount.Name = "lblMaxAmount";
-            this.lblMaxAmount.Size = new System.Drawing.Size(0, 13);
-            this.lblMaxAmount.TabIndex = 3;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +230,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
             this.Text = "BASF-Connector";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
