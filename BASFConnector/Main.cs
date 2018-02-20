@@ -28,7 +28,6 @@ namespace BASFConnector
             {
                 txtLiveCOM.Text = "COM5 isnt Connected, Restart";
             }
-
         }
         ///============== V Processes V ==============//
         public void DetermindLength(string message)
@@ -69,7 +68,6 @@ namespace BASFConnector
             double scaleDataConverted;
             string hubDesiredAmount = "20.0";
             double desiredAmount = 100.00;
-
 
             if (hubDesiredAmount != "")
             {
@@ -159,11 +157,6 @@ namespace BASFConnector
                 lblError2.ForeColor = Color.Red;
                 lblError2.Text = "Connection Error";
             }
-        }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
