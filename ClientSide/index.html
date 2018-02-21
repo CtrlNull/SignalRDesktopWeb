@@ -65,16 +65,28 @@
                     </p>
                 </div>
             </div>
-            <div class="container">
+            <div class="container col-lg-8" id="signalRBox">
+                <!-- Server Status-->
                 <h3>SignalR Connection Status</h3>
-                <div>
+                <div class="row">
                     <!-- SignalR Status Data -->
-                    <p>Status: <span id="onlineOffline"></span></p>
-                    <input type="text" id="message" placeholder="message" />
-                    <button class="btn btn-danger" id="btnSend">Send</button>
-                </div>
-                <div>
-                    <div id="incomingData"></div>
+                    <div id="signalRInputs" class="col-md-3">
+                        <p>Status: <span id="onlineOffline"></span></p>
+                        <input type="text" id="message" placeholder="message" />
+                        <button class="btn btn-danger" id="btnSend">Send</button>
+                    </div>
+                    <!-- Scale Commands -->
+                    <div class="col-md-3">
+                        <p>Select Command</p>
+                        <select ng-model="c.scaleCommand">
+                            <option class="inboundScale">Live Weight</option>
+                            <option class="Reset Tare">Reset Tare</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Server Data</h4>
+                        <div id="incomingData"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -108,7 +120,7 @@
             $('#onlineOffline').append("Connected");
             $('#onlineOffline').css('color', 'green');
         }
-        catch(err) {
+        catch (err) {
             console.log("SignalR hub is not running");
             $('#onlineOffline').append("Not Connected");
             $('#onlineOffline').css('color', 'red');
