@@ -139,7 +139,7 @@ namespace BASFConnector
             IHubProxy _hub;
             try
             {
-                string url = @"http://localhost:50781/";
+                string url = @"http://localhost:62035/";
                 var connection = new HubConnection(url);
                 _hub = connection.CreateHubProxy("ConnectorHub");
                 connection.Start().Wait();
