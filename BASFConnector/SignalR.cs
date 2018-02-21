@@ -1,24 +1,27 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO.Ports;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.AspNet.SignalR;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BASFConnector
 {
-    public partial class Main : Form
+    public partial class SignalR : Form
     {
-        public Main()
+        public SignalR()
         {
             InitializeComponent();
-
-            // Disabled Menu Items
             viewLogsToolStripMenuItem.Enabled = false;
             sendLogsToolStripMenuItem.Enabled = false;
             contactUsToolStripMenuItem.Enabled = false;
-            mainToolStripMenuItem.Enabled = false;
+            signalRToolStripMenuItem.Enabled = false;
 
             // Try/Catch to check if the device is connected
             try
@@ -30,12 +33,23 @@ namespace BASFConnector
                 txtLiveCOM.Text = "COM5 isnt Connected, Restart";
             }
         }
-        ///============== V Processes V ==============//
-        
-        public void DetermindLength(string message)
+        ///===================== V Menu Items V ====================//
+        // Serial Ports
+        private void smsSerialPort_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(message);
+            CommPorts obj = new CommPorts();
+            obj.Show();
+            this.Hide();
         }
+        // Main Menu
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Main obj = new Main();
+            obj.Show();
+            this.Hide();
+        }
+        ///===================== V Processes V ====================//
+        
         // Checks and opens port
         void openPort()
         {
@@ -54,7 +68,8 @@ namespace BASFConnector
                 Console.WriteLine("Serial Port is already open");
             }
         }
-        // Checks port and closes
+
+        // Close Port
         void closePort()
         {
             if (serialPort1.IsOpen)
@@ -63,6 +78,7 @@ namespace BASFConnector
                 serialPort1.Dispose();
             }
         }
+
         // Run Scale data
         void scaleData()
         {
@@ -103,15 +119,11 @@ namespace BASFConnector
                 txtLiveCOM.Text = "There is no incoming weight";
             }
         }
-        ///===================== V Buttons V =======================//
-        
-        // Restart Btn //
-        private void btnRestart_Click(object sender, EventArgs e)
-        {
-            Application.Restart();
-        }
+
+        ///===================== V Buttons V ====================//
+       
         // Scale Output //
-        private void btnServerTesting_Click(object sender, EventArgs e)
+        private void btnServerTesting_Click_1(object sender, EventArgs e)
         {
             // This is for original bug which would throw an error for scale input = ""
             if (serialPort1.ReadLine() == "")
@@ -121,24 +133,36 @@ namespace BASFConnector
             }
 
             scaleData(); // Connects to scale
+
         }
-        ///===================== V Menu Items V ====================//
-        
-        // Serial Port //
-        private void smsSerialPort_Click(object sender, EventArgs e)
+
+        // Connects the SignalR Server(console app) to the WinForm App(this app) 
+        private void btnConnect_Click(object sender, EventArgs e)
         {
-            closePort();
-            CommPorts obj = new CommPorts();
-            obj.Show();
-            this.Hide();
-        }
-        // SignalR //
-        private void signalRToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            closePort();
-            SignalR obj = new SignalR();
-            obj.Show();
-            this.Hide();
+            IHubProxy _hub;
+            try
+            {
+                string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
+                var connection = new HubConnection(url);
+                _hub = connection.CreateHubProxy("ConnectorHub");
+                connection.Start().Wait();
+                txtSignalRError.Text = null;
+                txtSignalRError.Text = "SignalR Hub is Connected";
+                // ??? --research and add a comment
+                string line = null;
+                while ((line = System.Console.ReadLine()) != null)
+                {
+                    _hub.Invoke("DetermineLength", line).Wait();
+                    _hub.Invoke("ConnectionHub", "test");
+                                
+                }
+            }
+            catch // Spits Error symbols on the form
+            {
+                txtSignalRError.Text = null;
+                txtSignalRError.ForeColor = Color.Red;
+                txtSignalRError.Text = "Connection Error";
+            }
         }
     }
 }

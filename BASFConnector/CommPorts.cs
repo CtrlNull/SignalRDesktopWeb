@@ -23,6 +23,7 @@ namespace BASFConnector
             btnRecieve.Enabled = false;
             btnClosePort.Enabled = true;
             btnTesting.Enabled = false;
+            serialPortToolStripMenuItem.Enabled = false;
             statusBar.Value = 0;
         }
         ///============== V Processes V ==============//
@@ -62,12 +63,6 @@ namespace BASFConnector
             obj.Show();
             this.Hide();
         }
-        // Serial Port Option
-        private void serialPortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            serialPortToolStripMenuItem.Enabled = false;
-        }
-
         ///============== V Select Port Box V ==============//
         // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
@@ -231,6 +226,11 @@ namespace BASFConnector
                 txtOutput.Text = "Please Input a weight limit";
             }
             openPort();
+        }
+
+        private void CommPorts_Load(object sender, EventArgs e)
+        {
+
         }
     }
     ///============== V Important Scale Info V =============//

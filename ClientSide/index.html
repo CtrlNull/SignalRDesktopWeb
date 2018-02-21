@@ -70,6 +70,11 @@
                 <div>
                     <!-- SignalR Status Data -->
                     <p>Status: <span id="onlineOffline"></span></p>
+                    <input type="text" id="message" placeholder="message" />
+                    <button class="btn btn-danger" id="btnSend">Send</button>
+                </div>
+                <div>
+                    <div id="incomingData"></div>
                 </div>
             </div>
         </div>
@@ -79,22 +84,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <!--- -->
+    <!-- Local -->
     <script src="Scripts/jquery-1.6.4.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="Scripts/main.js"></script>
     <script src="signalr/hubs"></script>
+    <!--       -->
 
     <script>
-        var chat = $.connection.ConnectorHub;
-
-        chat.client.helloClient = function (str) {
-            alert(str);
+        try {
+            var chat = $.connection.ConnectorHub;
+            // Action to recieve messages
+            chat.client.recieveMessage = function (username, message) {
+                $('#incomingData').append($('<p />').text("Hub" + " : " + message));
+            }
+            // Init Connection
+            $.connection.hub.start().done(function () {
+                // On button click sends a message
+                $('#btnSend').click(function () {
+                    chat.server.sendMessage("ClientSide", $('#message').val());
+                })
+            });
+            $('#onlineOffline').append("Connected");
+            $('#onlineOffline').css('color', 'green');
         }
-
-        $.connection.hub.start().done(function () {
-            chat.server.helloSignalR();
-        });
+        catch(err) {
+            console.log("SignalR hub is not running");
+            $('#onlineOffline').append("Not Connected");
+            $('#onlineOffline').css('color', 'red');
+        }
     </script>
 </body>
 

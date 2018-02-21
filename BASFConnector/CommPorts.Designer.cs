@@ -132,7 +132,6 @@
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
             this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
-            this.serialPortToolStripMenuItem.Click += new System.EventHandler(this.serialPortToolStripMenuItem_Click);
             // 
             // selectPortToolStripMenuItem
             // 
@@ -424,6 +423,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "CommPorts";
             this.Text = "CommPorts - Alpha v.1";
+            this.Load += new System.EventHandler(this.CommPorts_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).EndInit();
