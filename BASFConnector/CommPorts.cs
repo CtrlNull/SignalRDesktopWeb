@@ -8,46 +8,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace BASFConnector
 {
     public partial class CommPorts : Form
     {
+        ///~~~ Main ~~~///
         public CommPorts()
         {
             InitializeComponent();
             getAvaliablePorts();
-            txtInput.Enabled = false;
             txtOutput.Enabled = false;
-            btnSend.Enabled = false;
             btnRecieve.Enabled = false;
-            btnClosePort.Enabled = false;
+            btnClosePort.Enabled = true;
+            btnTesting.Enabled = false;
+            serialPortToolStripMenuItem.Enabled = false;
             statusBar.Value = 0;
         }
-        // ============== {{ Processes }} ================= //
+        ///============== V Processes V ==============//
         void getAvaliablePorts()
         {
             String[] ports = SerialPort.GetPortNames();
             cboPorts_Comm.Items.AddRange(ports);
         }
-        // ((((( Open / Close Port ))))) //
+        ///====== V Open/Close PORTS V ======//
         // Open
         void openPort()
         {
+            if(!serialPort1.IsOpen)
+            {
                 serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
                 serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
                 serialPort1.Parity = Parity.None; // Important* set Parity from scale
                 serialPort1.Open();
+            }
+
         }
         // close
         void closePort()
         {
-            serialPort1.Close();
-            serialPort1.Dispose(); // clears
+            if(serialPort1.IsOpen)
+            {
+                serialPort1.Close();
+                serialPort1.Dispose(); // clears
+            }
         }
-        // =========================================== //
 
-        //////// {  Menu Items } ////////
+        ///============== V Menu Items V ==============//
         // Main
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -55,15 +63,7 @@ namespace BASFConnector
             obj.Show();
             this.Hide();
         }
-        // Serial Port Option
-        private void serialPortToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            serialPortToolStripMenuItem.Enabled = false;
-        }
-        //////////////////////////////////
-
-        // ===== ~~~ [[ Select Port Box ]] ~~~ ===== //
-
+        ///============== V Select Port Box V ==============//
         // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
         {
@@ -91,7 +91,7 @@ namespace BASFConnector
             }
         }
 
-        // [[ Refresh Button ]] //
+        ///====== V Referesh Button V ======//
         // This will run the same task as when window opens
         // In case user does not have device connected when app starts
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -101,9 +101,9 @@ namespace BASFConnector
             cboPorts_Comm.Items.Clear(); // Clears Ports Drop down
             getAvaliablePorts(); // checks for open ports and sends to combobox
         }
+        ///========= ^ Select Port Box ^ ===========///
 
-        // ===== ~~ [[ Testing Box ]] ~~ ===== //
-        // == Open / Close Ports == //
+        ///============== V Open/Close Ports V ==============//
 
         // Open
         private void btnOpenPort_Click(object sender, EventArgs e)
@@ -115,7 +115,6 @@ namespace BASFConnector
                 if (cboPorts_Comm.Text == "" || cboPorts_Comm.Text == " ")
                 {
                     // Grey's out input/output boxes
-                    txtInput.Enabled = false;
                     txtOutput.Enabled = false;
                     txtOutput.Text = "Please select port settings!"; // Message
                 }
@@ -128,11 +127,10 @@ namespace BASFConnector
                         statusBar.Value = 100; // status bar
 
                         // Enables input/output boxes
-                        txtInput.Enabled = true;
                         txtOutput.Enabled = true;
-                        btnSend.Enabled = true;
                         btnRecieve.Enabled = true;
                         btnClosePort.Enabled = true;
+                        btnTesting.Enabled = true;
                         txtOutput.Text = cboPorts_Comm.Text + " " + "Following...";
                     }
                     catch
@@ -153,7 +151,7 @@ namespace BASFConnector
         private void btnClosePort_Click(object sender, EventArgs e)
         {
             closePort();
-            
+
             if (serialPort1.IsOpen)
             {
                 txtOutput.Text = "Port is still open";
@@ -161,42 +159,83 @@ namespace BASFConnector
             else
             {
                 // Grey out options
-                txtInput.Enabled = false;
                 txtOutput.Enabled = false;
                 btnClosePort.Enabled = false;
-                btnSend.Enabled = false;
                 btnRecieve.Enabled = false;
                 statusBar.Value = 0; // Sets Status Bar
             }
         }
 
-        ///========= ^ Open/Close Buttons ^ ===========///
+        ///========= ^ Open/Close Ports Buttons ^ ===========///
 
-        // Input
-        private void btnSend_Click(object sender, EventArgs e)
+        ///============== V Scale Response Button V ==============//
+        
+        // btn Recieve
+        // Does the proccessing for the scale output data
+        private void btnRecieve_Click_1(object sender, EventArgs e)
         {
-            serialPort1.WriteLine(txtInput.Text);
-            txtInput.Text = "";
+            // Local Var's
+            string screenOutput = ""; // Init scale output
+            double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
 
-        }
-        // Output
-        private void btnRecieve_Click(object sender, EventArgs e)
-        {
-            if(cboRecieve.Text == "Show Weight")
+            // Process that will grab scale data and convert it
+            void grabScaleData()
             {
-                txtOutput.Text = "Show Weight";
-                txtOutput.Text = serialPort1.ReadTo("\n");
+                string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+                txtOutput.Text = screenOutput;
+                scaleIntConverted = Convert.ToDouble(screenOutput);
+            }
+
+            if (txtWeightLimit.Text != "")
+            {
+                // Local Var's
+                bool portOpen = true;
+                double desiredAmount = Convert.ToDouble(txtWeightLimit.Text); // Sets user input to a double
+
+                // Checks if port is open
+                if (serialPort1.IsOpen)
+                {
+                    portOpen = true;
+                }
+                // Loops until the scale reaches user's desired amount
+                while (portOpen == true)
+                {
+                    try
+                    {
+                        grabScaleData();
+                    }
+                    catch
+                    {
+                        closePort();
+                        openPort();
+                        grabScaleData();
+                    }
+
+                    // This will check if the user's ammout is reached and logs it to the screen
+                    if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
+                    {
+                        closePort(); // Closes connection to Scale
+                        portOpen = false; // Set to stop loop
+                        txtOutput.Text = Convert.ToString(scaleIntConverted); // Output amount used
+                    }
+                }
             }
             else
             {
-                txtOutput.Text = "null";
+                txtOutput.Text = "Please Input a weight limit";
             }
+            openPort();
         }
 
-        // --- Not in use
-        private void btnSendTemp_Click(object sender, EventArgs e)
+        private void CommPorts_Load(object sender, EventArgs e)
         {
 
         }
     }
+    ///============== V Important Scale Info V =============//
+    //serialPort1.WriteLine("T\r\n"); // sets amount to zero
+    ///============== V Testing V ==============//
+    ///============== V Dump Code V ==============//
 }
+
