@@ -78,7 +78,11 @@ namespace BASFConnector
                 serialPort1.Dispose();
             }
         }
-
+        // Write to txtBox SignalR
+        void writeTo(string x)
+        {
+            txtSignalRMessage.Text = x;
+        }
         // Run Scale data
         void scaleData()
         {
@@ -148,14 +152,17 @@ namespace BASFConnector
                 connection.Start().Wait();
                 txtSignalRError.Text = null;
                 txtSignalRError.Text = "SignalR Hub is Connected";
-                // ??? --research and add a comment
+
+                _hub.On("SendMessage", x => writeTo(x));
+
                 string line = null;
                 while ((line = System.Console.ReadLine()) != null)
                 {
-                    _hub.Invoke("DetermineLength", line).Wait();
-                    _hub.Invoke("ConnectionHub", "test");
-                                
+                    _hub.Invoke("SendMessage", line).Wait();
                 }
+
+                Console.Read();
+
             }
             catch // Spits Error symbols on the form
             {

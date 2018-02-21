@@ -10,9 +10,9 @@ namespace ClientSide.Hubs
     [HubName("ConnectorHub")]
     public class Hello : Hub
     {
-        public void SendMessage(string username, string message)
+        public void SendMessage(string message)
         {
-            Clients.All.recieveMessage(username, message);
+            Clients.All.recieveMessage(message);
         }
     }
 }
