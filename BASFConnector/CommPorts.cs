@@ -248,7 +248,6 @@ namespace BASFConnector
         {
             txtSignalRReturn.AppendText(x);
         }
-
         // Connects to SignalR Server
         void connectSignalR()
         {
@@ -287,7 +286,8 @@ namespace BASFConnector
         // For sending edited message to server
         private void btnSignalRMessage_Click(object sender, EventArgs e)
         {
-
+            connectSignalR();
+            _hub.Invoke("sendMessage", txtSignalRMessage.Text);
         }
     }
     ///============== V Important Scale Info V =============//

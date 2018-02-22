@@ -102,12 +102,6 @@ namespace BASFConnector
         {
             txtSignalR.AppendText(x);
         }
-        // Get Message from form
-        public string GetValues()
-        {
-            string value = "";
-            return value = txtSignalRMessage.Text;
-        }
         // Run Scale data
         void scaleData()
         {
