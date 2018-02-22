@@ -9,15 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Microsoft.AspNet.SignalR.Client;
+
 
 namespace BASFConnector
 {
     public partial class CommPorts : Form
     {
+        private HubConnection _connection;
+        private IHubProxy _hub;
+        private string y;
+
         ///~~~ Main ~~~///
         public CommPorts()
         {
             InitializeComponent();
+
+            // Button disabling
             getAvaliablePorts();
             txtOutput.Enabled = false;
             btnRecieve.Enabled = false;
@@ -25,6 +33,12 @@ namespace BASFConnector
             btnTesting.Enabled = false;
             serialPortToolStripMenuItem.Enabled = false;
             statusBar.Value = 0;
+
+            // SignalR initializing
+            string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
+            _connection = new HubConnection(url);
+            _hub = _connection.CreateHubProxy("ConnectorHub");
+
         }
         ///============== V Processes V ==============//
         void getAvaliablePorts()
@@ -54,7 +68,8 @@ namespace BASFConnector
                 serialPort1.Dispose(); // clears
             }
         }
-
+        ///=============== ^ Processes ^ ===============///
+        
         ///============== V Menu Items V ==============//
         // Main
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,7 +243,7 @@ namespace BASFConnector
             openPort();
         }
 
-        private void CommPorts_Load(object sender, EventArgs e)
+        private void btnSignalRConnect_Click(object sender, EventArgs e)
         {
 
         }

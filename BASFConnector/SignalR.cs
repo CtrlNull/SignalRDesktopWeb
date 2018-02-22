@@ -29,7 +29,7 @@ namespace BASFConnector
             contactUsToolStripMenuItem.Enabled = false;
             signalRToolStripMenuItem.Enabled = false;
 
-            //var uiCtx = SynchronizationContext.Current;
+            // SignalR initializing
             string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
             _connection = new HubConnection(url);
             _hub = _connection.CreateHubProxy("ConnectorHub");
@@ -179,8 +179,8 @@ namespace BASFConnector
             }
         }
 
-
-
+        ///==================== ^ Processes ^ ===================///
+        
         ///===================== V Buttons V ====================//
 
         // Scale Output //
