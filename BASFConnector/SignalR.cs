@@ -156,6 +156,9 @@ namespace BASFConnector
                 txtSignalRError.Text = "SignalR Hub is Connected";
                 try
                 {
+                    // Current message
+                    var toFront = txtSignalRMessage.Text;
+
                     // Solves Cross threading issue
                     var uiCtx = SynchronizationContext.Current;
                     _hub.On("recieveMessage", x =>
@@ -173,7 +176,6 @@ namespace BASFConnector
                 {
                     txtSignalR.Text = "new error";
                 }
-                var toFront = txtSignalRMessage.Text;
             }
             catch // Spits Error symbols on the form
             {
