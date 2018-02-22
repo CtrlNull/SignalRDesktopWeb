@@ -16,6 +16,11 @@ namespace BASFConnector
 {
     public partial class SignalR : Form
     {
+        private HubConnection _connection;
+        private IHubProxy _hub;
+        private string y;
+
+
         public SignalR()
         {
             InitializeComponent();
@@ -23,6 +28,12 @@ namespace BASFConnector
             sendLogsToolStripMenuItem.Enabled = false;
             contactUsToolStripMenuItem.Enabled = false;
             signalRToolStripMenuItem.Enabled = false;
+
+            //var uiCtx = SynchronizationContext.Current;
+            string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
+            _connection = new HubConnection(url);
+            _hub = _connection.CreateHubProxy("ConnectorHub");
+
 
             // Try/Catch to check if the device is connected
             try
@@ -32,6 +43,16 @@ namespace BASFConnector
             catch
             {
                 txtLiveCOM.Text = "COM5 isnt Connected, Restart";
+            }
+            try
+            {
+                connectSignalR();
+            }
+            catch
+            {
+                txtSignalRError.Text = null;
+                txtSignalRError.ForeColor = Color.Red;
+                txtSignalRError.Text = "Cannot Find SignalR Hub";
             }
         }
         ///===================== V Menu Items V ====================//
@@ -82,7 +103,7 @@ namespace BASFConnector
         // Write to txtBox SignalR
         void writeTo(string x)
         {
-            txtSignalR.Text = x;
+            txtSignalR.AppendText(x);
         }
         // Run Scale data
         void scaleData()
@@ -124,6 +145,35 @@ namespace BASFConnector
                 txtLiveCOM.Text = "There is no incoming weight";
             }
         }
+        void connectSignalR()
+        {
+            try
+            {
+                _connection.Start(); // Starts SignalR Connection
+                // Current message
+                var toFront = txtSignalRMessage.Text;
+
+                // Solves Cross threading issue
+                var uiCtx = SynchronizationContext.Current;
+                _hub.On("recieveMessage", x =>
+                {
+                    // You are no longer on the UI thread, so you have to post back to it
+                    uiCtx.Post(_ =>
+                    {
+                        // Put all code that touches the UI here
+                        writeTo(x);
+                    }, null);
+                });
+                txtSignalRError.Text = null;
+                txtSignalRError.Text = "SignalR Hub is Connected";
+            }
+            catch
+            {
+                txtSignalR.Text = "new error";
+            }
+        }
+
+
 
         ///===================== V Buttons V ====================//
 
@@ -144,46 +194,11 @@ namespace BASFConnector
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
         {
-            //var uiCtx = SynchronizationContext.Current;
-            IHubProxy _hub;
-            try
-            {
-                string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
-                var connection = new HubConnection(url);
-                _hub = connection.CreateHubProxy("ConnectorHub");
-                connection.Start().Wait();
-                txtSignalRError.Text = null;
-                txtSignalRError.Text = "SignalR Hub is Connected";
-                try
-                {
-                    // Current message
-                    var toFront = txtSignalRMessage.Text;
-
-                    // Solves Cross threading issue
-                    var uiCtx = SynchronizationContext.Current;
-                    _hub.On("recieveMessage", x =>
-                    {
-                        // You are no longer on the UI thread, so you have to post back to it
-                        uiCtx.Post(_ =>
-                        {
-                            // Put all code that touches the UI here
-                            writeTo(x);
-                        }, null);
-                    });
-
-                }
-                catch
-                {
-                    txtSignalR.Text = "new error";
-                }
-            }
-            catch // Spits Error symbols on the form
-            {
-                txtSignalRError.Text = null;
-                txtSignalRError.ForeColor = Color.Red;
-                txtSignalRError.Text = "Connection Error";
-            }
+            connectSignalR();
         }
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+        }
     }
+
 }
