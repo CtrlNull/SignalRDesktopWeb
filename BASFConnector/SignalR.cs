@@ -8,6 +8,7 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -49,7 +50,7 @@ namespace BASFConnector
             this.Hide();
         }
         ///===================== V Processes V ====================//
-        
+
         // Checks and opens port
         void openPort()
         {
@@ -81,7 +82,7 @@ namespace BASFConnector
         // Write to txtBox SignalR
         void writeTo(string x)
         {
-            txtSignalRMessage.Text = x;
+            txtSignalR.Text = x;
         }
         // Run Scale data
         void scaleData()
@@ -125,7 +126,7 @@ namespace BASFConnector
         }
 
         ///===================== V Buttons V ====================//
-       
+
         // Scale Output //
         private void btnServerTesting_Click_1(object sender, EventArgs e)
         {
@@ -143,6 +144,7 @@ namespace BASFConnector
         // Connects the SignalR Server(console app) to the WinForm App(this app) 
         private void btnConnect_Click(object sender, EventArgs e)
         {
+            //var uiCtx = SynchronizationContext.Current;
             IHubProxy _hub;
             try
             {
@@ -152,13 +154,26 @@ namespace BASFConnector
                 connection.Start().Wait();
                 txtSignalRError.Text = null;
                 txtSignalRError.Text = "SignalR Hub is Connected";
+                try
+                {
+                    // Solves Cross threading issue
+                    var uiCtx = SynchronizationContext.Current;
+                    _hub.On("recieveMessage", x =>
+                    {
+                        // You are no longer on the UI thread, so you have to post back to it
+                        uiCtx.Post(_ =>
+                        {
+                            // Put all code that touches the UI here
+                            writeTo(x);
+                        }, null);
+                    });
 
-                //_hub.On("SendMessage", x => writeTo(x));
-                _hub.On("SendMessage", x => txtSignalRMessage.AppendText(x));
-
-
-                Console.Read();
-
+                }
+                catch
+                {
+                    txtSignalR.Text = "new error";
+                }
+                var toFront = txtSignalRMessage.Text;
             }
             catch // Spits Error symbols on the form
             {
@@ -167,5 +182,6 @@ namespace BASFConnector
                 txtSignalRError.Text = "Connection Error";
             }
         }
+
     }
 }
