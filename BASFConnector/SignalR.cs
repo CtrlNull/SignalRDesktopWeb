@@ -105,6 +105,12 @@ namespace BASFConnector
         {
             txtSignalR.AppendText(x);
         }
+        // Get Message from form
+        public string GetValues()
+        {
+            string value = "";
+            return value = txtSignalRMessage.Text;
+        }
         // Run Scale data
         void scaleData()
         {
@@ -190,14 +196,10 @@ namespace BASFConnector
             scaleData(); // Connects to scale
 
         }
-
-        // Connects the SignalR Server(console app) to the WinForm App(this app) 
-        private void btnConnect_Click(object sender, EventArgs e)
+        private void btnSend_Click_1(object sender, EventArgs e)
         {
             connectSignalR();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
+            _hub.Invoke("sendMessage", txtSignalRMessage.Text);
         }
     }
 

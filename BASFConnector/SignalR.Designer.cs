@@ -33,10 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cboUser = new System.Windows.Forms.ComboBox();
             this.txtSignalRMessage = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSend = new System.Windows.Forms.Button();
             this.txtSignalRError = new System.Windows.Forms.TextBox();
             this.txtSignalR = new System.Windows.Forms.TextBox();
-            this.btnConnect = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblMaxAmount = new System.Windows.Forms.Label();
             this.txtLiveCOM = new System.Windows.Forms.TextBox();
@@ -65,10 +64,9 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.cboUser);
             this.groupBox2.Controls.Add(this.txtSignalRMessage);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnSend);
             this.groupBox2.Controls.Add(this.txtSignalRError);
             this.groupBox2.Controls.Add(this.txtSignalR);
-            this.groupBox2.Controls.Add(this.btnConnect);
             this.groupBox2.Location = new System.Drawing.Point(15, 155);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(307, 134);
@@ -104,19 +102,19 @@
             this.txtSignalRMessage.Size = new System.Drawing.Size(142, 19);
             this.txtSignalRMessage.TabIndex = 4;
             // 
-            // button1
+            // btnSend
             // 
-            this.button1.Location = new System.Drawing.Point(93, 50);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(51, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Send";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSend.Location = new System.Drawing.Point(93, 50);
+            this.btnSend.Name = "btnSend";
+            this.btnSend.Size = new System.Drawing.Size(51, 23);
+            this.btnSend.TabIndex = 3;
+            this.btnSend.Text = "Send";
+            this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click_1);
             // 
             // txtSignalRError
             // 
-            this.txtSignalRError.Location = new System.Drawing.Point(125, 16);
+            this.txtSignalRError.Location = new System.Drawing.Point(63, 21);
             this.txtSignalRError.Multiline = true;
             this.txtSignalRError.Name = "txtSignalRError";
             this.txtSignalRError.Size = new System.Drawing.Size(172, 23);
@@ -129,16 +127,6 @@
             this.txtSignalR.Name = "txtSignalR";
             this.txtSignalR.Size = new System.Drawing.Size(131, 70);
             this.txtSignalR.TabIndex = 0;
-            // 
-            // btnConnect
-            // 
-            this.btnConnect.Location = new System.Drawing.Point(39, 16);
-            this.btnConnect.Name = "btnConnect";
-            this.btnConnect.Size = new System.Drawing.Size(75, 23);
-            this.btnConnect.TabIndex = 1;
-            this.btnConnect.Text = "Connect";
-            this.btnConnect.UseVisualStyleBackColor = true;
-            this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
             // groupBox1
             // 
@@ -310,10 +298,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboUser;
         private System.Windows.Forms.TextBox txtSignalRMessage;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSend;
         private System.Windows.Forms.TextBox txtSignalRError;
         private System.Windows.Forms.TextBox txtSignalR;
-        private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblMaxAmount;
         private System.Windows.Forms.TextBox txtLiveCOM;
