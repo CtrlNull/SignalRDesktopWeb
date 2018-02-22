@@ -153,13 +153,9 @@ namespace BASFConnector
                 txtSignalRError.Text = null;
                 txtSignalRError.Text = "SignalR Hub is Connected";
 
-                _hub.On("SendMessage", x => writeTo(x));
+                //_hub.On("SendMessage", x => writeTo(x));
+                _hub.On("SendMessage", x => txtSignalRMessage.AppendText(x));
 
-                string line = null;
-                while ((line = System.Console.ReadLine()) != null)
-                {
-                    _hub.Invoke("SendMessage", line).Wait();
-                }
 
                 Console.Read();
 
