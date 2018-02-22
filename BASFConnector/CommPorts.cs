@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Microsoft.AspNet.SignalR.Client;
-
+using System.Threading;
 
 namespace BASFConnector
 {
@@ -68,8 +68,36 @@ namespace BASFConnector
                 serialPort1.Dispose(); // clears
             }
         }
+        void connectSignalR()
+        {
+            try
+            {
+                _connection.Start(); // Starts SignalR Connection
+                // Current message
+                var toFront = txtSignalRMessage.Text;
+
+                // Solves Cross threading issue
+                var uiCtx = SynchronizationContext.Current;
+                _hub.On("recieveMessage", x =>
+                {
+                    // You are no longer on the UI thread, so you have to post back to it
+                    uiCtx.Post(_ =>
+                    {
+                        // Put all code that touches the UI here
+                        writeTo(x);
+                    }, null);
+                });
+                txtSignalRError.Text = null;
+                txtSignalRError.Text = "SignalR Hub is Connected";
+            }
+            catch
+            {
+                txtSignalR.Text = "new error";
+            }
+
+        }
         ///=============== ^ Processes ^ ===============///
-        
+
         ///============== V Menu Items V ==============//
         // Main
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
