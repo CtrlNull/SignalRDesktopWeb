@@ -59,7 +59,7 @@
             this.txtSignalRReturn = new System.Windows.Forms.TextBox();
             this.txtSignalRMessage = new System.Windows.Forms.TextBox();
             this.btnSignalRConnect = new System.Windows.Forms.Button();
-            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.pbarSignalR = new System.Windows.Forms.ProgressBar();
             this.rdoScale = new System.Windows.Forms.RadioButton();
             this.rdoMessages = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -100,7 +100,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(516, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(469, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -300,29 +300,30 @@
             this.groupBox3.Controls.Add(this.txtSignalRReturn);
             this.groupBox3.Controls.Add(this.txtSignalRMessage);
             this.groupBox3.Controls.Add(this.btnSignalRConnect);
-            this.groupBox3.Controls.Add(this.progressBar2);
+            this.groupBox3.Controls.Add(this.pbarSignalR);
             this.groupBox3.Controls.Add(this.rdoScale);
             this.groupBox3.Controls.Add(this.rdoMessages);
             this.groupBox3.Location = new System.Drawing.Point(13, 315);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(477, 112);
+            this.groupBox3.Size = new System.Drawing.Size(446, 112);
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "SignalR Testing Area";
             // 
             // btnSignalRMessage
             // 
-            this.btnSignalRMessage.Location = new System.Drawing.Point(195, 34);
+            this.btnSignalRMessage.Location = new System.Drawing.Point(173, 34);
             this.btnSignalRMessage.Name = "btnSignalRMessage";
             this.btnSignalRMessage.Size = new System.Drawing.Size(86, 23);
             this.btnSignalRMessage.TabIndex = 8;
             this.btnSignalRMessage.Text = "Send Message";
             this.btnSignalRMessage.UseVisualStyleBackColor = true;
+            this.btnSignalRMessage.Click += new System.EventHandler(this.btnSignalRMessage_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(350, 16);
+            this.label6.Location = new System.Drawing.Point(344, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 6;
@@ -330,7 +331,7 @@
             // 
             // txtSignalRReturn
             // 
-            this.txtSignalRReturn.Location = new System.Drawing.Point(336, 36);
+            this.txtSignalRReturn.Location = new System.Drawing.Point(330, 32);
             this.txtSignalRReturn.Multiline = true;
             this.txtSignalRReturn.Name = "txtSignalRReturn";
             this.txtSignalRReturn.Size = new System.Drawing.Size(100, 70);
@@ -338,7 +339,7 @@
             // 
             // txtSignalRMessage
             // 
-            this.txtSignalRMessage.Location = new System.Drawing.Point(162, 63);
+            this.txtSignalRMessage.Location = new System.Drawing.Point(140, 63);
             this.txtSignalRMessage.Name = "txtSignalRMessage";
             this.txtSignalRMessage.Size = new System.Drawing.Size(149, 20);
             this.txtSignalRMessage.TabIndex = 4;
@@ -353,12 +354,12 @@
             this.btnSignalRConnect.UseVisualStyleBackColor = true;
             this.btnSignalRConnect.Click += new System.EventHandler(this.btnSignalRConnect_Click);
             // 
-            // progressBar2
+            // pbarSignalR
             // 
-            this.progressBar2.Location = new System.Drawing.Point(156, 0);
-            this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(155, 10);
-            this.progressBar2.TabIndex = 2;
+            this.pbarSignalR.Location = new System.Drawing.Point(140, 0);
+            this.pbarSignalR.Name = "pbarSignalR";
+            this.pbarSignalR.Size = new System.Drawing.Size(155, 10);
+            this.pbarSignalR.TabIndex = 2;
             // 
             // rdoScale
             // 
@@ -394,7 +395,7 @@
             this.groupBox5.Controls.Add(this.cboRecieve);
             this.groupBox5.Location = new System.Drawing.Point(12, 161);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(478, 148);
+            this.groupBox5.Size = new System.Drawing.Size(447, 148);
             this.groupBox5.TabIndex = 1;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Scale Testing Area";
@@ -404,7 +405,7 @@
             this.groupBox4.Controls.Add(this.txtTestingOutput);
             this.groupBox4.Controls.Add(this.progressBar1);
             this.groupBox4.Controls.Add(this.btnTesting);
-            this.groupBox4.Location = new System.Drawing.Point(243, 19);
+            this.groupBox4.Location = new System.Drawing.Point(212, 19);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(225, 117);
             this.groupBox4.TabIndex = 9;
@@ -462,7 +463,7 @@
             // 
             // btnRecieve
             // 
-            this.btnRecieve.Location = new System.Drawing.Point(139, 29);
+            this.btnRecieve.Location = new System.Drawing.Point(122, 28);
             this.btnRecieve.Name = "btnRecieve";
             this.btnRecieve.Size = new System.Drawing.Size(75, 25);
             this.btnRecieve.TabIndex = 3;
@@ -502,7 +503,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 512);
+            this.ClientSize = new System.Drawing.Size(469, 435);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -572,7 +573,7 @@
         private System.Windows.Forms.TextBox txtSignalRReturn;
         private System.Windows.Forms.TextBox txtSignalRMessage;
         private System.Windows.Forms.Button btnSignalRConnect;
-        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.ProgressBar pbarSignalR;
         private System.Windows.Forms.RadioButton rdoScale;
         private System.Windows.Forms.RadioButton rdoMessages;
     }

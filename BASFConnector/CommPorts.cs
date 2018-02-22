@@ -18,7 +18,6 @@ namespace BASFConnector
     {
         private HubConnection _connection;
         private IHubProxy _hub;
-        private string y;
 
         ///~~~ Main ~~~///
         public CommPorts()
@@ -32,6 +31,7 @@ namespace BASFConnector
             btnClosePort.Enabled = true;
             btnTesting.Enabled = false;
             serialPortToolStripMenuItem.Enabled = false;
+            btnSignalRMessage.Enabled = false;
             statusBar.Value = 0;
 
             // SignalR initializing
@@ -50,51 +50,22 @@ namespace BASFConnector
         // Open
         void openPort()
         {
-            if(!serialPort1.IsOpen)
+            if (!serialPort1.IsOpen)
             {
                 serialPort1.PortName = Convert.ToString(cboPorts_Comm.Text);
                 serialPort1.BaudRate = 9600; // Important* set BaudRate from scale
                 serialPort1.Parity = Parity.None; // Important* set Parity from scale
                 serialPort1.Open();
             }
-
         }
         // close
         void closePort()
         {
-            if(serialPort1.IsOpen)
+            if (serialPort1.IsOpen)
             {
                 serialPort1.Close();
                 serialPort1.Dispose(); // clears
             }
-        }
-        void connectSignalR()
-        {
-            try
-            {
-                _connection.Start(); // Starts SignalR Connection
-                // Current message
-                var toFront = txtSignalRMessage.Text;
-
-                // Solves Cross threading issue
-                var uiCtx = SynchronizationContext.Current;
-                _hub.On("recieveMessage", x =>
-                {
-                    // You are no longer on the UI thread, so you have to post back to it
-                    uiCtx.Post(_ =>
-                    {
-                        // Put all code that touches the UI here
-                        writeTo(x);
-                    }, null);
-                });
-                txtSignalRError.Text = null;
-                txtSignalRError.Text = "SignalR Hub is Connected";
-            }
-            catch
-            {
-                txtSignalR.Text = "new error";
-            }
-
         }
         ///=============== ^ Processes ^ ===============///
 
@@ -212,7 +183,7 @@ namespace BASFConnector
         ///========= ^ Open/Close Ports Buttons ^ ===========///
 
         ///============== V Scale Response Button V ==============//
-        
+
         // btn Recieve
         // Does the proccessing for the scale output data
         private void btnRecieve_Click_1(object sender, EventArgs e)
@@ -270,8 +241,51 @@ namespace BASFConnector
             }
             openPort();
         }
+        ///============== V SignalR Testing Area V =============//
+        //~~~~~~~Processes~~~~~~//
+        // Gets Hub Messages
+        void hubMessages(string x)
+        {
+            txtSignalRReturn.AppendText(x);
+        }
 
+        // Connects to SignalR Server
+        void connectSignalR()
+        {
+            _connection.Start(); // Starts SignalR Connection
+                                 // Current message
+            var toFront = txtSignalRMessage.Text;
+
+            // Solves Cross threading issue
+            var uiCtx = SynchronizationContext.Current;
+            _hub.On("recieveMessage", x =>
+            {
+                    // You are no longer on the UI thread, so you have to post back to it
+                    uiCtx.Post(_ =>
+                {
+                        // Put all code that touches the UI here
+                        hubMessages(x);
+                }, null);
+            });
+        }
+        //~~~~~~~Buttons~~~~~~//
+        // used to connect to hub
         private void btnSignalRConnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                connectSignalR();
+                btnSignalRMessage.Enabled = true;
+                pbarSignalR.Value = 100;
+
+            }
+            catch
+            {
+                pbarSignalR.Value = 40;
+            }
+        }
+        // For sending edited message to server
+        private void btnSignalRMessage_Click(object sender, EventArgs e)
         {
 
         }

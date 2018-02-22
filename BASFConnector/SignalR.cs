@@ -18,8 +18,6 @@ namespace BASFConnector
     {
         private HubConnection _connection;
         private IHubProxy _hub;
-        private string y;
-
 
         public SignalR()
         {
@@ -33,7 +31,6 @@ namespace BASFConnector
             string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
             _connection = new HubConnection(url);
             _hub = _connection.CreateHubProxy("ConnectorHub");
-
 
             // Try/Catch to check if the device is connected
             try
