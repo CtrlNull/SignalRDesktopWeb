@@ -335,7 +335,7 @@
             this.txtSignalRReturn.Multiline = true;
             this.txtSignalRReturn.Name = "txtSignalRReturn";
             this.txtSignalRReturn.Size = new System.Drawing.Size(100, 70);
-            this.txtSignalRReturn.TabIndex = 5;
+            this.txtSignalRReturn.TabIndex = 1;
             // 
             // txtSignalRMessage
             // 
