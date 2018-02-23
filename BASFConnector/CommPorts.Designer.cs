@@ -36,7 +36,6 @@
             this.testScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.selectPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,6 +74,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cboRecieve = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.signalRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -130,7 +130,7 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.serialPortToolStripMenuItem,
-            this.selectPortToolStripMenuItem});
+            this.signalRToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -138,14 +138,8 @@
             // serialPortToolStripMenuItem
             // 
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
-            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
-            // 
-            // selectPortToolStripMenuItem
-            // 
-            this.selectPortToolStripMenuItem.Name = "selectPortToolStripMenuItem";
-            this.selectPortToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.selectPortToolStripMenuItem.Text = "Select Port";
             // 
             // helpToolStripMenuItem
             // 
@@ -499,6 +493,12 @@
             this.cboRecieve.Size = new System.Drawing.Size(85, 21);
             this.cboRecieve.TabIndex = 2;
             // 
+            // signalRToolStripMenuItem
+            // 
+            this.signalRToolStripMenuItem.Name = "signalRToolStripMenuItem";
+            this.signalRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.signalRToolStripMenuItem.Text = "SignalR";
+            // 
             // CommPorts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,7 +556,6 @@
         private System.Windows.Forms.Button btnRecieve;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.ToolStripMenuItem selectPortToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.ProgressBar statusBar;
         private System.Windows.Forms.ComboBox cboRecieve;
@@ -576,5 +575,6 @@
         private System.Windows.Forms.ProgressBar pbarSignalR;
         private System.Windows.Forms.RadioButton rdoScale;
         private System.Windows.Forms.RadioButton rdoMessages;
+        private System.Windows.Forms.ToolStripMenuItem signalRToolStripMenuItem;
     }
 }

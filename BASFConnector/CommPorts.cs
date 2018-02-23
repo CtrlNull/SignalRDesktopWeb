@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Microsoft.AspNet.SignalR.Client;
@@ -274,8 +268,17 @@ namespace BASFConnector
             try
             {
                 connectSignalR();
-                btnSignalRMessage.Enabled = true;
                 pbarSignalR.Value = 100;
+                
+                // checks which radio button is selected
+                if(rdoMessages.Checked)
+                {
+                    btnSignalRMessage.Enabled = true;
+                }
+                else if (rdoScale.Checked)
+                {
+                    txtSignalRReturn.Text = "Scale Data"; // change this
+                }
 
             }
             catch

@@ -30,19 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cboUser = new System.Windows.Forms.ComboBox();
-            this.txtSignalRMessage = new System.Windows.Forms.TextBox();
-            this.btnSend = new System.Windows.Forms.Button();
-            this.txtSignalRError = new System.Windows.Forms.TextBox();
-            this.txtSignalR = new System.Windows.Forms.TextBox();
+            this.lblScaleWeight = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblMaxAmount = new System.Windows.Forms.Label();
+            this.txtScaleErrors = new System.Windows.Forms.TextBox();
             this.txtLiveCOM = new System.Windows.Forms.TextBox();
-            this.txtLiveScale = new System.Windows.Forms.TextBox();
-            this.btnServerTesting = new System.Windows.Forms.Button();
-            this.lblError2 = new System.Windows.Forms.Label();
-            this.lblError = new System.Windows.Forms.Label();
+            this.cboUser = new System.Windows.Forms.ComboBox();
+            this.txtSignalRStatus = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +47,8 @@
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contactUsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.btnConnectScale = new System.Windows.Forms.Button();
+            this.btnConnectSignalR = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -61,27 +56,52 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.btnConnectSignalR);
+            this.groupBox2.Controls.Add(this.btnConnectScale);
+            this.groupBox2.Controls.Add(this.lblScaleWeight);
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.txtLiveCOM);
             this.groupBox2.Controls.Add(this.cboUser);
-            this.groupBox2.Controls.Add(this.txtSignalRMessage);
-            this.groupBox2.Controls.Add(this.btnSend);
-            this.groupBox2.Controls.Add(this.txtSignalRError);
-            this.groupBox2.Controls.Add(this.txtSignalR);
-            this.groupBox2.Location = new System.Drawing.Point(15, 155);
+            this.groupBox2.Controls.Add(this.txtSignalRStatus);
+            this.groupBox2.Location = new System.Drawing.Point(12, 36);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 134);
+            this.groupBox2.Size = new System.Drawing.Size(291, 206);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "SignalR";
             // 
-            // label2
+            // lblScaleWeight
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Enter a Message";
+            this.lblScaleWeight.AutoSize = true;
+            this.lblScaleWeight.Location = new System.Drawing.Point(97, 101);
+            this.lblScaleWeight.Name = "lblScaleWeight";
+            this.lblScaleWeight.Size = new System.Drawing.Size(0, 13);
+            this.lblScaleWeight.TabIndex = 7;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtScaleErrors);
+            this.groupBox1.Location = new System.Drawing.Point(153, 9);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(105, 159);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Error List";
+            // 
+            // txtScaleErrors
+            // 
+            this.txtScaleErrors.Location = new System.Drawing.Point(6, 20);
+            this.txtScaleErrors.Multiline = true;
+            this.txtScaleErrors.Name = "txtScaleErrors";
+            this.txtScaleErrors.Size = new System.Drawing.Size(93, 133);
+            this.txtScaleErrors.TabIndex = 0;
+            // 
+            // txtLiveCOM
+            // 
+            this.txtLiveCOM.Location = new System.Drawing.Point(6, 22);
+            this.txtLiveCOM.Name = "txtLiveCOM";
+            this.txtLiveCOM.Size = new System.Drawing.Size(141, 20);
+            this.txtLiveCOM.TabIndex = 2;
             // 
             // cboUser
             // 
@@ -89,108 +109,18 @@
             this.cboUser.Items.AddRange(new object[] {
             "Chat",
             "Mettler Toledo"});
-            this.cboUser.Location = new System.Drawing.Point(18, 50);
+            this.cboUser.Location = new System.Drawing.Point(83, 73);
             this.cboUser.Name = "cboUser";
             this.cboUser.Size = new System.Drawing.Size(64, 21);
             this.cboUser.TabIndex = 5;
             // 
-            // txtSignalRMessage
+            // txtSignalRStatus
             // 
-            this.txtSignalRMessage.Location = new System.Drawing.Point(18, 101);
-            this.txtSignalRMessage.Multiline = true;
-            this.txtSignalRMessage.Name = "txtSignalRMessage";
-            this.txtSignalRMessage.Size = new System.Drawing.Size(142, 19);
-            this.txtSignalRMessage.TabIndex = 4;
-            // 
-            // btnSend
-            // 
-            this.btnSend.Location = new System.Drawing.Point(93, 50);
-            this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(51, 23);
-            this.btnSend.TabIndex = 3;
-            this.btnSend.Text = "Send";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click_1);
-            // 
-            // txtSignalRError
-            // 
-            this.txtSignalRError.Location = new System.Drawing.Point(63, 21);
-            this.txtSignalRError.Multiline = true;
-            this.txtSignalRError.Name = "txtSignalRError";
-            this.txtSignalRError.Size = new System.Drawing.Size(172, 23);
-            this.txtSignalRError.TabIndex = 2;
-            // 
-            // txtSignalR
-            // 
-            this.txtSignalR.Location = new System.Drawing.Point(166, 50);
-            this.txtSignalR.Multiline = true;
-            this.txtSignalR.Name = "txtSignalR";
-            this.txtSignalR.Size = new System.Drawing.Size(131, 70);
-            this.txtSignalR.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lblMaxAmount);
-            this.groupBox1.Controls.Add(this.txtLiveCOM);
-            this.groupBox1.Controls.Add(this.txtLiveScale);
-            this.groupBox1.Controls.Add(this.btnServerTesting);
-            this.groupBox1.Location = new System.Drawing.Point(15, 39);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(307, 110);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Scale Live Data";
-            // 
-            // lblMaxAmount
-            // 
-            this.lblMaxAmount.AutoSize = true;
-            this.lblMaxAmount.ForeColor = System.Drawing.Color.Red;
-            this.lblMaxAmount.Location = new System.Drawing.Point(60, 82);
-            this.lblMaxAmount.Name = "lblMaxAmount";
-            this.lblMaxAmount.Size = new System.Drawing.Size(0, 13);
-            this.lblMaxAmount.TabIndex = 3;
-            // 
-            // txtLiveCOM
-            // 
-            this.txtLiveCOM.Location = new System.Drawing.Point(93, 19);
-            this.txtLiveCOM.Name = "txtLiveCOM";
-            this.txtLiveCOM.Size = new System.Drawing.Size(132, 20);
-            this.txtLiveCOM.TabIndex = 2;
-            // 
-            // txtLiveScale
-            // 
-            this.txtLiveScale.Location = new System.Drawing.Point(150, 58);
-            this.txtLiveScale.Multiline = true;
-            this.txtLiveScale.Name = "txtLiveScale";
-            this.txtLiveScale.Size = new System.Drawing.Size(109, 20);
-            this.txtLiveScale.TabIndex = 1;
-            // 
-            // btnServerTesting
-            // 
-            this.btnServerTesting.Location = new System.Drawing.Point(61, 56);
-            this.btnServerTesting.Name = "btnServerTesting";
-            this.btnServerTesting.Size = new System.Drawing.Size(83, 23);
-            this.btnServerTesting.TabIndex = 0;
-            this.btnServerTesting.Text = "Scale Output";
-            this.btnServerTesting.UseVisualStyleBackColor = true;
-            this.btnServerTesting.Click += new System.EventHandler(this.btnServerTesting_Click_1);
-            // 
-            // lblError2
-            // 
-            this.lblError2.AutoSize = true;
-            this.lblError2.Location = new System.Drawing.Point(175, 123);
-            this.lblError2.Name = "lblError2";
-            this.lblError2.Size = new System.Drawing.Size(0, 13);
-            this.lblError2.TabIndex = 18;
-            // 
-            // lblError
-            // 
-            this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(136, 123);
-            this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(0, 13);
-            this.lblError.TabIndex = 17;
-            this.lblError.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.txtSignalRStatus.Location = new System.Drawing.Point(6, 48);
+            this.txtSignalRStatus.Multiline = true;
+            this.txtSignalRStatus.Name = "txtSignalRStatus";
+            this.txtSignalRStatus.Size = new System.Drawing.Size(141, 20);
+            this.txtSignalRStatus.TabIndex = 2;
             // 
             // menuStrip1
             // 
@@ -200,7 +130,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(343, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(327, 24);
             this.menuStrip1.TabIndex = 16;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -269,15 +199,32 @@
             this.contactUsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.contactUsToolStripMenuItem.Text = "Contact us";
             // 
+            // btnConnectScale
+            // 
+            this.btnConnectScale.Location = new System.Drawing.Point(6, 74);
+            this.btnConnectScale.Name = "btnConnectScale";
+            this.btnConnectScale.Size = new System.Drawing.Size(71, 20);
+            this.btnConnectScale.TabIndex = 8;
+            this.btnConnectScale.Text = "Scale Data";
+            this.btnConnectScale.UseVisualStyleBackColor = true;
+            this.btnConnectScale.Click += new System.EventHandler(this.btnConnectScale_Click);
+            // 
+            // btnConnectSignalR
+            // 
+            this.btnConnectSignalR.Location = new System.Drawing.Point(7, 101);
+            this.btnConnectSignalR.Name = "btnConnectSignalR";
+            this.btnConnectSignalR.Size = new System.Drawing.Size(70, 22);
+            this.btnConnectSignalR.TabIndex = 9;
+            this.btnConnectSignalR.Text = "SignalR";
+            this.btnConnectSignalR.UseVisualStyleBackColor = true;
+            this.btnConnectSignalR.Click += new System.EventHandler(this.btnConnectSignalR_Click);
+            // 
             // SignalR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 302);
+            this.ClientSize = new System.Drawing.Size(327, 238);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblError2);
-            this.Controls.Add(this.lblError);
             this.Controls.Add(this.menuStrip1);
             this.Name = "SignalR";
             this.Text = "SignalR - Alpha v.1";
@@ -295,19 +242,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cboUser;
-        private System.Windows.Forms.TextBox txtSignalRMessage;
-        private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox txtSignalRError;
-        private System.Windows.Forms.TextBox txtSignalR;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lblMaxAmount;
+        private System.Windows.Forms.TextBox txtSignalRStatus;
         private System.Windows.Forms.TextBox txtLiveCOM;
-        private System.Windows.Forms.TextBox txtLiveScale;
-        private System.Windows.Forms.Button btnServerTesting;
-        private System.Windows.Forms.Label lblError2;
-        private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
@@ -319,5 +256,10 @@
         private System.Windows.Forms.ToolStripMenuItem sendLogsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contactUsToolStripMenuItem;
         private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txtScaleErrors;
+        private System.Windows.Forms.Label lblScaleWeight;
+        private System.Windows.Forms.Button btnConnectScale;
+        private System.Windows.Forms.Button btnConnectSignalR;
     }
 }

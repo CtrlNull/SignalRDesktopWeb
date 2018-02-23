@@ -1,15 +1,8 @@
 ﻿using Microsoft.AspNet.SignalR.Client;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BASFConnector
@@ -26,13 +19,14 @@ namespace BASFConnector
             sendLogsToolStripMenuItem.Enabled = false;
             contactUsToolStripMenuItem.Enabled = false;
             signalRToolStripMenuItem.Enabled = false;
+            btnConnectScale.Enabled = false;
 
             // SignalR initializing
             string url = @"http://localhost:62035/"; // Make sure this matches the clientside web browser Ip**
             _connection = new HubConnection(url);
             _hub = _connection.CreateHubProxy("ConnectorHub");
 
-            // Try/Catch to check if the device is connected
+            // try/catch to check if the device is connected
             try
             {
                 openPort();
@@ -41,16 +35,20 @@ namespace BASFConnector
             {
                 txtLiveCOM.Text = "COM5 isnt Connected, Restart";
             }
-            try
-            {
-                connectSignalR();
-            }
-            catch
-            {
-                txtSignalRError.Text = null;
-                txtSignalRError.ForeColor = Color.Red;
-                txtSignalRError.Text = "Cannot Find SignalR Hub";
-            }
+            //
+
+            //
+            //  connectSignalR();
+            // This is for original bug which would throw an error for scale input = ""
+            //if (serialPort1.ReadLine() == "")
+            //{
+            //    closePort();
+            //    openPort();
+            //    scaleData(); // Connects to scale
+
+            //}
+
+
         }
         ///===================== V Menu Items V ====================//
         // Serial Ports
@@ -84,7 +82,7 @@ namespace BASFConnector
             {
                 closePort();
                 openPort();
-                Console.WriteLine("Serial Port is already open");
+                txtLiveCOM.Text = "COM5 is Connected";
             }
         }
 
@@ -98,100 +96,104 @@ namespace BASFConnector
             }
         }
         // Write to txtBox SignalR
-        void writeTo(string x)
-        {
-            txtSignalR.AppendText(x);
-        }
+        //void writeTo(string x)
+        //{
+        //    txtSignalRResponse.AppendText(x);
+        //}
         // Run Scale data
         void scaleData()
         {
-            bool portOpen = true;
-            double scaleDataConverted;
-            string hubDesiredAmount = "20.0";
-            double desiredAmount = 100.00;
+            // Local Var's
+            string screenOutput = ""; // Init scale output
+            double scaleIntConverted = 1; // Sets the scale weight that will be used to compare
+            string weightLimit = "100";
 
-            if (hubDesiredAmount != "")
+
+            // Process that will grab scale data and convert it
+            void grabScaleData()
             {
+                string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+                lblScaleWeight.Text = screenOutput;
+                _connection.Start(); // Starts SignalR Connection
+                _hub.Invoke("sendMessage", screenOutput);
+
+                scaleIntConverted = Convert.ToDouble(screenOutput);
+            }
+
+            if (weightLimit != "")
+            {
+                // Local Var's
+                bool portOpen = true;
+                double desiredAmount = Convert.ToDouble(weightLimit); // Sets user input to a double
+
+                // Checks if port is open
                 if (serialPort1.IsOpen)
                 {
                     portOpen = true;
                 }
-                // Loop until the scale reaches user's desired amount
+                // Loops until the scale reaches user's desired amount
                 while (portOpen == true)
                 {
-                    string scaleOutput = serialPort1.ReadLine(); // needed to read port info
-                    scaleOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's SS
-                    txtLiveScale.Text = scaleOutput;
-                    scaleDataConverted = Convert.ToDouble(scaleOutput);
-
-                    // This will check if the user's amount is reached and logs it to the screen
-                    if (scaleDataConverted == desiredAmount || scaleDataConverted >= desiredAmount)
+                    try
                     {
-                        // Txt to tell user ammount is reached. *Change from static*
-                        lblMaxAmount.Text = "Required Ammount Reached. Click Restart...";
-                        txtLiveCOM.Text = "COM5 is disconnected";
-                        // Close port, set var to exit loop
+                        grabScaleData();
+                    }
+                    catch
+                    {
                         closePort();
-                        portOpen = false; // Set the loop to stop
-                        txtLiveScale.Text = Convert.ToString(scaleDataConverted); // Output amount used
+                        openPort();
+                        grabScaleData();
+                    }
+
+                    // This will check if the user's ammout is reached and logs it to the screen
+                    if (scaleIntConverted == desiredAmount || scaleIntConverted >= desiredAmount)
+                    {
+                        closePort(); // Closes connection to Scale
+                        portOpen = false; // Set to stop loop
+                        lblScaleWeight.Text = Convert.ToString(scaleIntConverted); // Output amount used
                     }
                 }
             }
             else
             {
-                txtLiveCOM.Text = "There is no incoming weight";
+                // Nothing
             }
+            openPort();
         }
-        void connectSignalR()
+        ///==================== ^ Processes ^ ===================///
+
+        ///===================== V Buttons V ====================//
+        // Btn for Scale Connection
+        private void btnConnectScale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                scaleData();
+            }
+            catch
+            {
+                txtScaleErrors.Text = "Error connecting to scale";
+            }
+
+        }
+        // Btn for SignalR Connection
+        private void btnConnectSignalR_Click(object sender, EventArgs e)
         {
             try
             {
                 _connection.Start(); // Starts SignalR Connection
-                // Current message
-                var toFront = txtSignalRMessage.Text;
-
-                // Solves Cross threading issue
-                var uiCtx = SynchronizationContext.Current;
-                _hub.On("recieveMessage", x =>
-                {
-                    // You are no longer on the UI thread, so you have to post back to it
-                    uiCtx.Post(_ =>
-                    {
-                        // Put all code that touches the UI here
-                        writeTo(x);
-                    }, null);
-                });
-                txtSignalRError.Text = null;
-                txtSignalRError.Text = "SignalR Hub is Connected";
+                txtSignalRStatus.Text = null;
+                txtSignalRStatus.Text = "SignalR Hub is Connected";
+                btnConnectScale.Enabled = true;
             }
             catch
             {
-                txtSignalR.Text = "new error";
-            }
-        }
-
-        ///==================== ^ Processes ^ ===================///
-        
-        ///===================== V Buttons V ====================//
-
-        // Scale Output //
-        private void btnServerTesting_Click_1(object sender, EventArgs e)
-        {
-            // This is for original bug which would throw an error for scale input = ""
-            if (serialPort1.ReadLine() == "")
-            {
-                closePort();
-                openPort();
+                txtSignalRStatus.Text = null;
+                txtSignalRStatus.ForeColor = Color.Red;
+                txtSignalRStatus.Text = "Cannot Find SignalR Hub";
             }
 
-            scaleData(); // Connects to scale
-
-        }
-        private void btnSend_Click_1(object sender, EventArgs e)
-        {
-            connectSignalR();
-            _hub.Invoke("sendMessage", txtSignalRMessage.Text);
         }
     }
-
 }
