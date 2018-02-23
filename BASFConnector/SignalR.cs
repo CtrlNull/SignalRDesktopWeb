@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.IO.Ports;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BASFConnector
@@ -95,12 +96,7 @@ namespace BASFConnector
                 serialPort1.Dispose();
             }
         }
-        // Write to txtBox SignalR
-        //void writeTo(string x)
-        //{
-        //    txtSignalRResponse.AppendText(x);
-        //}
-        // Run Scale data
+        // Reads scale data
         void scaleData()
         {
             // Local Var's
@@ -112,14 +108,29 @@ namespace BASFConnector
             // Process that will grab scale data and convert it
             void grabScaleData()
             {
-                string scaleOutput = serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+                string scaleOutput = serialPort1.ReadLine(); 
                 screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
                 lblScaleWeight.Text = screenOutput;
+                scaleIntConverted = Convert.ToDouble(screenOutput); // Convert for while loop
+
                 _connection.Start(); // Starts SignalR Connection
                 _hub.Invoke("sendMessage", screenOutput);
 
-                scaleIntConverted = Convert.ToDouble(screenOutput);
             }
+
+            //async Task ReadScaleWait()
+            //{
+            //    string scaleOutput = await serialPort1.ReadLine(); // ReadLine is needed to read serialports *important*
+            //    screenOutput = Regex.Replace(scaleOutput, @"[^-?0-9.,]", ""); // Regex to remove scale's "SS" digits
+            //    lblScaleWeight.Text = screenOutput;
+            //    _connection.Start(); // Starts SignalR Connection
+            //    _hub.Invoke("sendMessage", screenOutput);
+
+            //    scaleIntConverted = Convert.ToDouble(screenOutput);
+
+            //}
+
+
 
             if (weightLimit != "")
             {

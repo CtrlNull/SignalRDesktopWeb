@@ -36,6 +36,7 @@
             this.testScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serialPortToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.signalRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sendLogsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +75,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cboRecieve = new System.Windows.Forms.ComboBox();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.signalRToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbDevice)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -140,6 +140,13 @@
             this.serialPortToolStripMenuItem.Name = "serialPortToolStripMenuItem";
             this.serialPortToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.serialPortToolStripMenuItem.Text = "Serial Port";
+            // 
+            // signalRToolStripMenuItem
+            // 
+            this.signalRToolStripMenuItem.Name = "signalRToolStripMenuItem";
+            this.signalRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.signalRToolStripMenuItem.Text = "SignalR";
+            this.signalRToolStripMenuItem.Click += new System.EventHandler(this.signalRToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -492,12 +499,6 @@
             this.cboRecieve.Name = "cboRecieve";
             this.cboRecieve.Size = new System.Drawing.Size(85, 21);
             this.cboRecieve.TabIndex = 2;
-            // 
-            // signalRToolStripMenuItem
-            // 
-            this.signalRToolStripMenuItem.Name = "signalRToolStripMenuItem";
-            this.signalRToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.signalRToolStripMenuItem.Text = "SignalR";
             // 
             // CommPorts
             // 

@@ -71,6 +71,14 @@ namespace BASFConnector
             obj.Show();
             this.Hide();
         }
+        // SignalR
+        private void signalRToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SignalR obj = new SignalR();
+            obj.Show();
+            this.Hide();
+        }
+
         ///============== V Select Port Box V ==============//
         // Button Check Device
         private void btnCheckDevice_Click(object sender, EventArgs e)
@@ -292,6 +300,7 @@ namespace BASFConnector
             connectSignalR();
             _hub.Invoke("sendMessage", txtSignalRMessage.Text);
         }
+
     }
     ///============== V Important Scale Info V =============//
     //serialPort1.WriteLine("T\r\n"); // sets amount to zero
