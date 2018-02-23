@@ -59,10 +59,10 @@
                 </div>
                 <!-- Weight Incoming Data -->
                 <div id="weightNumber">
-                    <p>
-                        Weight:
-                        <span ng-model="weightAmount" id="weightAmount">{{c.weightAmount}}</span>
-                    </p>
+                    <p>Weight: </p>
+                    <p ng-bind="c.currentScale"></p>
+                    <p>{{c.message}}</p>
+                    
                 </div>
             </div>
             <div class="container col-lg-8" id="signalRBox">
@@ -73,7 +73,7 @@
                     <div id="signalRInputs" class="col-md-3">
                         <p>Status: <span id="onlineOffline"></span></p>
                         <input type="text" id="message" placeholder="message" />
-                        <button class="btn btn-danger" id="btnSend">Send</button>
+                        <button class="btn btn-danger" id="btnSend" ng-click="c.btnSend()">Send</button>
                     </div>
                     <!-- Scale Commands -->
                     <div class="col-md-3">
@@ -103,7 +103,7 @@
     <script src="signalr/hubs"></script>
     <!--       -->
 
-    <script>
+    <!--<script>
         try {
             var chat = $.connection.ConnectorHub;
             // Action to recieve messages
@@ -126,7 +126,7 @@
             $('#onlineOffline').css('color', 'red');
 
         }
-    </script>
+    </script>-->
 </body>
 
 </html>
