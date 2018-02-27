@@ -6,6 +6,7 @@
     <title>ClientOne Communication</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.7/angular-material.min.css">
+    <link rel="stylesheet" ; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
     <link href="Scripts/main.css" rel="stylesheet" />
 </head>
 <body ng-app="ScaleCrud">
@@ -62,7 +63,6 @@
                     <p>Weight: </p>
                     <p ng-bind="c.currentScale"></p>
                     <p>{{c.message}}</p>
-                    
                 </div>
             </div>
             <div class="container col-lg-8" id="signalRBox">
@@ -89,6 +89,18 @@
                     </div>
                 </div>
             </div>
+            <div>
+                <table ng-table="vm.tableParams" class="table" show-filter="true">
+                    <tr>
+                        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+                            Name
+                        </td>
+                        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+                            age
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <!-- CDN's -->
@@ -96,13 +108,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
     <!-- Local -->
     <script src="Scripts/jquery-1.6.4.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
     <script src="Scripts/main.js"></script>
     <script src="signalr/hubs"></script>
     <!--       -->
-
     <!--<script>
         try {
             var chat = $.connection.ConnectorHub;

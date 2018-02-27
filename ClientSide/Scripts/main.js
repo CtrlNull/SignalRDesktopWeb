@@ -1,5 +1,5 @@
 ﻿(function () {
-    angular.module('ScaleCrud', []);
+    angular.module('ScaleCrud', ['ngTable']);
 })();
 (function () {
     'use strict';

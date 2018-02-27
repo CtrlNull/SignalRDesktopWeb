@@ -29,7 +29,9 @@ namespace BASFConnector
             statusBar.Value = 0;
 
             // SignalR initializing
-            string url = @"http://signalrconnector.azurewebsites.net//"; // Make sure this matches the clientside web browser Ip**
+            // @"http://localhost:62035//"
+            // @"http://signalrconnector.azurewebsites.net//"
+            string url = @"http://localhost:62035//"; // Make sure this matches the clientside web browser Ip**
             _connection = new HubConnection(url);
             _hub = _connection.CreateHubProxy("ConnectorHub");
 
