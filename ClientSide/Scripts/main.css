@@ -1,9 +1,10 @@
 ﻿body {
-    background-color: whitesmoke;
+    /*background-color: black;
+    color: white;*/
 }
 
 #navbar {
-    color: red;
+    color: blue;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
     padding: 5px;

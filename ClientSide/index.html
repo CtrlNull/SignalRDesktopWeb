@@ -90,13 +90,25 @@
                 </div>
             </div>
             <div>
-                <table ng-table="vm.tableParams" class="table" show-filter="true">
-                    <tr>
-                        <td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
-                            Name
+                <table ng-table="c.tableParams" class="table" show-filter="true">
+                    <tr ng-repeat="row in $data">
+                        <td title="'Status'" filter="{ Status: 'text'}" sortable="'Statua'">
+                            {{row.something}}
                         </td>
-                        <td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
-                            age
+                        <td title="'Base'" filter="{ Base: 'number'}" sortable="'Base'">
+                            {{row.something}}
+                        </td>
+                        <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
+                            {{row.something}}
+                        </td>
+                        <td title="'Amount'" filter="{ Amount: 'number'}" sortable="'Amount'">
+                            {{row.something}}
+                        </td>
+                        <td title="'CumAmt'" filter="{ CumAmt: 'number'}" sortable="'CumAmt'">
+                            {{row.something}}
+                        </td>
+                        <td title="'PouredAmt'" filter="{ PouredAmt: 'number'}" sortable="'PouredAmt'">
+                            {{row.something}}
                         </td>
                     </tr>
                 </table>
