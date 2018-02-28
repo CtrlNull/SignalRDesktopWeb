@@ -1,0 +1,11 @@
+﻿{
+  "ingredient": [
+    {
+      "id": 1,
+      "primary": {
+        "name": "John",
+        "age": "20"
+      }
+    }
+  ]
+}
