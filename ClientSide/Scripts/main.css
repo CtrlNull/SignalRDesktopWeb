@@ -7,32 +7,21 @@
     color: blue;
     font-family: 'Courier New', Courier, monospace;
     font-size: 16px;
-    padding: 5px;
+    text-align:center;
 }
-
-#SignalRData {
-    margin-top: 30px;
-}
-
-#weightBox {
-    margin-top: 40px;
-    border: 5px solid silver;
-    padding: 10px;
-    /* margin-right: 140px; */
-    margin-left: 60px;
-}
-#signalRBox {
-    margin-top: 40px;
-    border: 5px solid silver;
-    padding: 10px;
-    /* margin-right: 140px; */
-    margin-left: 60px;
-}
-#progressBar {
-    /* margin-top: 40px; */
-}
-
 #weightNumber {
     margin-left: 150px;
 }
-/* Fonts */
+.ng-table-pager {
+    display: none;
+}
+/* Progress bar*/
+#progressBar {
+    /* margin-top: 40px; */
+}
+#buttonRow {
+    padding-top: 2.5%;
+}
+#isConnected {
+    padding-left: 1.5em;
+}

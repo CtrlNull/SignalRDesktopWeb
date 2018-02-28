@@ -12,115 +12,78 @@
 <body ng-app="ScaleCrud">
     <div ng-controller="ScaleCrudController as c">
         <div class="container-fluid" id="navbar">
-            <h1>BASF SignalR Connector Alpha v.1</h1>
+            <h1>SignalR Connector Alpha v.1</h1>
         </div>
         <div class="container-fluid" id="ScaleBar">
-            <h3>Scale Data</h3>
+            <h3>Ingredient List</h3>
         </div>
-        <div id="SignalRData">
-            <div class="container">
-                <div class="row">
-                    <!-- Drop Box One -->
-                    <div class="col-md-3">
-                        <p>Select Ingredient</p>
-                        <select ng-model="c.colorOptions">
-                            <option value="optionRed" class="red">Red</option>
-                            <option value="optionBlue" class="blue">Blue</option>
-                            <option value="optionMetallicSilver" class="metallicSilver">Metallic Silver</option>
-                            <option value="optionDarBlue" class="darkblue">Dark blue</option>
-                        </select>
-                    </div>
-                    <!-- Drop Box Teo -->
-                    <div class="col-md-3">
-                        <p>Not in Use</p>
-                        <select ng-model="c.nothing">
-                            <option class="red">Red</option>
-                            <option class="blue">Blue</option>
-                            <option class="metallicSilver">Metallic Silver</option>
-                            <option class="darkblue">Dark blue</option>
-                        </select>
-                    </div>
-                </div>
+        <!-- Table -->
+        <div class="container col-lg-10" id="tableBox">
+            <table ng-table="c.tableParams" class="table" show-filter="false">
+                <tr ng-repeat="row in $data">
+                    <td title="'Status'" filter="{ Status: 'text'}" sortable="'Status'">
+                        {{row.Status}}
+                    </td>
+                    <!--<td filter="{ BaseRGB: 'rgb'}" sortable="'BaseRGB'">
+                </td>-->
+                    <td title="'Base'" filter="{ Base: 'text'}" sortable="'Base'">
+                        {{row.Base}}
+                    </td>
+                    <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
+                        {{row.Description}}
+                    </td>
+                    <td title="'Amount'" filter="{ Amount: 'number'}" sortable="'Amount'">
+                        {{row.Amount}}
+                    </td>
+                    <td title="'CumAmt'" filter="{ CumAmt: 'number'}" sortable="'CumAmt'">
+                        {{row.CumAmt}}
+                    </td>
+                    <td title="'PouredAmt'" filter="{ PouredAmt: 'number'}" sortable="'PouredAmt'">
+                        {{row.PouredAmt}}
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <!-- ^  Table ^ -->
+        <!-- Progress bar -->
+        <div class="container" id="containerProgress">
+            <div class="col-lg-8 progress" id="progressBar">
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
+                     aria-valuemax="100"></div>
             </div>
-            <!-- Progress bar Box -->
-            <div class="container col-lg-8" id="weightBox">
-                <div class="col-md-3">
-                    <p>Scale Weight</p>
-                </div>
-                <div class="row col-lg">
-                    <!-- Weight Button -->
-                    <div class="col-lg-2">
-                        <button class="btn btn-primary" ng-click="c.btnWeight()">Get Weight</button>
-                    </div>
-                    <!-- Progress bar -->
-                    <div class="col-lg-6 progress" id="progressBar">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0"
-                             aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <!-- Weight Incoming Data -->
-                <div id="weightNumber">
-                    <p>Weight: </p>
-                    <p ng-bind="c.currentScale"></p>
-                    <p>{{c.message}}</p>
-                </div>
+            <div class="col-lg-2">
+                <p id="incomingData"></p>
+                <p ng-bind="c.currentScale"></p>
+                <p>{{c.message}}</p>
             </div>
-            <div class="container col-lg-8" id="signalRBox">
-                <!-- Server Status-->
-                <h3>SignalR Connection Status</h3>
-                <div class="row">
-                    <!-- SignalR Status Data -->
-                    <div id="signalRInputs" class="col-md-3">
-                        <p>Status: <span id="onlineOffline"></span></p>
-                        <input type="text" id="message" placeholder="message" />
-                        <button class="btn btn-danger" id="btnSend" ng-click="c.btnSend()">Send</button>
-                    </div>
-                    <!-- Scale Commands -->
-                    <div class="col-md-3">
-                        <p>Select Command</p>
-                        <select ng-model="c.scaleCommand">
-                            <option class="inboundScale">Live Weight</option>
-                            <option class="Reset Tare">Reset Tare</option>
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <h4>Server Data</h4>
-                        <div id="incomingData"></div>
-                    </div>
+        </div>
+        <!-- Button Row -->
+        <div class="container container-fluid" id="buttonRow">
+            <div class="row">
+                <div class="col-md-3" id="ConnectServer">
+                    <button class="btn btn-primary" ng-click="c.btnConnect()">SignalR Connect</button>
+                    <p id="isConnected" ng-model="isConnected">{{c.isConnected}}</p>
                 </div>
-            </div>
-            <div>
-                <table ng-table="c.tableParams" class="table" show-filter="true">
-                    <tr ng-repeat="row in $data">
-                        <td title="'Status'" filter="{ Status: 'text'}" sortable="'Statua'">
-                            {{row.something}}
-                        </td>
-                        <td title="'Base'" filter="{ Base: 'number'}" sortable="'Base'">
-                            {{row.something}}
-                        </td>
-                        <td title="'Description'" filter="{ Description: 'text'}" sortable="'Description'">
-                            {{row.something}}
-                        </td>
-                        <td title="'Amount'" filter="{ Amount: 'number'}" sortable="'Amount'">
-                            {{row.something}}
-                        </td>
-                        <td title="'CumAmt'" filter="{ CumAmt: 'number'}" sortable="'CumAmt'">
-                            {{row.something}}
-                        </td>
-                        <td title="'PouredAmt'" filter="{ PouredAmt: 'number'}" sortable="'PouredAmt'">
-                            {{row.something}}
-                        </td>
-                    </tr>
-                </table>
+                <div class="col-md-3" id="Get Weight">
+                    <button class="btn btn-success" ng-click="c.btnWeight()">Get Weight</button>
+                </div>
+                <div class="col-md-3" id="Message">
+                    <input type="text" placeholder="Input your message here" ng-model="message" id="message" />
+                </div>
+                <div class="col-md-3" id="SendMessage">
+                    <button class="btn btn-info" id="btnSend" ng-click="c.btnSend()">Send Message</button>
+                </div>
             </div>
         </div>
     </div>
     <!-- CDN's -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.js"></script>
+
     <!-- Local -->
     <script src="Scripts/jquery-1.6.4.min.js"></script>
     <script src="Scripts/jquery.signalR-2.2.2.min.js"></script>
@@ -130,7 +93,7 @@
     <!--<script>
         try {
             var chat = $.connection.ConnectorHub;
-            // Action to recieve messages
+            // Action to receive messages
             chat.client.recieveMessage = function (message) {
                 $('#incomingData').append($('<p />').text(message));
             }

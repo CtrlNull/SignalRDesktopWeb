@@ -1,11 +1,30 @@
 ﻿{
   "ingredient": [
     {
-      "id": 1,
-      "primary": {
-        "name": "John",
-        "age": "20"
-      }
+      "Status": "none",
+      "Base": "352-91",
+      "Description": "Testing",
+      "Amount": 16.13,
+      "CumAmt": 16.13,
+      "PouredAmt": 0
+    },
+    {
+      "Status": "none",
+      "Base": "A929",
+      "Description": "Testing",
+      "Amount": 8.27,
+      "CumAmt": 24.4,
+      "BaseRGB": "#3A352F",
+      "PouredAmt": 0
+    },
+    {
+      "Status": "none",
+      "Base": "M25",
+      "Description": "Testing",
+      "Amount": 75.61,
+      "CumAmt": 100,
+      "BaseRGB": "#C8CFD2",
+      "PouredAmt": 0
     }
   ]
 }
